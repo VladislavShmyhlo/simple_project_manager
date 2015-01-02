@@ -29,6 +29,9 @@ gem 'haml-rails'
 # bower
 gem 'bower-rails'
 
+# angular templates
+gem 'angular-rails-templates'
+
 # testing
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
