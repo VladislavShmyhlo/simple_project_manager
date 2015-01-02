@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="exampleApp">
 <head>
-  <title>Manager</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title>AngularJS Demo</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<div class="panel" ng-controller="dayCtrl">
+  <div class="page-header">
+    <h3>AngularJS App</h3>
+  </div>
+  <h4>Today is {{day || "(unknown)"}}</h4>
+</div>
 
 </body>
 </html>

@@ -25,12 +25,12 @@ gem 'spring',        group: :development
 
 # haml
 gem 'haml-rails'
-
 # bower
 gem 'bower-rails'
-
 # angular templates
 gem 'angular-rails-templates'
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
 
 # testing
 group :test, :development do
@@ -52,6 +52,3 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
-# Use jquery as the JavaScript library
-# gem 'jquery-rails'
