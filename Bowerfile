@@ -1,0 +1,3 @@
+asset 'angular'
+asset 'restangular'
+asset 'bootstrap-sass-official'
