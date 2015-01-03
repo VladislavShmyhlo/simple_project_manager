@@ -8,11 +8,29 @@
 </head>
 <body>
 
-<div class="panel" ng-controller="dayCtrl">
-  <div class="page-header">
-    <h3>AngularJS App</h3>
-  </div>
-  <h4>Today is {{day || "(unknown)"}}</h4>
+<div id="todoPanel" class="panel" ng-controller="defaultCtrl">
+  <h3 class="panel-header">To Do List</h3>
+  There are {{todos.length}} items
+  <table class="table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Action</th>
+      <th>Done</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat-start="item in todos">
+      <td>This is item {{$index+1}}</td>
+    </tr>
+    <tr>
+      <td>The action is: {{item.action}}</td>
+    </tr>
+    <tr ng-repeat-end>
+      <td>Item {{$index+1}} is {{item.complete? '' : "not "}} complete</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 
 </body>

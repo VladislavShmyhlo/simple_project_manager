@@ -1,7 +1,7 @@
 # TODO: check for naming conventions
 # for compatibility with Rails CSRF protection
 
-angular.module('exampleApp', [
+@app = angular.module('exampleApp', [
   'restangular'
   'templates'
 ]).config([
