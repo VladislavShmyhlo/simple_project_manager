@@ -1,0 +1,1 @@
+json.extract! task, :id, :updated_at, :description, :completed

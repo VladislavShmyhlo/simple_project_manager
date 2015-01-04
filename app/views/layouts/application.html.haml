@@ -27,7 +27,7 @@
               %input(ng-model="newTask.description")
               %button(type="submit") add new task
           .tasks
-            .task(ng-repeat="task in project.tasks" ng-class="taskClass(task)")
+            .task(ng-repeat=" task in project.tasks | orderBy : 'updated_at' : true" ng-class="taskClass(task)")
               %input(type="checkbox" ng-model="task.completed" ng-click="updateTask(task)")
               {{task.description}}
               %button(ng-click="removeItem(task, project.tasks)") remove

@@ -18,7 +18,6 @@
   $scope.createNewTask = (item, collection) ->
     item.completed = false
     collection.post(item).then (item) ->
-      console.log item
       collection.push(item)
 
   $scope.removeItem = (item, collection) ->
