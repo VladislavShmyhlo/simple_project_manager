@@ -11,8 +11,11 @@
 // about supported directives.
 //
 
-//= require jquery
-//= require jquery_ujs
+//= require jquery/dist/jquery
+//=// require jquery.ui/ui/widget
+//=// require jquery.ui/ui/mouse
+//=// require jquery.ui/ui/sortable
+//=// require angular-ui-sortable/sortable
 //= require angular/angular
 //= require lodash/dist/lodash
 //= require restangular/dist/restangular

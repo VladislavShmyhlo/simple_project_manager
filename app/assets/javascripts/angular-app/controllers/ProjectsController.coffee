@@ -3,7 +3,6 @@
     projectNewName: null
     editedProject: null
   }
-
   updateProject = (item) ->
     item.patch({name: item.name}).then ->
       console.log 'project updated'

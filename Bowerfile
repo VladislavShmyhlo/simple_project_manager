@@ -1,3 +1,6 @@
 asset 'angular'
 asset 'restangular'
 asset 'bootstrap-sass-official'
+asset 'jquery'
+asset 'jquery.ui'
+asset 'angular-ui-sortable'

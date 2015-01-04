@@ -3,6 +3,9 @@
   "dependencies": {
     "angular": "latest",
     "restangular": "latest",
-    "bootstrap-sass-official": "latest"
+    "bootstrap-sass-official": "latest",
+    "jquery": "latest",
+    "jquery.ui": "latest",
+    "angular-ui-sortable": "latest"
   }
 }

@@ -32,7 +32,7 @@ gem 'bower-rails'
 # angular templates
 gem 'angular-rails-templates'
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+# gem 'jquery-rails'
 
 # testing
 group :test, :development do
