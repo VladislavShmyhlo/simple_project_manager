@@ -7,7 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Project.delete_all
+Task.delete_all
 
 5.times {
-  Project.create(name: 'some new random project')
+  p = Project.create(name: (%w{awesome random cool large complex}.shuffle! << 'project').join(' '))
+  5.times {|i|
+    p.tasks.build(description: "Task ##{i+1}")
+    p.save!
+  }
 }

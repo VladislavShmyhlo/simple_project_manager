@@ -11,3 +11,8 @@
         .project(ng-repeat="project in projects")
           .name
             {{project.name}}
+            %button(ng-click="project.remove()") remove
+            %h3
+            .tasks
+              .task(ng-repeat="task in project.tasks")
+                {{task.description}}

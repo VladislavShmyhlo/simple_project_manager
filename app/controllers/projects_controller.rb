@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   respond_to :json
 
   def index
-    @projects = Project.all
+    @projects = Project.includes(:tasks).all
     respond_with(@projects)
   end
 
