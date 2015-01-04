@@ -34,7 +34,7 @@
 
 #  project editing:
 
-  $scope.beginProjectEdit = (item, form) ->
+  $scope.beginProjectEdit = (item) ->
     $scope.data.projectNewName = item.name
     $scope.data.editedProject = item
 
