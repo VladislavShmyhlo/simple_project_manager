@@ -16,6 +16,12 @@
     $scope.projects = projects
 
 
+  $scope.createNewTask = (item, collection) ->
+    item.completed = false
+    collection.post(item).then (item) ->
+      console.log item
+      collection.push(item)
+
   $scope.removeItem = (item, collection) ->
     item.remove().then ->
       index = collection.indexOf(item)
@@ -30,7 +36,7 @@
 
 #  project editing:
 
-  $scope.beginProjectEdit = (item) ->
+  $scope.beginProjectEdit = (item, form) ->
     $scope.data.projectNewName = item.name
     $scope.data.editedProject = item
 

@@ -12,16 +12,20 @@
           .name
             %span(ng-hide="project == data.editedProject")
               {{project.name}}
-              %button(ng-click="beginProjectEdit(project)") edit
-            .form(ng-show="project == data.editedProject")
-              %form(ng-submit="confirmProjectEdit(project)" novalidate)
-                %input(ng-model="data.projectNewName")
+              %button(ng-click="beginProjectEdit(project, projectForm)") edit
+            .form-wrapper(ng-show="project == data.editedProject")
+              %form(name="projectForm" ng-submit="confirmProjectEdit(project)" novalidate)
+                %input(name="projectName" ng-model="data.projectNewName")
                 %button(type="submit") save
               %button(ng-click="cancelProjectEdit()") cancell
           %button(ng-click="removeItem(project, projects)") remove
           %i
             {{project.updated_at}}
           %h3 Tasks
+          .new-task
+            %form(ng-submit="createNewTask(newTask, project.tasks)" novalidate)
+              %input(ng-model="newTask.description")
+              %button(type="submit") add new task
           .tasks
             .task(ng-repeat="task in project.tasks" ng-class="taskClass(task)")
               %input(type="checkbox" ng-model="task.completed" ng-click="updateTask(task)")
