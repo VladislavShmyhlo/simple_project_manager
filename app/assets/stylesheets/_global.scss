@@ -8,3 +8,6 @@
   border: solid 1px #999;
   padding: 20px;
 }
+.task.completed {
+  text-decoration: line-through;
+}
