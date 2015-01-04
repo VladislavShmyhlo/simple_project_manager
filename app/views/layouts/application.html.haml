@@ -18,12 +18,8 @@
                 %input(name="projectName" ng-model="data.projectNewName")
                 %button(type="submit") save
               %button(ng-click="cancelProjectEdit()") cancell
-          %button(ng-click="removeItem(project, projects)") remove
+          %button(ng-click="removeProject(project, projects)") remove
           %i
             {{project.updated_at}}
           %h3 Tasks
-          .new-task
-            %form(ng-submit="createNewTask(newTask, project.tasks)" novalidate)
-              %input(ng-model="newTask.description")
-              %button(type="submit") add new task
-          .tasks(ng-include=" 'tasks.html' ")
+          %ng-include(src=" 'tasks.html' ")
