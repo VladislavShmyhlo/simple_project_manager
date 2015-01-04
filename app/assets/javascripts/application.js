@@ -18,7 +18,7 @@
 //= require restangular/dist/restangular
 //= require angular-rails-templates
 
-//= require_tree ./templates
 
 //= require ./angular-app/app
+//= require_tree ./angular-app/templates
 //= require_tree ./angular-app/controllers
