@@ -23,9 +23,10 @@ class TasksController < ApplicationController
 
   def create
     @task = @project.tasks.build(task_params)
-    @task.save
     respond_to {|format|
-      format.json { render :show }
+      if @task.save
+        format.json { render :show }
+      end
     }
   end
 

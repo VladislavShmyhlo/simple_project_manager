@@ -1,17 +1,10 @@
-@app.controller "ProjectsController", ($scope, Restangular) ->
+@app.controller "ProjectsController", ($scope, Projects) ->
   $scope.data = {
     projectNewName: null
     editedProject: null
   }
-  updateProject = (item) ->
-    item.patch({name: item.name}).then ->
-      console.log 'project updated'
 
-  Project = Restangular.all 'projects'
-  Project.getList().then (projects) ->
-    console.log projects
-    angular.forEach projects, (pr) ->
-      Restangular.restangularizeCollection(pr, pr.tasks, 'tasks')
+  Projects.getAllWithTasks().then (projects) ->
     $scope.projects = projects
 
 
@@ -19,9 +12,11 @@
     item.completed = false
     collection.post(item).then (item) ->
       collection.push(item)
+      console.log 'task created'
 
   $scope.removeItem = (item, collection) ->
     item.remove().then ->
+      console.log 'task removed'
       index = collection.indexOf(item)
       if (index > -1) then collection.splice(index, 1)
 
@@ -43,5 +38,8 @@
 
   $scope.confirmProjectEdit = (item) ->
     item.name = $scope.data.projectNewName
-    updateProject(item).then ->
+    item.updateName()
+    .then ->
+      console.log 'project updated'
+    .then ->
       $scope.cancelProjectEdit()
