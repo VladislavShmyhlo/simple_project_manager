@@ -1,0 +1,22 @@
+!!!
+%html(ng-app="exampleApp")
+  %head
+    %title AngularJS Demo
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %p.notice= notice
+    %p.alert= alert
+    #todoPanel.panel(ng-controller="defaultCtrl")
+      %h3.panel-header To Do List
+      %table.table
+        %thead
+          %tr
+            %th #
+            %th Action
+            %th Done
+        %tr(ng-repeat="item in todos")
+          %td 1
+          %td(ng-repeat="prop in item")
+            {{ prop }}
