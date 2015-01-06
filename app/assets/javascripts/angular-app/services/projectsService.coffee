@@ -7,14 +7,24 @@
         projects
     collection
 
-  update = (model) ->
+  updateName = (model) ->
     model.updateName = ->
       self = @
-      @patch(name: @name).then (res)->
-        _.extend(self, res)
+      @patch(name: @name).then (item)->
+        _.extend(self, item)
     model
 
-  Restangular.extendModel 'projects', update
-  Restangular.extendModel 'tasks', update
+  create = (collection) ->
+    collection.create = (item) ->
+      self = @
+      @.post(item).then (item)->
+        self.push(item)
+    collection
+
+  Restangular.extendModel 'projects', updateName
+  Restangular.extendModel 'tasks', updateName
+  Restangular.extendCollection 'projects', create
+  Restangular.extendCollection 'tasks', create
+
 
   Restangular.all 'projects'

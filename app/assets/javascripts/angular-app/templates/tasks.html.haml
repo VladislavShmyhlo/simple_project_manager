@@ -4,7 +4,8 @@
       %input(ng-model="newTask.description")
       %button(type="submit") add new task
   .tasks-list
-    .task(ng-repeat=" task in tasks | orderBy : 'updated_at' : true" ng-class="taskClass(task)")
-      %input(type="checkbox" ng-model="task.completed" ng-click="updateTask(task)")
-      {{task.description}}
+    .task(ng-repeat=" task in tasks | orderBy : 'updated_at' : true")
+      %label(ng-class="taskClass(task)")
+        %input(type="checkbox" ng-model="task.completed" ng-click="updateTask(task)")
+        {{task.description}}
       %button(ng-click="removeTask(task, tasks)") remove

@@ -3,9 +3,7 @@
 
   $scope.createNewTask = (item, collection) ->
     item.completed = false
-    collection.post(item).then (item) ->
-      collection.push(item)
-      console.log 'task created'
+    collection.create(item)
 
   $scope.taskClass = (item) ->
     return 'completed' if item.completed
