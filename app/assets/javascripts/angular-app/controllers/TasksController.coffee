@@ -13,6 +13,4 @@
       console.log('task updated')
 
   $scope.removeTask = (item, collection) ->
-    item.remove()
-    .then ->
-      _.pull(collection, item)
+    collection.destroy(item)

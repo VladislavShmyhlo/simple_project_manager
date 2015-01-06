@@ -8,9 +8,7 @@
     $scope.projects = projects
 
   $scope.removeProject = (item, collection) ->
-    item.remove()
-    .then ->
-      _.pull(collection, item)
+    collection.destroy(item)
 
 #  project editing:
 
