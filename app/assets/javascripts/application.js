@@ -16,7 +16,8 @@
 //=// require jquery.ui/ui/mouse
 //=// require jquery.ui/ui/sortable
 //=// require angular-ui-sortable/sortable
-//= require angular/angular
+//= require angular/angular.min
+//= require angular-route/angular-route.min
 //= require lodash/dist/lodash
 //= require restangular/dist/restangular
 //= require angular-rails-templates

@@ -1,0 +1,16 @@
+.projects(ng-controller="ProjectsController")
+  .project(ng-repeat=" project in projects | orderBy : 'updated_at' : true ")
+    .name
+      %span(ng-hide="project == data.editedProject")
+        {{project.name}}
+        %button(ng-click="beginProjectEdit(project)") edit
+      .form-wrapper(ng-show="project == data.editedProject")
+        %form(name="projectForm" ng-submit="confirmProjectEdit(project)" novalidate)
+          %input(name="projectName" ng-model="data.projectNewName")
+          %button(type="submit") save
+        %button(ng-click="cancelProjectEdit()") cancell
+    %button(ng-click="removeProject(project, projects)") remove
+    %i
+      {{project.updated_at}}
+    %h3 Tasks
+    %ng-include(src=" 'tasks.html' ")

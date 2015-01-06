@@ -5,6 +5,7 @@
     "restangular": "latest",
     "bootstrap-sass-official": "latest",
     "jquery": "latest",
+    "angular-route": "latest",
     "jquery.ui": "latest",
     "angular-ui-sortable": "latest"
   }
