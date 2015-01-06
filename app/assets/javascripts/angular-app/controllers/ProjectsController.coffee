@@ -10,10 +10,7 @@
   $scope.removeProject = (item, collection) ->
     item.remove()
     .then ->
-      index = collection.indexOf(item)
-      if (index > -1) then collection.splice(index, 1)
-    .then ->
-      console.log 'project removed'
+      _.pull(collection, item)
 
 #  project editing:
 
@@ -26,8 +23,5 @@
 
   $scope.confirmProjectEdit = (item) ->
     item.name = $scope.data.projectNewName
-    item.updateName()
-    .then ->
+    item.updateName().then ->
       $scope.cancelProjectEdit()
-    .then ->
-      console.log 'project updated'

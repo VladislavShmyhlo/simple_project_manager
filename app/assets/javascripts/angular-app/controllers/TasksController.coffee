@@ -17,7 +17,4 @@
   $scope.removeTask = (item, collection) ->
     item.remove()
     .then ->
-      index = collection.indexOf(item)
-      if (index > -1) then collection.splice(index, 1)
-    .then ->
-      console.log 'task removed'
+      _.pull(collection, item)

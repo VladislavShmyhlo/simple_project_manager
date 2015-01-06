@@ -7,9 +7,14 @@
         projects
     collection
 
-  Restangular.extendModel 'projects', (model) ->
+  update = (model) ->
     model.updateName = ->
-      @patch(name: @name)
+      self = @
+      @patch(name: @name).then (res)->
+        _.extend(self, res)
     model
+
+  Restangular.extendModel 'projects', update
+  Restangular.extendModel 'tasks', update
 
   Restangular.all 'projects'
