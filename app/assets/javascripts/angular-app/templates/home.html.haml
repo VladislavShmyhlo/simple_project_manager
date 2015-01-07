@@ -1,4 +1,4 @@
-.projects(ng-controller="ProjectsController")
+.projects
   .project(ng-repeat=" project in projects | orderBy : 'updated_at' : true ")
     .name
       %span(ng-hide="project == data.editedProject")

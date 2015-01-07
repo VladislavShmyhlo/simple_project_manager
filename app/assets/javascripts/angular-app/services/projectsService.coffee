@@ -24,11 +24,16 @@
   Restangular.extendCollection 'tasks', _collectionMethods
 
   Restangular.addResponseInterceptor (data, operation, what, url) ->
-    if operation is 'getList' and what is 'projects'
+    if operation is 'get' and what is 'tasks'
+      Restangular.restangularizeCollection(null, data, 'tasks')
+      angular.forEach data, (t) ->
+        Restangular.restangularizeCollection(t, t.comments, 'comments')
+      data
+    else if operation is 'getList' and what is 'projects'
       Restangular.restangularizeCollection(null, data, 'projects')
       angular.forEach data, (pr) ->
         Restangular.restangularizeCollection(pr, pr.tasks, 'tasks')
       data
     else data
-      
-  Restangular.all 'projects'
+
+  Restangular

@@ -14,5 +14,4 @@
       lines: 10
     }).appendTo(elem.context)
     scope.$on 'load', (e, a)->
-      console.log e
       if a.active is true then t.start() else t.stop()

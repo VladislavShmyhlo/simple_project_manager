@@ -1,0 +1,6 @@
+.task
+  %input(type="checkbox" ng-model="task.completed" ng-click="updateTask(task)")
+  %span.description(ng-class="taskClass(task)")
+    {{task.description}}
+  %a(href="\#{{ task.getRestangularUrl() }}" ) view
+  %button(ng-click="removeTask(task, tasks)") remove

@@ -10,5 +10,6 @@
     $rootScope.$broadcast 'load', {active: true}
     return
   Restangular.addResponseInterceptor (data) ->
+    console.log 'done.'
     $rootScope.$broadcast 'load', {active: false}
     data

@@ -12,15 +12,20 @@
   }
 )
 .config(($routeProvider) ->
-  $routeProvider.when("/", {
-    templateUrl: 'home.html'
-  })
-  $routeProvider.when('/login', {
+  $routeProvider.when "/", {
+    templateUrl: 'home.html',
+    controller: 'ProjectsController'
+  }
+  $routeProvider.when '/login', {
     templateUrl: 'login.html'
-  })
-  $routeProvider.otherwise({
-    redirectTo: '/'
-  })
+  }
+  $routeProvider.when '/projects/:project_id/tasks/:id', {
+    templateUrl: 'task.html'
+    controller: 'TaskController'
+  }
+#  $routeProvider.otherwise {
+#    redirectTo: '/'
+#  }
 )
 .run(->
   console.log 'APP RUNNING'

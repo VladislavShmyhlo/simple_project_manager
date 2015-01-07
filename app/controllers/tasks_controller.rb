@@ -10,7 +10,7 @@ class TasksController < ApplicationController
   end
 
   def show
-    respond_with(@task)
+    render 'task_with_comments'
   end
 
   def new

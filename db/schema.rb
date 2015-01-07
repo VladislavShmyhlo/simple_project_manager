@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150106175018) do
+ActiveRecord::Schema.define(version: 20150107132342) do
+
+  create_table "attachments", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
+
+  create_table "comments", force: true do |t|
+    t.string   "body"
+    t.integer  "task_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["task_id"], name: "index_comments_on_task_id"
 
   create_table "projects", force: true do |t|
     t.string   "name"

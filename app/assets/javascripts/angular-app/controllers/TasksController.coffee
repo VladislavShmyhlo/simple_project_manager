@@ -10,7 +10,6 @@
 
   $scope.updateTask = (item) ->
     item.patch().then ->
-      console.log('task updated')
 
   $scope.removeTask = (item, collection) ->
     collection.destroy(item)

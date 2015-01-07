@@ -3,9 +3,9 @@
     projectNewName: null
     editedProject: null
   }
-  Projects = projectsService
+  projects = projectsService.all 'projects'
 
-  Projects.getList().then (projects) ->
+  projects.getList().then (projects) ->
     $scope.projects = projects
 
   $scope.removeProject = (item, collection) ->
