@@ -1,8 +1,8 @@
 @app.directive 'throbber', ($rootScope)->
   (scope,elem,attrs) ->
     t = Throbber({
-      size: 20               # diameter of loader
-      rotationspeed: 5       # rotation speed (1-10)
+      size: 25               # diameter of loader
+      rotationspeed: 3       # rotation speed (1-10)
 #      clockwise             # direction, set to false for counter clockwise
 #      color                 # color of the spinner, can be any CSS compatible value
       fade: 100              # duration of fadein/out when calling .start() and .stop()
