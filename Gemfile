@@ -33,6 +33,7 @@ gem 'bower-rails'
 gem 'angular-rails-templates'
 # Use jquery as the JavaScript library
 # gem 'jquery-rails'
+gem 'guard-livereload'
 
 # testing
 group :test, :development do
