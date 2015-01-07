@@ -17,3 +17,6 @@
 
 # Ignore JetBrains IDE files
 /.idea
+
+# Paperclip uploaded filex
+/public/system
