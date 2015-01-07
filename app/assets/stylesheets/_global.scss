@@ -1,5 +1,5 @@
 body {
-  background-color: #f46d3b;
+  background-color: rgba(#f46d3b, .75);
 }
 #container {
   width: 98%;
@@ -9,8 +9,39 @@ body {
 .project {
   background-color: #fff;
   margin: 40px 0;
-  border: solid 1px #999;
-  padding: 20px;
+  .title {
+    @include clearfix;
+    background: cornflowerblue;
+    color: $body-bg;
+    padding: 10px 15px;
+    .calendar {
+      @extend .glyphicon, .glyphicon-calendar;
+      margin-right: 15px;
+    }
+    .calendar,
+    .name {
+      line-height: 25px;
+      float: left;
+      font-size: 20px;
+    }
+    .edit {
+      @extend .glyphicon, .glyphicon-pencil;
+    }
+    .remove {
+      @extend .glyphicon, .glyphicon-trash;
+    }
+    .edit,
+    .remove {
+      @include reset-button;
+      float: right;
+      font-size: 15px;
+      padding: 5px;
+      margin-left: 5px;
+      &:hover {
+        background: rgba(white, .25);
+      }
+    }
+  }
 }
 .completed {
   text-decoration: line-through;

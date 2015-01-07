@@ -24,3 +24,4 @@
 //= require_tree ./angular-app/templates
 //= require_tree ./angular-app/controllers
 //= require_tree ./angular-app/directives
+//= require_tree ./angular-app/filters
