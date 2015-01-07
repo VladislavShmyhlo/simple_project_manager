@@ -1,5 +1,5 @@
 body {
-  background-color: rgba(#f46d3b, .75);
+  background-color: rgba($color-orange, .75);
 }
 #container {
   width: 98%;
@@ -7,49 +7,152 @@ body {
   margin: 0 auto;
 }
 .project {
-  background-color: #fff;
   margin: 40px 0;
   .title {
     @include clearfix;
     background: cornflowerblue;
     color: $body-bg;
-    padding: 10px 15px;
+    padding: 5px;
     .calendar {
       @extend .glyphicon, .glyphicon-calendar;
-      margin-right: 15px;
+      float: left;
+      margin-left: 10px;
     }
+    .form,
     .calendar,
     .name {
-      line-height: 25px;
-      float: left;
+      line-height: 35px;
       font-size: 20px;
     }
+    .name {
+      padding-left: 40px;
+      @include clearfix;
+      display: block;
+    }
+    .form{
+      @include clearfix;
+      display: block;
+      padding-left: 35px;
+    }
+    form {
+      width: 100%;
+      text-align: right;
+      input {
+        @include reset-input;
+        width: 645px;
+        float: left;
+        padding-left: 5px;
+        background: rgba($color-white, .25);
+      }
+    }
+    .save {
+      @extend .glyphicon-ok;
+    }
+    .cancel {
+      @extend .glyphicon-remove;
+    }
     .edit {
-      @extend .glyphicon, .glyphicon-pencil;
+      @extend .glyphicon-pencil;
     }
     .remove {
-      @extend .glyphicon, .glyphicon-trash;
+      @extend .glyphicon-trash;
     }
+    .save,
+    .cancel,
     .edit,
     .remove {
+      @extend .glyphicon;
       @include reset-button;
       float: right;
       font-size: 15px;
-      padding: 5px;
-      margin-left: 5px;
+      padding: 10px;
+      margin-left: 0;
+      color: rgba($color-white, .75);
       &:hover {
-        background: rgba(white, .25);
+        color: $color-white;
       }
     }
   }
 }
-.completed {
-  text-decoration: line-through;
+.tasks {
+  .form {
+    padding: 10px;
+    background: $gray-lighter;
+  }
+  .tasks-list {
+    background-color: #fff;
+    line-height: 22px;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+  }
+  .task {
+    padding: 15px 0;
+    border-top: solid 1px $gray-lighter;
+    @include clearfix;
+    position: relative;
+    &:hover {
+      background: rgba($color-orange, .1);
+    }
+  }
+  .completed {
+    float: left;
+    text-align: center;
+    width: 5%;
+    &:after {
+      @include before-after;
+      left: 5%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: rgba($color-orange, .75);
+    }
+  }
+  .description {
+    margin: -15px 0;
+    padding: 15px 0;
+    float: left;
+    width: 70%;
+    box-sizing: border-box;
+    padding-left: 30px;
+    color: $color-black;
+    &:hover {
+      text-decoration: none;
+    }
+    &:after {
+      @include before-after;
+      left: 6%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: rgba($color-orange, .75);
+    }
+  }
+  .controls {
+    text-align: center;
+    float: right;
+    width: 25%;
+    &:after {
+      @include before-after;
+      right: 25%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: $gray-lighter;
+    }
+    .remove {
+      @include reset-button;
+      @extend .glyphicon, .glyphicon-trash;
+      color: $gray-light;
+      padding: 5px;
+      font-size: 12px;
+      &:hover {
+        color: $gray-base;
+      }
+    }
+  }
 }
-.task {
-  margin: 10px 0;
-  padding:  10px;
-  background: #eaeaea;
+.done {
+  text-decoration: line-through;
 }
 #throbber {
   right: 20px;

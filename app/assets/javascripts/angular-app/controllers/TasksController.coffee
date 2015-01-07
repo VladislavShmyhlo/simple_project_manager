@@ -6,7 +6,7 @@
     collection.create(item)
 
   $scope.taskClass = (item) ->
-    return 'completed' if item.completed
+    return 'done' if item.completed
 
   $scope.updateTask = (item) ->
     item.patch().then ->

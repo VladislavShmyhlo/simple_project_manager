@@ -4,3 +4,19 @@
   padding: 0;
   margin: 0;
 }
+@mixin reset-input {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+@mixin no-font {
+  font-size: 0;
+  color: transparent;
+}
+@mixin before-after {
+  position: absolute;
+  content: '.';
+  @include no-font;
+  display: block;
+}
