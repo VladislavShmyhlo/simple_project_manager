@@ -1,10 +1,11 @@
-@app.controller "ProjectsController", ($scope, Projects) ->
+@app.controller "ProjectsController", ($scope, projectsService) ->
   $scope.data = {
     projectNewName: null
     editedProject: null
   }
+  Projects = projectsService
 
-  Projects.getAllWithTasks().then (projects) ->
+  Projects.getList().then (projects) ->
     $scope.projects = projects
 
   $scope.removeProject = (item, collection) ->

@@ -7,6 +7,7 @@
     "jquery": "latest",
     "angular-route": "latest",
     "jquery.ui": "latest",
-    "angular-ui-sortable": "latest"
+    "angular-ui-sortable": "latest",
+    "throbber.js": "latest"
   }
 }

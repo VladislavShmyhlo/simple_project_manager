@@ -11,19 +11,16 @@
 // about supported directives.
 //
 
+//= require throbber.js/throbber
 //= require jquery/dist/jquery
-//=// require jquery.ui/ui/widget
-//=// require jquery.ui/ui/mouse
-//=// require jquery.ui/ui/sortable
-//=// require angular-ui-sortable/sortable
-//= require angular/angular.min
-//= require angular-route/angular-route.min
 //= require lodash/dist/lodash
+//= require angular/angular.min
 //= require restangular/dist/restangular
+//= require angular-route/angular-route.min
 //= require angular-rails-templates
-
 
 //= require ./angular-app/app
 //= require_tree ./angular-app/services
 //= require_tree ./angular-app/templates
 //= require_tree ./angular-app/controllers
+//= require_tree ./angular-app/directives

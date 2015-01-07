@@ -1,4 +1,4 @@
-@app.controller "TasksController", ($scope, Projects) ->
+@app.controller "TasksController", ($scope) ->
   $scope.tasks = $scope.project.tasks
 
   $scope.createNewTask = (item, collection) ->

@@ -1,6 +1,5 @@
 body {
-  background-color: rgba(orange, .25);
-
+  background-color: #f46d3b;
 }
 #container {
   width: 98%;
@@ -8,6 +7,7 @@ body {
   margin: 0 auto;
 }
 .project {
+  background-color: #fff;
   margin: 40px 0;
   border: solid 1px #999;
   padding: 20px;
@@ -19,4 +19,9 @@ body {
   margin: 10px 0;
   padding:  10px;
   background: #eaeaea;
+}
+#throbber {
+  right: 20px;
+  top: 20px;
+  position: fixed;
 }

@@ -1,11 +1,4 @@
-@app.service 'Projects', (Restangular) ->
-  Restangular.extendCollection 'projects', (collection) ->
-    collection.getAllWithTasks = ->
-      @getList().then (projects) ->
-        angular.forEach projects, (pr) ->
-          Restangular.restangularizeCollection(pr, pr.tasks, 'tasks')
-        projects
-    collection
+@app.service 'projectsService', (Restangular) ->
 
   _modelMethods = (model) ->
     model.updateName = ->
@@ -30,5 +23,12 @@
   Restangular.extendCollection 'projects', _collectionMethods
   Restangular.extendCollection 'tasks', _collectionMethods
 
-
+  Restangular.addResponseInterceptor (data, operation, what, url) ->
+    if operation is 'getList' and what is 'projects'
+      Restangular.restangularizeCollection(null, data, 'projects')
+      angular.forEach data, (pr) ->
+        Restangular.restangularizeCollection(pr, pr.tasks, 'tasks')
+      data
+    else data
+      
   Restangular.all 'projects'
