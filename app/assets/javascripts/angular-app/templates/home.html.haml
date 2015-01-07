@@ -9,7 +9,7 @@
           %input(name="projectName" ng-model="data.projectNewName")
           %button(type="submit") save
         %button(ng-click="cancelProjectEdit()") cancell
-    %button(ng-click="removeProject(project, projects)") remove
+    %button(ng-click="removeItem(project, projects)") remove
     %i
       {{project.updated_at}}
     %h3 Tasks

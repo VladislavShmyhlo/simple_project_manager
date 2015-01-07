@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :json
 
   def index
     @comments = Comment.all

@@ -8,9 +8,6 @@
   projects.getList().then (projects) ->
     $scope.projects = projects
 
-  $scope.removeProject = (item, collection) ->
-    collection.destroy(item)
-
 #  project editing:
 
   $scope.beginProjectEdit = (item) ->

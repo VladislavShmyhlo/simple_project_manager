@@ -1,5 +1,9 @@
 @app.controller "ApplicationController", ($rootScope, $scope, Restangular, $location) ->
+  loadingStatus = (st) ->
+    $rootScope.$broadcast 'load', {active: st}
+
   Restangular.setErrorInterceptor (response, deferred, responseHandler) ->
+    loadingStatus(false)
     if response.status is 401
       $location.path('/login')
       return false
@@ -7,9 +11,12 @@
       console.log "error #{response.status}"
 
   Restangular.addFullRequestInterceptor ->
-    $rootScope.$broadcast 'load', {active: true}
+    loadingStatus(true)
     return
   Restangular.addResponseInterceptor (data) ->
     console.log 'done.'
-    $rootScope.$broadcast 'load', {active: false}
+    loadingStatus(false)
     data
+
+  $scope.removeItem = (item, collection) ->
+    collection.destroy(item)
