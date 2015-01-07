@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:edit, :update, :destroy]
   before_action :set_project, only: [:create]
 
   respond_to :json
@@ -10,7 +10,7 @@ class TasksController < ApplicationController
   end
 
   def show
-    render 'task_with_comments'
+    @task = Task.includes(:comments, comments: :attachments).find(params[:id])
   end
 
   def new

@@ -49,5 +49,4 @@ ActiveRecord::Schema.define(version: 20150107132342) do
   end
 
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
-
 end

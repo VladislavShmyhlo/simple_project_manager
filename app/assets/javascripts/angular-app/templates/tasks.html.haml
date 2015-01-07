@@ -9,4 +9,4 @@
       %span.description(ng-class="taskClass(task)")
         {{task.description}}
       %a(href="\#{{ task.getRestangularUrl() }}" ) view
-      %button(ng-click="removeTask(task, tasks)") remove
+      %button(ng-click="removeItem(task, tasks)") remove

@@ -8,4 +8,11 @@
     .comment(ng-repeat="comment in task.comments")
       {{comment.body}}
       %button(ng-click="removeItem(comment, task.comments)") remove
+      .files
+        .form
+          %form(ng-submit="createAttachment(file, comment.attachments)" name="attachmentForm" enctype="multipart/form-data" novalidate)
+            %input(type='file' name="file" fileread="file")
+            %input(type='submit') send
+        .file(ng-repeat="attachment in comment.attachments" )
+          %img(src="{{attachment.file}}")
 %a(href="/#/") back

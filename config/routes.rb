@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :attachments
-
   resources :projects do
     resources :tasks
   end
   resources :tasks do
-    resources :comments
+    resources :comments do
+      resources :attachments
+    end
   end
 
   root 'static#index'

@@ -1,7 +1,7 @@
 class AttachmentsController < ApplicationController
   before_action :set_attachment, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :json
 
   def index
     @attachments = Attachment.all
@@ -21,9 +21,11 @@ class AttachmentsController < ApplicationController
   end
 
   def create
-    @attachment = Attachment.new(attachment_params)
-    @attachment.save
-    respond_with(@attachment)
+    @comment = Comment.find(params[:comment_id])
+    @attachment = @comment.attachments.build(attachment_params)
+    if @attachment.save
+      render :show
+    end
   end
 
   def update
@@ -42,6 +44,6 @@ class AttachmentsController < ApplicationController
     end
 
     def attachment_params
-      params[:attachment]
+      params.require(:attachment).permit(:file)
     end
 end
