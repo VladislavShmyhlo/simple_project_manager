@@ -11,7 +11,7 @@
     collection.create = (item) ->
       self = @
       @.post(item).then (item) ->
-        self.push(item)
+        self.unshift(item)
     collection.destroy = (item)->
       self = @
       item.remove().then ->
