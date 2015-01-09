@@ -10,7 +10,7 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.includes(:comments, comments: :attachments).find(params[:id])
+    @task = Task.includes(comments: :attachments).find(params[:id])
   end
 
   def new
