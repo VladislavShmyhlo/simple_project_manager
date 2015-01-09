@@ -9,14 +9,14 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//
 
 //= require throbber.js/throbber
 //= require jquery/dist/jquery
 //= require lodash/dist/lodash
 //= require angular/angular.min
-//= require restangular/dist/restangular
+//= require angular-ui-sortable/sortable
 //= require angular-route/angular-route.min
+//= require restangular/dist/restangular
 //= require angular-rails-templates
 
 //= require ./angular-app/app
