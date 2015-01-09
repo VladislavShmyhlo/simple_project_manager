@@ -12,6 +12,10 @@
 
 //= require throbber.js/throbber
 //= require jquery/dist/jquery
+//= require jquery.ui/ui/core
+//= require jquery.ui/ui/widget
+//= require jquery.ui/ui/mouse
+//= require jquery.ui/ui/sortable
 //= require lodash/dist/lodash
 //= require angular/angular.min
 //= require angular-ui-sortable/sortable

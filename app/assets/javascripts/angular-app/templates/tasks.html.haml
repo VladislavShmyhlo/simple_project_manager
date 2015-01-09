@@ -3,8 +3,8 @@
     %form(ng-submit="createNewTask(newTask, tasks)" novalidate)
       %input(ng-model="newTask.description")
       %button(type="submit") add new task
-  .tasks-list
-    .task(ng-repeat=" task in tasks | orderBy : 'updated_at' : true")
+  .tasks-list(ng-model="tasks" ui-sortable="sortableOptions")
+    .task(ng-repeat="task in tasks" data-id="{{task.id}}" )
       .completed
         %input(type="checkbox" ng-model="task.completed" ng-click="updateTask(task)")
       %a.description(href="\#{{ task.getRestangularUrl() }}" ng-class="taskClass(task)")

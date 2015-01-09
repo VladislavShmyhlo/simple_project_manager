@@ -4,6 +4,7 @@
   'restangular'
   'templates'
   'ngRoute'
+  'ui.sortable'
 ])
 .config((RestangularProvider) ->
   RestangularProvider.setDefaultHeaders {
@@ -23,9 +24,9 @@
     templateUrl: 'task.html'
     controller: 'TaskController'
   }
-#  $routeProvider.otherwise {
-#    redirectTo: '/'
-#  }
+  $routeProvider.otherwise {
+    redirectTo: '/'
+  }
 )
 .run(->
   console.log 'APP RUNNING'

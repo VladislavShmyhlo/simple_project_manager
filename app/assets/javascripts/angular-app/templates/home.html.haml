@@ -1,5 +1,5 @@
 .projects
-  .project(ng-repeat=" project in projects | orderBy : 'updated_at' : true ")
+  .project(ng-repeat="project in projects")
     .title
       .calendar
       .name(ng-hide="project == data.editedProject")
