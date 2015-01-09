@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :project do
-    name "MyString"
+    name "random project name"
   end
-
 end
