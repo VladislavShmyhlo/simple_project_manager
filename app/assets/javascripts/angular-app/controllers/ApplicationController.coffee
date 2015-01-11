@@ -1,6 +1,6 @@
 @app.controller "ApplicationController", ($rootScope, $scope, Restangular, $location) ->
   loadingStatus = (st) ->
-    $rootScope.$broadcast 'load', {active: st}
+    $rootScope.$broadcast 'loading', {active: st}
 
   Restangular.setErrorInterceptor (response, deferred, responseHandler) ->
     loadingStatus(false)
