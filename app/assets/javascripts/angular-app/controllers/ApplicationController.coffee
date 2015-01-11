@@ -1,6 +1,6 @@
 @app.controller "ApplicationController", ($rootScope, $scope, Restangular, $location) ->
   loadingStatus = (st) ->
-    $rootScope.$broadcast 'loading', {active: st}
+    $rootScope.$broadcast 'load', {active: st}
 
   Restangular.setErrorInterceptor (response, deferred, responseHandler) ->
     loadingStatus(false)
@@ -20,3 +20,21 @@
 
   $scope.removeItem = (item, collection) ->
     collection.destroy(item)
+
+
+  $scope.editing = {
+    itemNewName: null
+    editedItem: null
+  }
+
+  $scope.beginItemEdit = (item) ->
+    $scope.editing.itemNewName = item.name
+    $scope.editing.editedItem = item
+
+  $scope.cancelItemEdit = ->
+    $scope.editing.editedItem = null
+
+  $scope.confirmItemEdit = (item) ->
+    item.name = $scope.editing.itemNewName
+    item.updateName().then ->
+      $scope.cancelItemEdit()
