@@ -8,7 +8,7 @@
         %button.edit(ng-click="beginProjectEdit(project)")
       .form(ng-show="project == data.editedProject")
         %form(name="projectForm" ng-submit="confirmProjectEdit(project)" novalidate)
-          %input(name="projectName" ng-model="data.projectNewName")
+          %input(name="name" ng-model="data.projectNewName")
           %button.save(type="submit")
         %button.cancel(ng-click="cancelProjectEdit()")
     %ng-include(src=" 'tasks.html' ")
