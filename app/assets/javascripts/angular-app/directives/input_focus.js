@@ -1,4 +1,5 @@
-window.app.directive('inputFocus', function todoFocus($timeout) {
+window.app
+    .directive('inputFocus', function todoFocus($timeout) {
         return function (scope, elem, attrs) {
             scope.$watch(attrs.inputFocus, function (newVal) {
                 if (newVal) {
