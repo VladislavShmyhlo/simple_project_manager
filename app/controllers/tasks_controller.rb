@@ -35,10 +35,6 @@ class TasksController < ApplicationController
     respond_with(@task)
   end
 
-  def update_all
-    @project.tasks.update(tasks_params)
-  end
-
   def destroy
     @task.destroy
     respond_with(@task)
@@ -55,9 +51,5 @@ class TasksController < ApplicationController
 
     def task_params
       params.require(:task).permit(:description, :completed)
-    end
-
-    def tasks_params
-      params.require(:tasks).permit(:description, :completed, :id, :position)
     end
 end

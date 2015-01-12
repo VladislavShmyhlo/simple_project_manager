@@ -6,8 +6,9 @@
     placeholder: 'tst'
     stop: (e, d)->
       a = d.item.parent().sortable('toArray', {attribute: 'data-id'})
+      console.log a
       a = _.invert(a)
-      $scope.tasks.updateOrder(a)
+      $scope.project.updateTasksPosition(a)
   }
 
   $scope.createNewTask = (item, collection) ->
@@ -18,4 +19,4 @@
     return 'done' if item.completed
 
   $scope.updateTask = (item) ->
-    item.patch().then ->
+    item.patch()

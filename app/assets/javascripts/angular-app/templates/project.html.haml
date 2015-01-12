@@ -1,0 +1,13 @@
+.project
+  .title
+    .calendar
+    .name(ng-hide="project == editing.editedItem")
+      {{project.name}}
+      %button.remove(ng-click="removeItem(project, projects)")
+      %button.edit(ng-click="beginItemEdit(project)")
+    .form(ng-show="project == editing.editedItem")
+      %form(name="projectForm" ng-submit="confirmItemEdit(project)" novalidate)
+        %input(name="name" ng-model="editing.itemNewName" input-focus="project == editing.editedItem" input-escape="cancelItemEdit()" )
+        %button.save(type="submit")
+      %button.cancel(ng-click="cancelItemEdit()")
+  .tasks-wrapper(ng-include=" 'tasks.html' ")

@@ -14,7 +14,7 @@
 )
 .config(($routeProvider) ->
   $routeProvider.when "/", {
-    templateUrl: 'home.html',
+    templateUrl: 'projects.html',
     controller: 'ProjectsController'
   }
   $routeProvider.when '/login', {

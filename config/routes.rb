@@ -2,9 +2,6 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :tasks do
-      collection do
-        patch '' => :update_all
-      end
     end
   end
   resources :tasks do

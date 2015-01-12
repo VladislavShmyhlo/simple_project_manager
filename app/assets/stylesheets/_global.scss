@@ -113,12 +113,12 @@ body {
     }
   }
   .description {
-//    margin: -15px 0;
-//    padding: 15px 0;
+    padding-left: 30px;
+    padding-right: 25px;
     float: left;
     width: 70%;
+    margin-left: 1%;
     box-sizing: border-box;
-    padding-left: 30px;
     color: $color-black;
     &:hover {
       text-decoration: none;
@@ -135,10 +135,10 @@ body {
   .controls {
     text-align: center;
     float: right;
-    width: 25%;
+    width: 24%;
     &:after {
       @include before-after;
-      right: 25%;
+      right: 24%;
       top: 0;
       bottom: 0;
       width: 1px;

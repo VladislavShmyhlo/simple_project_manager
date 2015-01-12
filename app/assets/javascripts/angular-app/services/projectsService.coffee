@@ -10,7 +10,7 @@
   _collectionMethods = (collection) ->
     collection.create = (item) ->
       self = @
-      @.post(item).then (item) ->
+      @post(item).then (item) ->
         self.unshift(item)
     collection.destroy = (item)->
       self = @
@@ -18,21 +18,21 @@
         _.pull(self, item)
     collection
 
-  _orderMethods = (collection) ->
-    collection.updateOrder = (hash) ->
+  _positionMethods = (item) ->
+    item.updateTasksPosition = (hash) ->
       res = []
       for k,v of hash
         res.push({id: k, position: v})
-      res
-    collection
+      @patch(project: {tasks_attributes: res})
+    item
 
   Restangular.extendModel 'projects', _modelMethods
+  Restangular.extendModel 'projects', _positionMethods
   Restangular.extendModel 'tasks', _modelMethods
   Restangular.extendModel 'comments', _modelMethods
   Restangular.extendModel 'attachments', _modelMethods
   Restangular.extendCollection 'projects', _collectionMethods
   Restangular.extendCollection 'tasks', _collectionMethods
-  Restangular.extendCollection 'tasks', _orderMethods
   Restangular.extendCollection 'comments', _collectionMethods
   Restangular.extendCollection 'attachments', _collectionMethods
 
