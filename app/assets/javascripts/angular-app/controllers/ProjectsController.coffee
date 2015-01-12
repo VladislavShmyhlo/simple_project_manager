@@ -1,6 +1,6 @@
-@app.controller "ProjectsController", ($scope, projectsService) ->
+@app.controller "ProjectsController", ($scope, Restangular) ->
 
-  projects = projectsService.all 'projects'
+  projects = Restangular.all 'projects'
 
   projects.getList().then (projects) ->
     console.log projects

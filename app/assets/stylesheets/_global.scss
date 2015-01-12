@@ -28,6 +28,9 @@ body {
       padding-left: 40px;
       @include clearfix;
       display: block;
+      a {
+        color: $color-white;
+      }
     }
     .form{
       @include clearfix;

@@ -1,5 +1,5 @@
-@app.controller 'TaskController', ($location, $scope, $routeParams, projectsService) ->
-  task = projectsService.one('projects', $routeParams.project_id).one('tasks', $routeParams.id)
+@app.controller 'TaskController', ($location, $scope, $routeParams, Restangular) ->
+  task = Restangular.one('projects', $routeParams.project_id).one('tasks', $routeParams.id)
 
   task.get().then (data) ->
     console.log data
