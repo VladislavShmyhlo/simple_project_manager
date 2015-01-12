@@ -2,7 +2,8 @@
   .title
     .calendar
     .name(ng-hide="project == editing.editedItem")
-      %a(href="\#{{ project.getRestangularUrl() }}") {{project.name}}
+      %a(href="\#{{ project.getRestangularUrl() }}")
+        {{project.name}}
       %button.remove(ng-click="removeItem(project, projects)")
       %button.edit(ng-click="beginItemEdit(project)")
     .form(ng-show="project == editing.editedItem")
