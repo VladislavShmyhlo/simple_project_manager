@@ -1,11 +1,15 @@
 @app.controller "TasksController", ($scope) ->
   $scope.tasks = $scope.project.tasks
+
   $scope.sortableOptions = {
     forcePlaceholderSize: true
     placeholder: 'tst'
-    update: (e, d)->
-      console.log d.item.parent().sortable('toArray', {attribute: 'data-id'})
+    stop: (e, d)->
+      a = d.item.parent().sortable('toArray', {attribute: 'data-id'})
+      a = _.invert(a)
+      $scope.tasks.updateOrder(a)
   }
+
   $scope.createNewTask = (item, collection) ->
     item.completed = false
     collection.create(item)

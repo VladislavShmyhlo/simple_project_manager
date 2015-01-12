@@ -5,3 +5,4 @@
   projects.getList().then (projects) ->
     console.log projects
     $scope.projects = projects
+

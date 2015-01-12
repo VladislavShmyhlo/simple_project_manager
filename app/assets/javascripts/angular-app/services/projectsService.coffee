@@ -18,12 +18,21 @@
         _.pull(self, item)
     collection
 
+  _orderMethods = (collection) ->
+    collection.updateOrder = (hash) ->
+      res = []
+      for k,v of hash
+        res.push({id: k, order: v})
+      res
+    collection
+
   Restangular.extendModel 'projects', _modelMethods
   Restangular.extendModel 'tasks', _modelMethods
   Restangular.extendModel 'comments', _modelMethods
   Restangular.extendModel 'attachments', _modelMethods
   Restangular.extendCollection 'projects', _collectionMethods
   Restangular.extendCollection 'tasks', _collectionMethods
+  Restangular.extendCollection 'tasks', _orderMethods
   Restangular.extendCollection 'comments', _collectionMethods
   Restangular.extendCollection 'attachments', _collectionMethods
 
