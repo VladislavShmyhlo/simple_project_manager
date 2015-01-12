@@ -86,13 +86,18 @@ body {
     overflow: hidden;
   }
   .task {
-    padding: 15px 0;
+    background: $color-white;
     border-top: solid 1px $gray-lighter;
     @include clearfix;
     position: relative;
     &:hover {
-      background: rgba($color-orange, .1);
+      background: lighten($color-orange, .1);
     }
+  }
+  .completed,
+  .description,
+  .controls {
+    padding: 15px 0;
   }
   .completed {
     float: left;
@@ -108,8 +113,8 @@ body {
     }
   }
   .description {
-    margin: -15px 0;
-    padding: 15px 0;
+//    margin: -15px 0;
+//    padding: 15px 0;
     float: left;
     width: 70%;
     box-sizing: border-box;

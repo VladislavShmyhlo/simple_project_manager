@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :destroy]
-  before_action :set_project, only: [:create]
+  before_action :set_project, only: [:create, :update_all]
 
   respond_to :json
 
@@ -35,6 +35,10 @@ class TasksController < ApplicationController
     respond_with(@task)
   end
 
+  def update_all
+    @project.tasks.update(tasks_params)
+  end
+
   def destroy
     @task.destroy
     respond_with(@task)
@@ -51,5 +55,9 @@ class TasksController < ApplicationController
 
     def task_params
       params.require(:task).permit(:description, :completed)
+    end
+
+    def tasks_params
+      params.require(:tasks).permit(:description, :completed, :id, :position)
     end
 end

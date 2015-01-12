@@ -22,7 +22,7 @@
     collection.updateOrder = (hash) ->
       res = []
       for k,v of hash
-        res.push({id: k, order: v})
+        res.push({id: k, position: v})
       res
     collection
 
