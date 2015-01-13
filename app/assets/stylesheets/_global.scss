@@ -77,6 +77,19 @@ body {
     }
   }
 }
+.task {
+  background: $color-white;
+  @include clearfix;
+  position: relative;
+  &.ui-sortable-helper,
+  &:hover {
+    background: lighten($color-orange, 25%);
+  }
+}
+.task-ph {
+  background: #eaeaea;
+  box-shadow: inset 0 3px 6px rgba($color-black, .25);
+}
 .tasks {
   .form {
     padding: 10px;
@@ -87,15 +100,6 @@ body {
     line-height: 22px;
     border-radius: 0 0 10px 10px;
     overflow: hidden;
-  }
-  .task {
-    background: $color-white;
-    border-top: solid 1px $gray-lighter;
-    @include clearfix;
-    position: relative;
-    &:hover {
-      background: lighten($color-orange, .1);
-    }
   }
   .completed,
   .description,
@@ -169,6 +173,3 @@ body {
 }
 
 
-.tst {
-  background: red;
-}

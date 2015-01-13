@@ -3,7 +3,7 @@
 
   $scope.sortableOptions = {
     forcePlaceholderSize: true
-    placeholder: 'tst'
+    placeholder: 'task-ph'
     stop: (e, d)->
       a = d.item.parent().sortable('toArray', {attribute: 'data-id'})
       console.log a
