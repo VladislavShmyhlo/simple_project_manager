@@ -53,11 +53,8 @@
     collection
 
   _positionMethods = (item) ->
-    item.updateTasksPosition = (hash) ->
-      res = []
-      for k,v of hash
-        res.push({id: k, position: v})
-      @patch(project: {tasks_attributes: res})
+    item.updateTasks = ->
+      @patch(project: {tasks_attributes: @tasks})
     item
 
   Restangular.extendModel 'projects', _modelMethods

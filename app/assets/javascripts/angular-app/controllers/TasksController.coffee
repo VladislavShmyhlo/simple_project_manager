@@ -6,14 +6,21 @@
     placeholder: 'task-ph'
     stop: (e, d)->
       a = d.item.parent().sortable('toArray', {attribute: 'data-id'})
-      console.log a
       a = _.invert(a)
-      $scope.project.updateTasksPosition(a)
+      res = []
+      for k,v of a
+        res.push({id: k, position: v})
+      _.forEach res, (item) ->
+        _.forEach $scope.tasks, (task) ->
+          if _.parseInt(item.id) is _.parseInt(task.id)
+            _.extend task, item
+      $scope.project.updateTasks()
   }
 
   $scope.createNewTask = (item, collection) ->
     item.completed = false
-    collection.create(item)
+    collection.create(item).then ->
+      $scope.newTask = {}
 
   $scope.taskClass = (item) ->
     return 'done' if item.completed

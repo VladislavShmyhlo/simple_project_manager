@@ -13,7 +13,5 @@
   $scope.createAttachment = (file, collection)->
     data = new FormData()
     data.append('attachment[file]', file)
-    console.log data
-
     collection.withHttpConfig({transformRequest: angular.identity}).post(data, {}, {'Content-Type': undefined}).then (res)->
-      console.log res
+      collection.unshift res

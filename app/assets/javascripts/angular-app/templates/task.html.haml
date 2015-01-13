@@ -1,19 +1,20 @@
-.task
-  %input(type="checkbox" ng-model="task.completed" ng-click="updateTask(task)")
-  %span.description(ng-class="taskClass(task)")
-    {{task.description}}
-  %a(href="\#{{ task.getRestangularUrl() }}" ) view
-  %button(ng-click="removeTask(task)") remove
+.single-task
+  .title
+    %input(type="checkbox" ng-model="task.completed" ng-click="updateTask(task)")
+    %span.description(ng-class="taskClass(task)")
+      {{task.description}}
+    %a(href="\#{{ task.getRestangularUrl() }}" ) view
+    %button(ng-click="removeTask(task)") remove
   .comments
     .comment(ng-repeat="comment in task.comments")
       {{comment.body}}
       %button(ng-click="removeItem(comment, task.comments)") remove
-      .files
+      .attachments
         .form
           %form(ng-submit="createAttachment(file, comment.attachments)" name="attachmentForm" enctype="multipart/form-data" novalidate)
             %input(type='file' name="file" fileread="file")
-            %input(type='submit') send
-        .file(ng-repeat="att in comment.attachments" )
+            %input(type='submit')
+        .attachment(ng-repeat="att in comment.attachments" )
           %a(href="{{att.file}}" target="_blank")
             {{att.file_file_name}} ({{att.file_file_size | bytes}})
 %a(href="#/") back
