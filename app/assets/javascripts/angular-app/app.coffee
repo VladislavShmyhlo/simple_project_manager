@@ -27,6 +27,7 @@
   }
   $routeProvider.when '/login', {
     templateUrl: 'login.html'
+    controller: 'LoginController'
   }
   $routeProvider.otherwise {
     redirectTo: '/'
