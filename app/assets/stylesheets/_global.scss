@@ -45,6 +45,7 @@ body {
       text-align: right;
       input {
         @include reset-input;
+        box-shadow: inset 2px 3px 6px rgba($color-black, .25);
         width: 645px;
         float: left;
         padding-left: 5px;
@@ -80,6 +81,11 @@ body {
     }
   }
 }
+//input[type='text']
+//input[type='email']
+//input[type='password'] {
+//
+//}
 
 .task-ph {
   background: #eaeaea;

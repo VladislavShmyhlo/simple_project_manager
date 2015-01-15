@@ -72,14 +72,14 @@
     if operation is 'get' and what is 'tasks'
       Restangular.restangularizeElement(null, data, 'tasks')
       Restangular.restangularizeCollection(data, data.comments, 'comments')
-      angular.forEach data.comments, (comment) ->
+      _.forEach data.comments, (comment) ->
         # cant find any solution except custom post to force 'attachments'
         # collection to post to comments/:comment_id/attachments/:id
         Restangular.restangularizeCollection(comment, comment.attachments, 'attachments')
       data
     else if operation is 'getList' and what is 'projects'
       Restangular.restangularizeCollection(null, data, 'projects')
-      angular.forEach data, (pr) ->
+      _.forEach data, (pr) ->
         Restangular.restangularizeCollection(pr, pr.tasks, 'tasks')
       data
     else data
