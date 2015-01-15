@@ -1,6 +1,12 @@
 body {
   background-color: rgba($color-orange, .75);
 }
+input,
+textarea,
+button {
+  outline: none;
+}
+
 #container {
   width: 98%;
   max-width: 768px;
@@ -101,7 +107,7 @@ body {
       background: lighten($color-orange, 25%);
     }
   }
-  .form {
+  .new-task-form {
     padding: 10px;
     background: $gray-lighter;
   }
@@ -127,17 +133,11 @@ body {
       background: rgba($color-orange, .75);
     }
   }
-  .description {
-    padding-left: 30px;
-    padding-right: 25px;
+  .description-wrapper {
     float: left;
     width: 70%;
     margin-left: 1%;
     box-sizing: border-box;
-    color: $color-black;
-    &:hover {
-      text-decoration: none;
-    }
     &:after {
       @include before-after;
       left: 6%;
@@ -145,6 +145,23 @@ body {
       bottom: 0;
       width: 1px;
       background: rgba($color-orange, .75);
+    }
+  }
+  form.task-description-form {
+    textarea {
+      padding-left: 30px;
+      padding-right: 25px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+  }
+  .description {
+    padding-left: 30px;
+    padding-right: 25px;
+    display: block;
+    color: $color-black;
+    &:hover {
+      text-decoration: none;
     }
   }
   .controls {
@@ -159,12 +176,32 @@ body {
       width: 1px;
       background: $gray-lighter;
     }
+    .save {
+      @extend .glyphicon-ok;
+    }
+    .cancel {
+      @extend .glyphicon-remove;
+    }
+    .edit {
+      @extend .glyphicon-pencil;
+    }
+    .handle {
+      @extend .glyphicon-sort;
+    }
+    .remove {
+      @extend .glyphicon-trash;
+    }
+    .save,
+    .cancel,
+    .edit,
+    .handle,
     .remove {
       @include reset-button;
-      @extend .glyphicon, .glyphicon-trash;
+      @extend .glyphicon;
       color: $gray-light;
       padding: 5px;
       font-size: 12px;
+      cursor: pointer;
       &:hover {
         color: $gray-base;
       }

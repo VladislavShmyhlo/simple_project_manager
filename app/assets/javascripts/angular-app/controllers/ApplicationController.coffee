@@ -24,14 +24,16 @@
     editedItem: null
   }
 
-  $scope.beginItemEdit = (item) ->
-    $scope.editing.itemNewName = item.name
+
+
+  $scope.beginItemEdit = (item, attr) ->
+    $scope.editing.itemNewAttr = item[attr]
     $scope.editing.editedItem = item
 
   $scope.cancelItemEdit = ->
     $scope.editing.editedItem = null
 
-  $scope.confirmItemEdit = (item) ->
-    item.name = $scope.editing.itemNewName
-    item.updateName().then ->
+  $scope.confirmItemEdit = (item, attr) ->
+    item[attr] = $scope.editing.itemNewAttr
+    item.updateAttr(attr).then ->
       $scope.cancelItemEdit()

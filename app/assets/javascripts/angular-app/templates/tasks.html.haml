@@ -1,5 +1,5 @@
 .tasks(ng-controller="TasksController" )
-  .form
+  .new-task-form
     %form(ng-submit="createNewTask(newTask, tasks)" novalidate)
       %input(ng-model="newTask.description")
       %button(type="submit") add new task
@@ -7,7 +7,17 @@
     .task(ng-repeat="task in tasks" data-id="{{task.id}}" )
       .completed
         %input(type="checkbox" ng-model="task.completed" ng-click="updateTask(task)")
-      %a.description(href="\#{{ task.getRestangularUrl() }}" ng-class="taskClass(task)")
-        {{task.description}}
-      .controls
-        %button.remove(ng-click="removeItem(task, tasks)")
+      .normal(ng-hide="task == editing.editedItem")
+        .description-wrapper
+          %a.description(href="\#{{ task.getRestangularUrl() }}" ng-class="taskClass(task)")
+            {{task.description}}
+        .controls
+          .handle
+          %button.edit(ng-click="beginItemEdit(task, 'description')")
+          %button.remove(ng-click="removeItem(task, tasks)")
+      %form(name="taskForm" ng-submit="confirmItemEdit(task, 'description')" ng-show="task == editing.editedItem" novalidate)
+        .description-wrapper
+          %textarea(name="name" ng-model="editing.itemNewAttr" input-focus="task == editing.editedItem" input-escape="cancelItemEdit()" )
+        .controls
+          %a.cancel(ng-click="cancelItemEdit()")
+          %button.save(type="submit")

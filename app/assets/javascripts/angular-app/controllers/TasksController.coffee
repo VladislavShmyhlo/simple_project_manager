@@ -4,6 +4,7 @@
   $scope.sortableOptions = {
     forcePlaceholderSize: true
     placeholder: 'task-ph'
+    handle: '.handle'
     stop: (e, d)->
       a = d.item.parent().sortable('toArray', {attribute: 'data-id'})
       a = _.invert(a)

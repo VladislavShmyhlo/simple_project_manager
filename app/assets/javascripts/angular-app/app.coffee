@@ -37,9 +37,11 @@
 
   # TODO: remove update name methods from models which does not have name attribute
   _modelMethods = (model) ->
-    model.updateName = ->
+    model.updateAttr = (attr)->
       self = @
-      @patch(name: @name).then (item)->
+      newItem = {}
+      newItem[attr] = @[attr]
+      @patch(newItem).then (item)->
         _.extend(self, item)
     model
 
