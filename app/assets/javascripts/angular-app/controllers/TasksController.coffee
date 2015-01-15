@@ -16,24 +16,16 @@
           if _.parseInt(item.id) is _.parseInt(task.id)
             _.extend task, item
 
-      $scope.project.updateTasks()
+      $scope.project.updateTasks().then ->
   }
 
   $scope.createNewTask = (item, collection) ->
-    _.forEach collection, (task) ->
-      task.position = _.parseInt(task.position)
-      task.position++
-
     pos = (_.min collection, (task) ->
-      console.log task.position
-      task.position)
-    console.log
-    item.position = pos--
+      _.parseInt(task.position)).position
+    item.position = --pos
     item.completed = false
-    collection.unshift(item)
-
-#    $scope.project.updateTasks().then ->
-#      $scope.newTask = {}
+    collection.create(item).then ->
+      $scope.newTask = {}
 
   $scope.taskClass = (item) ->
     return 'done' if item.completed

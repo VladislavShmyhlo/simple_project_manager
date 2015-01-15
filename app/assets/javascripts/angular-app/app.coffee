@@ -35,6 +35,7 @@
 )
 .run((Restangular)->
 
+  # TODO: remove update name methods from models which does not have name attribute
   _modelMethods = (model) ->
     model.updateName = ->
       self = @
@@ -43,10 +44,14 @@
     model
 
   _collectionMethods = (collection) ->
+    # post item and push it to collection
+    # @param {Object} item
     collection.create = (item) ->
       self = @
       @post(item).then (item) ->
         self.unshift(item)
+    # destroy item and remove it from collection
+    # @params {Object} item
     collection.destroy = (item)->
       self = @
       item.remove().then ->
@@ -54,6 +59,7 @@
     collection
 
   _positionMethods = (item) ->
+    # update project's tasks
     item.updateTasks = ->
       @patch(project: {tasks_attributes: @tasks})
     item
