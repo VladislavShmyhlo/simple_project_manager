@@ -37,5 +37,8 @@
 
   $scope.confirmItemEdit = (item, attr) ->
     item[attr] = $scope.editing.itemNewAttr
-    item.updateAttr(attr).then ->
+    item.updateAttr(attr).then(->
       $scope.cancelItemEdit()
+    ,(data) ->
+      console.log data
+    )

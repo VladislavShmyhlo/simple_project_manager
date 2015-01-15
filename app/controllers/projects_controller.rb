@@ -28,11 +28,11 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    respond_to {|format|
+    respond_to do|format|
       if @project.update(project_params)
         format.json { render :show }
       end
-    }
+    end
   end
 
   def destroy

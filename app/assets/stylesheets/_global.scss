@@ -201,6 +201,7 @@ button {
     .edit,
     .handle,
     .remove {
+      text-decoration: none;
       @include reset-button;
       @extend .glyphicon;
       color: $gray-light;
@@ -209,6 +210,7 @@ button {
       cursor: pointer;
       &:hover {
         color: $gray-base;
+        text-decoration: none;
       }
     }
   }
