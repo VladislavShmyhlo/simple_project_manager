@@ -149,10 +149,13 @@ button {
   }
   form.task-description-form {
     textarea {
-      padding-left: 30px;
-      padding-right: 25px;
-      padding-top: 15px;
-      padding-bottom: 15px;
+      background: rgba(#eeeeee,.25);
+      display: block;
+      height: 300px;
+      width: 100%;
+      padding: 15px 25px 15px 30px;
+      border: none;
+      box-shadow: inset 2px 3px 6px rgba($color-black, .25);
     }
   }
   .description {
@@ -160,6 +163,8 @@ button {
     padding-right: 25px;
     display: block;
     color: $color-black;
+//    white-space: pre-line;
+    white-space: pre-wrap;
     &:hover {
       text-decoration: none;
     }

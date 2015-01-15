@@ -7,7 +7,7 @@
       %button.remove(ng-click="removeItem(project, projects)")
       %button.edit(ng-click="beginItemEdit(project, 'name')")
     .form(ng-show="project == editing.editedItem")
-      %form.task-description-form(name="projectForm" ng-submit="confirmItemEdit(project, 'name')" novalidate)
+      %form(name="projectForm" ng-submit="confirmItemEdit(project, 'name')" novalidate)
         %input(type="text" name="name" ng-model="editing.itemNewAttr" input-focus="project == editing.editedItem" input-escape="cancelItemEdit()" )
         %button.save(type="submit")
       %button.cancel(ng-click="cancelItemEdit()")
