@@ -24,7 +24,9 @@
     editedItem: null
   }
 
-
+  $scope.createNewItem = (item, collection) ->
+    collection.create(item).then ->
+      delete item[k] for k,v of item
 
   $scope.beginItemEdit = (item, attr) ->
     $scope.editing.itemNewAttr = item[attr]

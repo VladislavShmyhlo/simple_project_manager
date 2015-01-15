@@ -22,8 +22,11 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.save
-    respond_with(@comment)
+    if @comment.save
+      render 'show.json'
+    else
+      # render head: :no_content, status: 500
+    end
   end
 
   def update

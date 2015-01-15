@@ -1,7 +1,7 @@
 @app.directive 'throbber', ()->
   (scope,elem,attrs) ->
     t = Throbber({
-      size: 25               # diameter of loader
+      size: 35               # diameter of loader
       rotationspeed: 3       # rotation speed (1-10)
       fade: 100              # duration of fadein/out when calling .start() and .stop()
       alpha: 1               # global alpha (0-1), can also be defined using rgba color

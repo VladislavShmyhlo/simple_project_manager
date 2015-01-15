@@ -6,15 +6,20 @@
     %a(href="\#{{ task.getRestangularUrl() }}" ) view
     %button(ng-click="removeTask(task)") remove
   .comments
-    .comment(ng-repeat="comment in task.comments")
-      {{comment.body}}
-      %button(ng-click="removeItem(comment, task.comments)") remove
-      .attachments
-        .form
-          %form(ng-submit="createAttachment(file, comment.attachments)" name="attachmentForm" enctype="multipart/form-data" novalidate)
-            %input(type='file' name="file" fileread="file")
-            %input(type='submit')
-        .attachment(ng-repeat="att in comment.attachments" )
-          %a(href="{{att.file}}" target="_blank")
-            {{att.file_file_name}} ({{att.file_file_size | bytes}})
+    .new-comment-form
+      %form(ng-submit="createNewItem(newComment, task.comments)" novalidate)
+        %input(ng-model="newComment.body")
+        %button(type="submit") add new comment
+    .comments-list
+      .comment(ng-repeat="comment in task.comments")
+        {{comment.body}}
+        %button(ng-click="removeItem(comment, task.comments)") remove
+        .attachments
+          .form
+            %form(ng-submit="createAttachment(file, comment.attachments)" name="attachmentForm" enctype="multipart/form-data" novalidate)
+              %input(type='file' name="file" fileread="file")
+              %input(type='submit')
+          .attachment(ng-repeat="att in comment.attachments" )
+            %a(href="{{att.file}}" target="_blank")
+              {{att.file_file_name}} ({{att.file_file_size | bytes}})
 %a(href="#/") back

@@ -5,7 +5,8 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.includes(:tasks).all
-    respond_with(@projects)
+    render 'index.json'
+    # respond_with(@projects)
   end
 
   def show
