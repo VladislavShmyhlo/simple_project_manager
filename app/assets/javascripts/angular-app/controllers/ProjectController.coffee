@@ -1,6 +1,6 @@
 @app.controller "ProjectController", ($scope, Restangular) ->
 
-  project = Restangular.one('projects', 3)
+  project = Restangular.one('projects', 16)
 
   project.get().then (project) ->
     console.log project
