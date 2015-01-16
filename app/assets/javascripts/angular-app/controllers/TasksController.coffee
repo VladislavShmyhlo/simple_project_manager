@@ -7,17 +7,16 @@
     handle: '.handle'
     stop: (e, d)->
       a = d.item.parent().sortable('toArray', {attribute: 'data-id'})
-      a = _.invert(a)
       res = []
-      for k,v of a
-        res.push({id: k, position: v})
+      _.forEach a, (id, i) ->
+        res.push({id: id, position: i})
+      console.log _.map($scope.tasks, (t)-> t.id)
+      console.log _.map(res, (t)-> t.id)
+#      _.forEach res, (item) ->
+#        task = _.where($scope.tasks, {id: _.parseInt(item.id)})[0]
+#        _.extend task, item
 
-      _.forEach res, (item) ->
-        _.forEach $scope.tasks, (task) ->
-          if _.parseInt(item.id) is _.parseInt(task.id)
-            _.extend task, item
-
-      $scope.project.updateTasks().then ->
+#      $scope.project.updateTasks()
   }
 
   $scope.createNewTask = (item, collection) ->
