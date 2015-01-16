@@ -1,5 +1,6 @@
 class AttachmentsController < ApplicationController
   before_action :set_attachment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:create, :update]
 
   respond_to :json
 
@@ -21,8 +22,7 @@ class AttachmentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.find(params[:comment_id])
-    @attachment = @comment.attachments.build(attachment_params)
+    @attachment = @comment.attachments.new(attachment_params)
     if @attachment.save
       render :show
     end
@@ -39,6 +39,10 @@ class AttachmentsController < ApplicationController
   end
 
   private
+    def set_comment
+      @comment = Comment.find(params[:comment_id])
+    end
+
     def set_attachment
       @attachment = Attachment.find(params[:id])
     end

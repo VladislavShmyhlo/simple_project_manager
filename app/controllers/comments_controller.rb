@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:create, :update]
 
   respond_to :json
 
@@ -21,7 +22,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = @task.comments.new(comment_params)
     if @comment.save
       render 'show.json'
     else
@@ -40,6 +41,10 @@ class CommentsController < ApplicationController
   end
 
   private
+    def set_task
+      @task = Task.find(params[:task_id])
+    end
+
     def set_comment
       @comment = Comment.find(params[:id])
     end

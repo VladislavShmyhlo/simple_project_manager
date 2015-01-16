@@ -17,9 +17,9 @@
         .attachments
           .form
             %form(ng-submit="createAttachment(file, comment.attachments)" name="attachmentForm" enctype="multipart/form-data" novalidate)
-              %input(type='file' name="file" fileread="file")
-              %input(type='submit')
+              %input(type='file' name="file" fileread="file" change="createAttachment(file, comment.attachments)")
           .attachment(ng-repeat="att in comment.attachments" )
             %a(href="{{att.file}}" target="_blank")
+              .icon
               {{att.file_file_name}} ({{att.file_file_size | bytes}})
 %a(href="#/") back

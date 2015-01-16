@@ -228,12 +228,6 @@ button {
   .comment {
     background: $color-white;
     margin: 10px 0;
-    .attachments {
-      background: lighten($color-orange, 25%);
-      .attachment {
-        background: $color-orange;
-      }
-    }
   }
 }
 
@@ -246,4 +240,21 @@ button {
   position: fixed;
 }
 
-
+.attachments {
+  background: lighten($color-orange, 25%);
+  form {
+    input {
+      @include reset-button;
+    }
+  }
+  .attachment {
+    padding-left: 10px;
+    a {
+      display: inline-block;
+      line-height: 20px;
+      .icon {
+        @extend .glyphicon, .glyphicon-paperclip
+      }
+    }
+  }
+}
