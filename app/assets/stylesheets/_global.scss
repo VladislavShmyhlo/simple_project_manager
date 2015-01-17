@@ -267,8 +267,64 @@ button {
 }
 
 .ui-datepicker {
+  border-radius: 4px;
+  background: $alert-info-bg;
+  color: $alert-info-text;
+  * {
+    border: none;
+  }
   td, th {
-    @extend .btn, .btn-default;
-    display: table-cell;
+    & > * {
+      width: 35px;
+      @extend .btn;
+      display: block;
+      padding: 4px 6px;
+    }
+  }
+  th {
+    & > * {
+      @extend .btn-default, .disabled;
+    }
+  }
+  td {
+    & > * {
+      @extend .btn-default;
+    }
+    &.ui-state-disabled {
+      & > * {
+        @extend .disabled;
+      }
+    }
+    &.ui-datepicker-current-day {
+      & > * {
+        @extend .btn-info;
+      }
+    }
+  }
+  .ui-datepicker-header {
+    text-align: center;
+    .ui-datepicker-title {
+//      color: $alert-info-text;
+      padding: 5px 0;
+//      background: $alert-info-bg;
+//      @extend .btn, .btn-default, .btn-info;
+//      padding: 4px 15px;
+    }
+  }
+  .ui-datepicker-next,
+  .ui-datepicker-prev {
+    top: 0;
+    padding: 4px 6px;
+    width: 35px;
+    @extend .glyphicon, .btn, .btn-default;
+    span {
+      display: none;
+    }
+  }
+  .ui-datepicker-prev {
+    @extend .glyphicon-chevron-left, .pull-left
+  }
+  .ui-datepicker-next {
+    @extend .glyphicon-chevron-right, .pull-right;
   }
 }

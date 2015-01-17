@@ -1,7 +1,6 @@
 json.array!(@projects) do |project|
-  json.extract! project, :id, :updated_at, :created_at, :name, :tasks
-  # json.tasks do
-  #   json.array! project.tasks
-  # end
-  # json.url project_url(project, format: :json)
+  json.extract! project, :id, :name, :updated_at, :created_at
+  json.tasks do
+    json.array! project.tasks, partial: 'tasks/task', as: :task
+  end
 end

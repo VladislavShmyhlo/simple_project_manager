@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       registrations: 'registrations'
   }
 
-  resources :projects do
+  resources :projects, except: [:new, :edit] do
     resources :tasks do
     end
   end
