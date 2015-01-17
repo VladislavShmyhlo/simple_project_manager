@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114081029) do
+ActiveRecord::Schema.define(version: 20150117115835) do
 
   create_table "attachments", force: true do |t|
     t.integer  "comment_id"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150114081029) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "position"
+    t.datetime "deadline"
   end
 
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
