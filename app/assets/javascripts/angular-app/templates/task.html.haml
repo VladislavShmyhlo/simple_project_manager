@@ -17,7 +17,6 @@
         .attachments
           .form
             %form(ng-submit="createAttachment(file, comment.attachments)" name="attachmentForm" enctype="multipart/form-data" novalidate)
-              .throbber(throbber-tst="testVar" )
               %input(type='file' name="file" fileread="file" change="createAttachment(file, comment.attachments)")
           .attachment(ng-repeat="att in comment.attachments" )
             %a(href="{{att.file}}" target="_blank")
