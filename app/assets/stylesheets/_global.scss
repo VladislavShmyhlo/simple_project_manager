@@ -110,6 +110,9 @@ button {
   .new-task-form {
     padding: 10px;
     background: $gray-lighter;
+    .btn {
+      line-height: 20px;
+    }
   }
   .tasks-list {
     background-color: #fff;
@@ -181,6 +184,9 @@ button {
       width: 1px;
       background: $gray-lighter;
     }
+    .ui-datepicker-trigger {
+      @extend .glyphicon-calendar;
+    }
     .save {
       @extend .glyphicon-ok;
     }
@@ -196,6 +202,7 @@ button {
     .remove {
       @extend .glyphicon-trash;
     }
+    .ui-datepicker-trigger,
     .save,
     .cancel,
     .edit,
@@ -256,5 +263,12 @@ button {
         @extend .glyphicon, .glyphicon-paperclip
       }
     }
+  }
+}
+
+.ui-datepicker {
+  td, th {
+    @extend .btn, .btn-default;
+    display: table-cell;
   }
 }

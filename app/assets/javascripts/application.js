@@ -16,9 +16,12 @@
 //= require jquery.ui/ui/widget
 //= require jquery.ui/ui/mouse
 //= require jquery.ui/ui/sortable
+//= require jquery.ui/ui/sortable
+//= require jquery.ui/ui/datepicker
 //= require lodash/dist/lodash
 //= require angular/angular.min
 //= require angular-ui-sortable/sortable
+//= require angular-ui-date/src/date
 //= require angular-route/angular-route.min
 //= require restangular/dist/restangular
 //= require angular-rails-templates

@@ -1,8 +1,10 @@
 .tasks(ng-controller="TasksController" )
   .new-task-form
     %form(ng-submit="createNewTask(newTask, tasks)" novalidate)
-      %input(ng-model="newTask.description")
-      %button(type="submit") add new task
+      .input-group
+        %input.form-control(ng-model="newTask.description")
+        %span.input-group-btn
+          %button.btn.btn-default(type="submit") add new task
   .tasks-list(ng-model="tasks" ui-sortable="sortableOptions")
     .task(ng-repeat="task in tasks" data-id="{{task.id}}" )
       .completed
@@ -10,9 +12,10 @@
       .normal(ng-hide="task == editing.editedItem")
         .description-wrapper
           %a.description(href="\#{{ task.getRestangularUrl() }}" ng-class="taskClass(task)")<
-            {{task.description}}
+            {{task.description}} || {{task.deadline | toLocale}}
         .controls
           .handle
+          %input(type="hidden" ng-model="task.deadline" ui-date="datepickerOptions" ng-change="task.updateAttr('deadline')")
           %button.edit(ng-click="beginItemEdit(task, 'description')")
           %button.remove(ng-click="removeItem(task, tasks)")
       %form.task-description-form(name="taskForm" ng-submit="confirmItemEdit(task, 'description')" ng-show="task == editing.editedItem" novalidate)

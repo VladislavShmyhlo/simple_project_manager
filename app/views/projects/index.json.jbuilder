@@ -1,5 +1,5 @@
 json.array!(@projects) do |project|
-  json.extract! project, :id, :updated_at, :name, :tasks
+  json.extract! project, :id, :updated_at, :created_at, :name, :tasks
   # json.tasks do
   #   json.array! project.tasks
   # end
