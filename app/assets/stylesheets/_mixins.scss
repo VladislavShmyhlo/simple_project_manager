@@ -6,6 +6,7 @@
 }
 @mixin reset-input {
   background: none;
+  outline: none;
   border: none;
   margin: 0;
   padding: 0;
@@ -22,4 +23,20 @@
   content: '.';
   @include no-font;
   display: block;
+}
+@mixin basic-transition {
+  transition: ease all .2s
+}
+@mixin glyph-hover {
+  @include basic-transition;
+  opacity: .75;
+  &:hover {
+    opacity: 1;
+  }
+}
+@mixin cursor-hover {
+  cursor: default;
+  &:hover {
+    cursor: pointer;
+  }
 }

@@ -12,14 +12,22 @@
         %button(type="submit") add new comment
     .comments-list
       .comment(ng-repeat="comment in task.comments")
-        {{comment.body}}
-        %button(ng-click="removeItem(comment, task.comments)") remove
-        .attachments
-          .form
-            %form(ng-submit="createAttachment(file, comment.attachments)" name="attachmentForm" enctype="multipart/form-data" novalidate)
-              %input(type='file' name="file" fileread="file" change="createAttachment(file, comment.attachments)")
-          .attachment(ng-repeat="att in comment.attachments" )
-            %a(href="{{att.file}}" target="_blank")
+        .controls
+          %button.comment-remove(ng-click="removeItem(comment, task.comments)")
+            .icon
+          %form.new-attachment-form(ng-submit="createAttachment(file, comment.attachments)" name="attachmentForm" enctype="multipart/form-data" novalidate)
+            %label.file
               .icon
-              {{att.file_file_name}} ({{att.file_file_size | bytes}})
+              %input(type='file' name="file" fileread="file" change="createAttachment(file, comment.attachments)")
+        .body
+          {{comment.body}}
+        .attachments
+          .attachments-list
+            .attachment(ng-repeat="att in comment.attachments" )
+              %a.name(href="{{att.file}}" target="_blank")
+                .icon
+                {{att.file_file_name}} ({{att.file_file_size | bytes}})
+              %a.attachment-remove(ng-click="removeItem(att, comment.attachments)")
+                .icon
+
 %a(href="#/") back

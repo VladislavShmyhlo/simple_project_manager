@@ -9,6 +9,7 @@
     .task(ng-repeat="task in tasks" data-id="{{task.id}}" )
       .completed
         %input(type="checkbox" ng-model="task.completed" ng-click="updateTask(task)")
+        -#.icon
       .normal(ng-hide="task == editing.editedItem")
         .description-wrapper
           %a.description(href="\#{{ task.getRestangularUrl() }}" ng-class="taskClass(task)")<

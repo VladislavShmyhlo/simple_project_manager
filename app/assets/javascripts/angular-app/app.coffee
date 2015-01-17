@@ -40,9 +40,9 @@
     # update model's attribute
     # @param {String} attr
     model.updateAttr = (attr)->
-      newItem = {}
-      newItem[attr] = @[attr]
-      @patch(newItem).then (item) =>
+      updatedItem = {}
+      updatedItem[attr] = @[attr]
+      @patch(updatedItem).then (item) =>
         _.extend(@, item)
     model
 

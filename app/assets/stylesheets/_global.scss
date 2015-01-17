@@ -1,10 +1,13 @@
 body {
   background-color: rgba($color-orange, .75);
 }
-input,
-textarea,
-button {
-  outline: none;
+//input,
+//textarea,
+//button {
+//  outline: none;
+//}
+label {
+  margin-bottom: 0;
 }
 
 #container {
@@ -135,6 +138,19 @@ button {
       width: 1px;
       background: rgba($color-orange, .75);
     }
+//    input {
+//      display: none;
+//      &:checked + .icon {
+//        @extend .glyphicon-check;
+//      }
+//    }
+//    .icon {
+//      @include cursor-hover;
+//      @include glyph-hover;
+//      font-size: 16px;
+//      padding: 4px;
+//      @extend .glyphicon, .glyphicon-unchecked;
+//    }
   }
   .description-wrapper {
     float: left;
@@ -229,14 +245,73 @@ button {
     padding: 10px;
   }
 }
+
+
 .comments {
   padding: 5px 10px;
   background: #eaeaea;
   .comment {
     background: $color-white;
     margin: 10px 0;
+    .comment-remove {
+      @include reset-button;
+      @extend .glyphicon, .glyphicon-trash;
+      @include glyph-hover;
+      font-size: 16px;
+      padding: 5px;
+      float: right;
+    }
+    .body {
+      padding: 10px 70px 10px 10px;
+      line-height: 16px;
+    }
+    .controls {
+      margin: 5px 5px 0 0;
+      float: right;
+    }
   }
 }
+.new-attachment-form {
+  float: right;
+   label.file {
+     @include glyph-hover;
+     @include cursor-hover;
+     .icon {
+       @extend .glyphicon, .glyphicon-floppy-open;
+       font-size: 16px;
+       padding: 5px;
+     }
+     input {
+       display: none;
+     }
+   }
+ }
+.attachments {
+  .attachments-list {
+    padding: 5px;
+    .attachment {
+      a {
+        text-decoration: none;
+        display: inline-block;
+        line-height: 20px;
+      }
+      a.name {
+        .icon {
+          @extend .glyphicon, .glyphicon-paperclip;
+        }
+      }
+      a.attachment-remove {
+        margin-left: 5px;
+        .icon {
+          @extend .glyphicon, .glyphicon-floppy-remove;
+        }
+      }
+    }
+  }
+}
+
+
+
 
 .done {
   text-decoration: line-through;
@@ -247,25 +322,14 @@ button {
   position: fixed;
 }
 
-.attachments {
-  background: lighten($color-orange, 25%);
-  form {
-    input {
-      @include reset-button;
-    }
-  }
-  .attachment {
-    padding-left: 10px;
-    a {
-      display: inline-block;
-      line-height: 20px;
-      .icon {
-        @extend .glyphicon, .glyphicon-paperclip
-      }
-    }
-  }
-}
 
+//==========
+//DATEPICKER
+//==========
+
+#ui-datepicker-div {
+  display: none;
+}
 .ui-datepicker {
   border-radius: 4px;
   background: $alert-info-bg;

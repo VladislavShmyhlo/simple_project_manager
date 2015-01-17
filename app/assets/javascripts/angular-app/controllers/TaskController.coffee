@@ -14,5 +14,5 @@
     data = new FormData()
     data.append('attachment[file]', file)
     collection.withHttpConfig({transformRequest: angular.identity}).post(data, {}, {'Content-Type': undefined})
-    .then  (res)->
+    .then (res)->
       collection.unshift res
