@@ -52,11 +52,6 @@
       @patch(project: {tasks_attributes: @tasks})
     item
 
-#  _setTaskDeadline = (task) ->
-#    if task.deadline then task.deadline = new Date(task.deadline)
-#    console.log task.deadline
-#    task
-
   _collectionMethods = (collection) ->
     # post item and push it to collection
     # @param {Object} item
@@ -73,7 +68,6 @@
   Restangular.extendModel 'projects', _modelMethods
   Restangular.extendModel 'projects', _positionMethods
   Restangular.extendModel 'tasks', _modelMethods
-#  Restangular.extendModel 'tasks', _setTaskDeadline
   Restangular.extendModel 'comments', _modelMethods
   Restangular.extendModel 'attachments', _modelMethods
   Restangular.extendCollection 'projects', _collectionMethods
@@ -82,16 +76,22 @@
   Restangular.extendCollection 'attachments', _collectionMethods
 
   Restangular.addResponseInterceptor (data, operation, what, url) ->
-    if operation is 'post'and what is 'comments'
+    # add restangular methods to comment and comment.attachments
+    # after creating new comment
+    if operation is 'post' and what is 'comments'
       Restangular.restangularizeElement null, data, 'comments'
       Restangular.restangularizeCollection data, data.attachments, 'attachments'
       return data
+    # add restangular methods to task, task.comments and comment.attachments
+    # after retrieving single task
     if operation is 'get' and what is 'tasks'
       Restangular.restangularizeElement(null, data, 'tasks')
       Restangular.restangularizeCollection(data, data.comments, 'comments')
       _.forEach data.comments, (comment) ->
         Restangular.restangularizeCollection(Restangular.one('comments', comment.id), comment.attachments, 'attachments')
       return data
+    # add restangular methods to projects and project.tasks
+    # after retrieving list of projects
     else if operation is 'getList' and what is 'projects'
       Restangular.restangularizeCollection(null, data, 'projects')
       _.forEach data, (pr) ->
