@@ -462,15 +462,16 @@ label {
 //    }
   }
   .ui-datepicker-title {
-    line-height: 28px;
+    line-height: 35px;
   }
   .ui-datepicker-next,
   .ui-datepicker-prev {
     top: 0;
-    padding: 4px 6px;
+    font-size: 18px;
+//    padding: 4px 6px;
     width: 35px;
     @extend .glyphicon;
-    line-height: 20px;
+    line-height: 35px;
     &:hover {
       background: $color-white;
       color: $color-border-blue;
@@ -480,9 +481,11 @@ label {
     }
   }
   .ui-datepicker-prev {
-    @extend .glyphicon-chevron-left, .pull-left
+//    @extend .glyphicon-chevron-left, .pull-left
+    @extend .glyphicon-circle-arrow-left, .pull-left
   }
   .ui-datepicker-next {
-    @extend .glyphicon-chevron-right, .pull-right;
+//    @extend .glyphicon-chevron-right, .pull-right;
+    @extend .glyphicon-circle-arrow-right, .pull-right;
   }
 }
