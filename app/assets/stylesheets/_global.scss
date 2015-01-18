@@ -385,58 +385,96 @@ label {
 
 #ui-datepicker-div {
   display: none;
+  border-radius: 2px;
+  overflow: hidden;
+  @include block-shadow;
 }
 .ui-datepicker {
-  border-radius: 4px;
-  background: $alert-info-bg;
-  color: $alert-info-text;
+//  border-radius: 4px;
+  background: rgba($color-border-blue, .75);
+  color: $color-white;
+  text-align: center;
+  line-height: 20px;
+//  @include white-text-shadow;
+  a {
+    color: $color-white;
+    text-decoration: none;
+  }
   * {
     border: none;
   }
-  td, th {
+  th,
+  td {
     & > * {
+      box-sizing: border-box;
+      padding: 2px 4px;
       width: 35px;
-      @extend .btn;
       display: block;
-      padding: 4px 6px;
-    }
-  }
-  th {
-    & > * {
-      @extend .btn-default, .disabled;
+      border: solid 2px transparent;
     }
   }
   td {
-    & > * {
-      @extend .btn-default;
-    }
-    &.ui-state-disabled {
+    &.ui-datepicker-week-end {
       & > * {
-        @extend .disabled;
+        background: rgba($color-border-blue, .5);
       }
     }
-    &.ui-datepicker-current-day {
-      & > * {
-        @extend .btn-info;
+    & > * {
+      &.ui-state-default {
+        &:hover {
+          background: $color-white;
+          color: $color-border-blue;
+        }
+      }
+      &.ui-state-active {
+        background: $color-border-blue;
+        font-weight: bold;
+        border-color: $color-white;
       }
     }
   }
-  .ui-datepicker-header {
-    text-align: center;
-    .ui-datepicker-title {
-//      color: $alert-info-text;
-      padding: 5px 0;
-//      background: $alert-info-bg;
-//      @extend .btn, .btn-default, .btn-info;
-//      padding: 4px 15px;
+  td, th {
+    & > * {
+//      width: 35px;
+//      @extend .btn;
+//      display: block;
+//      padding: 4px 6px;
     }
+  }
+  th {
+//    & > * {
+//      @extend .btn-default, .disabled;
+//    }
+  }
+  td {
+//    & > * {
+//      @extend .btn-default;
+//    }
+//    &.ui-state-disabled {
+//      & > * {
+//        @extend .disabled;
+//      }
+//    }
+//    &.ui-datepicker-current-day {
+//      & > * {
+//        @extend .btn-info;
+//      }
+//    }
+  }
+  .ui-datepicker-title {
+    line-height: 28px;
   }
   .ui-datepicker-next,
   .ui-datepicker-prev {
     top: 0;
     padding: 4px 6px;
     width: 35px;
-    @extend .glyphicon, .btn, .btn-default;
+    @extend .glyphicon;
+    line-height: 20px;
+    &:hover {
+      background: $color-white;
+      color: $color-border-blue;
+    }
     span {
       display: none;
     }
