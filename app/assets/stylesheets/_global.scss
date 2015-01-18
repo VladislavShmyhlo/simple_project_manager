@@ -1,11 +1,9 @@
 body {
   background-color: rgba($color-orange, .75);
 }
-//input,
-//textarea,
-//button {
-//  outline: none;
-//}
+a {
+  @include cursor-hover;
+}
 label {
   margin-bottom: 0;
 }

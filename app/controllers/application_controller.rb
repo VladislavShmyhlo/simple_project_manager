@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
 
   # protect_from_forgery with: :exception
   protect_from_forgery with: :null_session
-  before_action :show_sess
   before_action :authenticate_user!
   # before_action :redirect_to_home
 

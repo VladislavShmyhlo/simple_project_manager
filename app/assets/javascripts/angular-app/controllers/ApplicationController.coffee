@@ -43,3 +43,7 @@
     ,(data) ->
       console.log data
     )
+
+  $scope.logout = ->
+    Restangular.all('users').customDELETE 'sign_out'
+    window.location = 'users/sign_in'

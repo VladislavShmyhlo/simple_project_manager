@@ -1,11 +1,16 @@
 !!!
 %html(ng-app="exampleApp")
   %head
-    %title AngularJS Demo
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    %title Project Manager
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
     = csrf_meta_tags
   %body(ng-controller="ApplicationController")
+    .logout
+      -#%a(ng-click="logout()") logout
+      - if user_signed_in?
+        = form_tag destroy_user_session_path, method: :delete do|f|
+          = submit_tag 'logout'
     #throbber(throbber)
     #container(ng-cloak)
       %ng-view
