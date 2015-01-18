@@ -1,11 +1,26 @@
+html,
 body {
-  background-color: rgba($color-orange, .75);
+  min-height: 100%;
+}
+body {
+  background: {
+    image: url(bg.jpg);
+    position: 50% 50%;
+    repeat: no-repeat;
+    size: cover;
+  };
 }
 a {
   @include cursor-hover;
 }
 label {
   margin-bottom: 0;
+}
+input.ng-dirty.ng-valid {
+  background: $alert-success-text !important;
+}
+input.ng-dirty.ng-invalid {
+  background: $alert-danger-text !important;
 }
 
 #container {
@@ -107,6 +122,12 @@ label {
     &:hover {
       background: lighten($color-orange, 25%);
     }
+    &.done {
+//      background: rgba(0,0,0,.1);
+      .description {
+        text-decoration: line-through;
+      }
+    }
   }
   .new-task-form {
     padding: 10px;
@@ -136,19 +157,21 @@ label {
       width: 1px;
       background: rgba($color-orange, .75);
     }
-//    input {
-//      display: none;
-//      &:checked + .icon {
-//        @extend .glyphicon-check;
-//      }
-//    }
-//    .icon {
-//      @include cursor-hover;
-//      @include glyph-hover;
-//      font-size: 16px;
-//      padding: 4px;
-//      @extend .glyphicon, .glyphicon-unchecked;
-//    }
+    label {
+      input {
+        display: none;
+        &:checked + .icon {
+          @extend .glyphicon-check;
+        }
+      }
+      .icon {
+        @include cursor-hover;
+        @include glyph-hover;
+        font-size: 16px;
+        padding: 4px;
+        @extend .glyphicon, .glyphicon-unchecked;
+      }
+    }
   }
   .description-wrapper {
     float: left;
@@ -306,13 +329,6 @@ label {
       }
     }
   }
-}
-
-
-
-
-.done {
-  text-decoration: line-through;
 }
 #throbber {
   right: 20px;

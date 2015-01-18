@@ -6,13 +6,14 @@
         %span.input-group-btn
           %button.btn.btn-default(type="submit") add new task
   .tasks-list(ng-model="tasks" ui-sortable="sortableOptions")
-    .task(ng-repeat="task in tasks" data-id="{{task.id}}" )
+    .task(ng-repeat="task in tasks" data-id="{{task.id}}" ng-class="taskClass(task)")
       .completed
-        %input(type="checkbox" ng-model="task.completed" ng-click="updateTask(task)")
-        -#.icon
+        %label
+          %input(type="checkbox" ng-model="task.completed" ng-click="updateTask(task)")
+          .icon
       .normal(ng-hide="task == editing.editedItem")
         .description-wrapper
-          %a.description(href="\#{{ task.getRestangularUrl() }}" ng-class="taskClass(task)")<
+          %a.description(href="\#{{ task.getRestangularUrl() }}")<
             {{task.description}} || {{task.deadline | toLocale}}
         .controls
           .handle

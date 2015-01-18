@@ -7,8 +7,9 @@
       %button.remove(ng-click="removeItem(project, projects)")
       %button.edit(ng-click="beginItemEdit(project, 'name')")
     .form(ng-show="project == editing.editedItem")
-      %form(name="projectForm" ng-submit="confirmItemEdit(project, 'name')" novalidate)
-        %input(type="text" name="name" ng-model="editing.itemNewAttr" input-focus="project == editing.editedItem" input-escape="cancelItemEdit()" )
-        %button.save(type="submit")
+      %form.project-name-form(name="projectNameForm" ng-submit="confirmItemEdit(project, 'name')" novalidate)
+        %input(type="text" name="name" ng-model="editing.itemNewAttr" input-focus="project == editing.editedItem"
+        input-escape="cancelItemEdit()" ng-minlength="3" ng-maxlength="80" required)
+        %button.save(type="submit" ng-disabled="projectNameForm.$invalid")
       %button.cancel(ng-click="cancelItemEdit()")
   .tasks-wrapper(ng-include=" 'tasks.html' ")
