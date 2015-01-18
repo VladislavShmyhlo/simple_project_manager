@@ -1,9 +1,8 @@
 class StaticController < ApplicationController
-  # skip_before_action :authenticate_user!
-  skip_before_action :redirect_to_home
-  skip_before_action :check_user
+  skip_before_action :authenticate_user!
+  # skip_before_action :redirect_to_home
 
   def index
-    render text: '', layout: 'application'
+    render :index, layout: false
   end
-end
+end 

@@ -4,7 +4,8 @@
 
   Restangular.setErrorInterceptor (response) ->
     loadingStatus(false)
-#    if response.status is 401
+    if response.status is 401
+      window.location = 'users/sign_in'
 #      $location.path('/login')
 #      return false
 

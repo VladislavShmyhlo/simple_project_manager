@@ -1,0 +1,11 @@
+!!!
+%html(ng-app="exampleApp")
+  %head
+    %title AngularJS Demo
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body(ng-controller="ApplicationController")
+    #throbber(throbber)
+    #container(ng-cloak)
+      %ng-view
