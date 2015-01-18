@@ -8,7 +8,7 @@
       strokewidth: 2         # width of the lines
       lines: 15
 #      clockwise             # direction, set to false for counter clockwise
-#      color                 # color of the spinner, can be any CSS compatible value
+      color: '#000'                 # color of the spinner, can be any CSS compatible value
 #      fps                   # frames per second
 #      padding               # diameter of clipped inner area
 #      fallback              # a gif fallback for non-supported browsers (IE < 8)

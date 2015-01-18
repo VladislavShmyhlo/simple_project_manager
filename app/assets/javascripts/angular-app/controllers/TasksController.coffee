@@ -1,6 +1,6 @@
 @app.controller "TasksController", ($scope) ->
   $scope.tasks = $scope.project.tasks
-
+  $scope.newTask = {}
   $scope.sortableOptions = {
     forcePlaceholderSize: true
     placeholder: 'task-ph'

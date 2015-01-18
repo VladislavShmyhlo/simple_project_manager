@@ -2,9 +2,9 @@
   .new-task-form
     %form(ng-submit="createNewTask(newTask, tasks)" novalidate)
       .input-group
-        %input.form-control(ng-model="newTask.description")
+        %input.form-control(ng-model="newTask.description" placeholder="Start typing here to create a task...")
         %span.input-group-btn
-          %button.btn.btn-default(type="submit") add new task
+          %button.btn.btn-default(type="submit") Add Task
   .tasks-list(ng-model="tasks" ui-sortable="sortableOptions")
     .task(ng-repeat="task in tasks" data-id="{{task.id}}" ng-class="taskClass(task)")
       .completed

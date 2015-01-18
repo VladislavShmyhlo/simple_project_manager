@@ -8,38 +8,74 @@ body {
     position: 50% 50%;
     repeat: no-repeat;
     size: cover;
+    attachment: fixed;
   };
 }
 a {
   @include cursor-hover;
 }
+#throbber {
+  right: 20px;
+  top: 20px;
+  position: fixed;
+}
+.logout {
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  input {
+    display: none;
+  }
+  label {
+    .icon {
+      @extend .glyphicon, .glyphicon-log-out;
+      @include glyph-hover;
+      color: $color-white;
+      font-size: 30px;
+      padding: 5px;
+    }
+  }
+}
 label {
   margin-bottom: 0;
 }
-input.ng-dirty.ng-valid {
-  background: $alert-success-text !important;
+#wrapper {
+  overflow: hidden;
+  max-width: 100%;
 }
-input.ng-dirty.ng-invalid {
-  background: $alert-danger-text !important;
-}
-
 #container {
   width: 98%;
   max-width: 768px;
   margin: 0 auto;
 }
+//input.ng-dirty.ng-valid {
+//  background: $alert-success-text !important;
+//}
+//input.ng-dirty.ng-invalid {
+//  background: $alert-danger-text !important;
+//}
+
+
+
+
+
+
+
+
 .project {
   margin: 40px 0;
-  box-shadow: 0 5px 10px rgba($color-black, .25);
+  @include block-shadow;
   border-radius: 0 0 10px 10px;
   overflow: hidden;
   .title {
     @include clearfix;
-    background: cornflowerblue;
-    color: $body-bg;
-    padding: 5px;
+    background: url(name_bg.png) repeat-x 50% 50%;
+    border: solid 1px $color-border-blue;
+    border-radius: 2px 2px 0 0;
+    color: $color-white;
+    padding: 7px 5px;
     .calendar {
-      @extend .glyphicon, .glyphicon-calendar;
+      @extend .glyphicon, .glyphicon-tree-conifer;
       float: left;
       margin-left: 10px;
     }
@@ -55,6 +91,7 @@ input.ng-dirty.ng-invalid {
       display: block;
       a {
         color: $color-white;
+        @include white-text-shadow;
       }
     }
     .form{
@@ -66,6 +103,7 @@ input.ng-dirty.ng-invalid {
       width: 100%;
       text-align: right;
       input {
+        @include white-text-shadow;
         @include reset-input;
         box-shadow: inset 2px 3px 6px rgba($color-black, .25);
         width: 645px;
@@ -96,10 +134,7 @@ input.ng-dirty.ng-invalid {
       font-size: 15px;
       padding: 10px;
       margin-left: 0;
-      color: rgba($color-white, .75);
-      &:hover {
-        color: $color-white;
-      }
+      @include glyph-hover;
     }
   }
 }
@@ -110,17 +145,24 @@ input.ng-dirty.ng-invalid {
 //}
 
 .task-ph {
-  background: #eaeaea;
+  background: rgba($color-white,.25);
   box-shadow: inset 0 3px 6px rgba($color-black, .25);
 }
 .tasks {
+  .tasks-list {
+    //    background-color: #fff;
+    line-height: 22px;
+  }
   .task {
     background: $color-white;
     @include clearfix;
     position: relative;
-    &.ui-sortable-helper,
+    &.ui-sortable-helper {
+      background: $color-yellow;
+      @include block-shadow;
+    }
     &:hover {
-      background: lighten($color-orange, 25%);
+      background: $color-yellow;
     }
     &.done {
 //      background: rgba(0,0,0,.1);
@@ -132,13 +174,18 @@ input.ng-dirty.ng-invalid {
   .new-task-form {
     padding: 10px;
     background: $gray-lighter;
+    input {
+      height: 30px;
+    }
     .btn {
+      padding: 4px 20px;
+      background: url(green_bg.png) repeat-x 50% 50%;
+      border: solid 1px $color-border-green;
+      margin-left: 0;
+      color: $color-white;
+      @include white-text-shadow;
       line-height: 20px;
     }
-  }
-  .tasks-list {
-    background-color: #fff;
-    line-height: 22px;
   }
   .completed,
   .description,
@@ -329,11 +376,6 @@ input.ng-dirty.ng-invalid {
       }
     }
   }
-}
-#throbber {
-  right: 20px;
-  top: 20px;
-  position: fixed;
 }
 
 

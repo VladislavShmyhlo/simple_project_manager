@@ -25,7 +25,7 @@
   display: block;
 }
 @mixin basic-transition {
-  transition: ease all .2s
+  transition: ease all .1s
 }
 @mixin glyph-hover {
   @include basic-transition;
@@ -39,4 +39,10 @@
   &:hover {
     cursor: pointer;
   }
+}
+@mixin white-text-shadow {
+  text-shadow: 0 1px 1px $color-black;
+}
+@mixin block-shadow {
+  box-shadow: 0 5px 10px rgba($color-black, .25);
 }
