@@ -24,8 +24,10 @@ gem 'spring',        group: :development
 
 # paperclip
 gem 'paperclip'
-#devise
+#devise and omniauth
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 # haml
 gem 'haml-rails'
 # bower
