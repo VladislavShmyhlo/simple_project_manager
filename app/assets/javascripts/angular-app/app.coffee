@@ -26,10 +26,10 @@
     templateUrl: 'project.html'
     controller: 'ProjectController'
   }
-  $routeProvider.when '/login', {
-    templateUrl: 'login.html'
-    controller: 'LoginController'
-  }
+#  $routeProvider.when '/login', {
+#    templateUrl: 'login.html'
+#    controller: 'LoginController'
+#  }
   $routeProvider.otherwise {
     redirectTo: '/'
   }

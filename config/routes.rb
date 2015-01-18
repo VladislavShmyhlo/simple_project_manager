@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-
-  devise_for :users, controllers: {
-      sessions: 'sessions',
-      registrations: 'registrations'
-  }
+  devise_for :users
+  # devise_for :users, controllers: {
+  #     sessions: 'sessions',
+  #     registrations: 'registrations'
+  # }
 
   resources :projects, except: [:new, :edit] do
     resources :tasks

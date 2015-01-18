@@ -4,9 +4,9 @@
 
   Restangular.setErrorInterceptor (response) ->
     loadingStatus(false)
-    if response.status is 401
-      $location.path('/login')
-      return false
+#    if response.status is 401
+#      $location.path('/login')
+#      return false
 
   Restangular.addFullRequestInterceptor ->
     loadingStatus(true)
