@@ -10,4 +10,8 @@
     -##container(ng-cloak)
       -#%ng-view
   %body
+    - if alert
+      .alert.alert-danger= alert
+    - if notice
+      .notice.alert.alert-info= notice
     = yield

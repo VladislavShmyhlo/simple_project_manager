@@ -76,6 +76,12 @@
   Restangular.extendCollection 'attachments', _collectionMethods
 
   Restangular.addResponseInterceptor (data, operation, what, url) ->
+    # add restangular methods to project and project.tasks
+    # after creating new project
+    if operation is 'post' and what is 'projects'
+      Restangular.restangularizeElement null, data, 'projects'
+      Restangular.restangularizeCollection data, data.tasks, 'tasks'
+      return data
     # add restangular methods to comment and comment.attachments
     # after creating new comment
     if operation is 'post' and what is 'comments'
