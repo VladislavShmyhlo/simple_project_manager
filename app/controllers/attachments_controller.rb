@@ -24,7 +24,7 @@ class AttachmentsController < ApplicationController
   def create
     @attachment = @comment.attachments.new(attachment_params)
     if @attachment.save
-      render :show
+      render @attachment
     end
   end
 

@@ -6,13 +6,13 @@ Rails.application.routes.draw do
   }
 
   resources :projects, except: [:new, :edit] do
-    resources :tasks do
-    end
+    resources :tasks
   end
   resources :tasks do
-    resources :comments do
-      resources :attachments
-    end
+    resources :comments
+  end
+  resources :comments do
+    resources :attachments
   end
 
   root 'static#index'

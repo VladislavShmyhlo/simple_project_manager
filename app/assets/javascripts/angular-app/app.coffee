@@ -82,20 +82,23 @@
   Restangular.extendCollection 'attachments', _collectionMethods
 
   Restangular.addResponseInterceptor (data, operation, what, url) ->
+    if operation is 'post'and what is 'comments'
+      Restangular.restangularizeElement null, data, 'comments'
+      Restangular.restangularizeCollection data, data.attachments, 'attachments'
+      return data
     if operation is 'get' and what is 'tasks'
       Restangular.restangularizeElement(null, data, 'tasks')
       Restangular.restangularizeCollection(data, data.comments, 'comments')
       _.forEach data.comments, (comment) ->
-        # cant find any solution except custom post to force 'attachments'
-        # collection to post to comments/:comment_id/attachments/:id
-        Restangular.restangularizeCollection(comment, comment.attachments, 'attachments')
-      data
+        Restangular.restangularizeCollection(Restangular.one('comments', comment.id), comment.attachments, 'attachments')
+      return data
     else if operation is 'getList' and what is 'projects'
       Restangular.restangularizeCollection(null, data, 'projects')
       _.forEach data, (pr) ->
         Restangular.restangularizeCollection(pr, pr.tasks, 'tasks')
-      data
-    else data
+      return data
+    else
+      return data
 
   console.log 'APP RUNNING'
 )
