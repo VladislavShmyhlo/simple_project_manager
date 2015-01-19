@@ -1,8 +1,3 @@
-@app.controller "ProjectController", ($scope, Restangular) ->
-
-  project = Restangular.one('projects', 16)
-
-  project.get().then (project) ->
-    console.log project
+@app.controller "ProjectController", ($scope, Restangular, $routeParams) ->
+  Restangular.one('projects', $routeParams.id).get().then (project) ->
     $scope.project = project
-

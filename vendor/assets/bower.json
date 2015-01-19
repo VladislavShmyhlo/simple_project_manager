@@ -1,14 +1,16 @@
 {
   "name": "dsl-generated dependencies",
   "dependencies": {
-    "angular": "latest",
-    "restangular": "latest",
-    "bootstrap-sass-official": "latest",
     "jquery": "latest",
-    "angular-route": "latest",
     "jquery.ui": "latest",
+    "angular": "latest",
+    "angular-route": "latest",
+    "restangular": "latest",
     "angular-ui-sortable": "latest",
     "angular-ui-date": "latest",
+    "ngFx": "latest",
+    "ngAnimate": "latest",
+    "bootstrap-sass-official": "latest",
     "throbber.js": "latest"
   }
 }

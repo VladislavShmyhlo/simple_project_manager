@@ -6,6 +6,9 @@
   'ngRoute'
   'ui.sortable'
   'ui.date'
+#  'ngAnimate'
+  'ngFx'
+
 ])
 .config((RestangularProvider) ->
   RestangularProvider.setDefaultHeaders {
@@ -25,6 +28,13 @@
   $routeProvider.when '/projects/:id', {
     templateUrl: 'project.html'
     controller: 'ProjectController'
+#    resolve: {
+#      project: (Restangular, $routeParams) ->
+#        console.log $routeParams.id
+#        project = Restangular.one('projects', $routeParams.id)
+#        console.log project.get()
+#        project.get()
+#    }
   }
 #  $routeProvider.when '/login', {
 #    templateUrl: 'login.html'
@@ -57,7 +67,8 @@
     # @param {Object} item
     collection.create = (item) ->
       @post(item).then (item) =>
-        @unshift(item)
+#        @unshift(item)
+        @push(item)
     # destroy item and remove it from collection
     # @params {Object} item
     collection.destroy = (item)->

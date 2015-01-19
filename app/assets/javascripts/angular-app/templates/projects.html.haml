@@ -1,5 +1,5 @@
 .projects
-  .project-wrapper(ng-repeat="project in projects" ng-include=" 'project.html' ")
+  .project-wrapper(ng-class="aniClass" ng-repeat="project in projects" ng-include=" 'project.html' ")
   %form.new-project-form(ng-submit="createNewItem(newProject, projects)")
     %input(type="text" name="name" ng-model="newProject.name")
     %input(type="submit")

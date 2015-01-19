@@ -20,10 +20,12 @@
 //= require jquery.ui/ui/datepicker
 //= require lodash/dist/lodash
 //= require angular/angular.min
-//= require angular-ui-sortable/sortable
-//= require angular-ui-date/src/date
 //= require angular-route/angular-route.min
 //= require restangular/dist/restangular
+//= require angular-ui-sortable/sortable
+//= require angular-ui-date/src/date
+//= require ngFx/dist/ngFx
+//=// require ngAnimate/js/angular-animate.min
 //= require angular-rails-templates
 
 //= require ./angular-app/app
