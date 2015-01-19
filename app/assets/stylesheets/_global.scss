@@ -106,7 +106,7 @@ label {
         @include white-text-shadow;
         @include reset-input;
         box-shadow: inset 2px 3px 6px rgba($color-black, .25);
-        width: 645px;
+        width: 575px;
         float: left;
         padding-left: 5px;
         background: rgba($color-white, .25);
@@ -236,7 +236,8 @@ label {
   }
   .description-wrapper {
     float: left;
-    width: per(700px - 120px - 50px, 700px);
+    width: per(700px - 120px - 50px - 10px, 700px);
+    margin-left: per(10px, 700px);
 //    margin-left: 1%;
     box-sizing: border-box;
     &:before {
@@ -249,7 +250,7 @@ label {
     }
     &:after {
       @include before-after;
-      left: per(50px + 10px, 700px);
+      left: per(50px + 9px, 700px);
       top: 0;
       bottom: 0;
       width: 1px;
@@ -284,17 +285,38 @@ label {
     width: per(120px, 700px);
     &:after {
       @include before-after;
-      right: 24%;
+      right: per(120px, 700px);
       top: 0;
       bottom: 0;
       width: 1px;
       background: $gray-lighter;
+    }
+    .ui-datepicker-trigger,
+    .save,
+    .cancel,
+    .edit,
+    .handle,
+    .remove {
+      text-decoration: none;
+      @include reset-button;
+      @extend .glyphicon;
+      color: $gray-light;
+      padding: 3px 5px;
+      font-size: 12px;
+      cursor: pointer;
+      margin: 0 -1px;
+      border-right: solid 1px $gray-light;
+      &:hover {
+        color: $gray-base;
+        text-decoration: none;
+      }
     }
     .ui-datepicker-trigger {
       @extend .glyphicon-calendar;
     }
     .save {
       @extend .glyphicon-ok;
+      border-right: none;
     }
     .cancel {
       @extend .glyphicon-remove;
@@ -307,24 +329,7 @@ label {
     }
     .remove {
       @extend .glyphicon-trash;
-    }
-    .ui-datepicker-trigger,
-    .save,
-    .cancel,
-    .edit,
-    .handle,
-    .remove {
-      text-decoration: none;
-      @include reset-button;
-      @extend .glyphicon;
-      color: $gray-light;
-      padding: 5px;
-      font-size: 12px;
-      cursor: pointer;
-      &:hover {
-        color: $gray-base;
-        text-decoration: none;
-      }
+      border-right: none;
     }
   }
 }
