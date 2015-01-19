@@ -49,3 +49,8 @@
 @mixin block-shadow {
   box-shadow: 0 5px 10px rgba($color-black, .25);
 }
+@mixin button-hover {
+  @include basic-transition;
+  &:hover {
+  }
+}

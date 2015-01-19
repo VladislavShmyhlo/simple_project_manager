@@ -99,6 +99,12 @@
       Restangular.restangularizeElement null, data, 'comments'
       Restangular.restangularizeCollection data, data.attachments, 'attachments'
       return data
+    # add restangular methods to project, project.tasks
+    # after retrieving single project
+    if operation is 'get' and what is 'projects'
+      Restangular.restangularizeElement(null, data, 'projects')
+      Restangular.restangularizeCollection(data, data.tasks, 'tasks')
+      return data
     # add restangular methods to task, task.comments and comment.attachments
     # after retrieving single task
     if operation is 'get' and what is 'tasks'

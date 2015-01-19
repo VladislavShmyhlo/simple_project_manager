@@ -48,13 +48,32 @@ label {
   max-width: 700px;
   margin: 0 auto;
 }
-//input.ng-dirty.ng-valid {
-//  background: $alert-success-text !important;
-//}
-//input.ng-dirty.ng-invalid {
-//  background: $alert-danger-text !important;
-//}
 
+.new-project-button {
+  text-align: center;
+  margin-bottom: 40px;
+  button {
+    @include reset-button;
+    @include white-text-shadow;
+    @include block-shadow;
+    color: $color-white;
+    font-size: 18px;
+    line-height: 20px;
+    padding: 10px 20px;
+    background: url(bg_blue.png) repeat-x 50% 50%;
+    border: solid 1px $color-border-blue;
+    border-radius: 2px;
+    &:hover {
+      border-color: $color-white;
+    }
+    &:disabled {
+      opacity: .75;
+      &:hover {
+        border-color: $color-border-blue;
+      }
+    }
+  }
+}
 
 
 
@@ -169,11 +188,17 @@ label {
     &:hover {
       background: $color-yellow;
     }
+    * {
+      color: $color-black;
+    }
     &.done {
-//      background: rgba(0,0,0,.1);
+      * {
+        color: $color-grey;
+      }
       .description {
         text-decoration: line-through;
       }
+
     }
   }
   .new-task-form {
@@ -183,7 +208,7 @@ label {
       height: 30px;
     }
     .btn {
-      padding: 4px 20px;
+      padding: 4px 24px;
       background: url(bg_green.png) repeat-x 50% 50%;
       border: solid 1px $color-border-green;
       margin-left: 0;
@@ -272,8 +297,7 @@ label {
     padding-left: 30px;
     padding-right: 25px;
     display: block;
-    color: $color-black;
-//    white-space: pre-line;
+    font-weight: bold;
     white-space: pre-wrap;
     &:hover {
       text-decoration: none;
@@ -300,15 +324,14 @@ label {
       text-decoration: none;
       @include reset-button;
       @extend .glyphicon;
-      color: $gray-light;
+      @include glyph-hover;
       padding: 3px 5px;
       font-size: 12px;
       cursor: pointer;
       margin: 0 -1px;
-      border-right: solid 1px $gray-light;
-      &:hover {
-        color: $gray-base;
-        text-decoration: none;
+      border: {
+        width: 0 1px 0 0;
+        style: solid;
       }
     }
     .ui-datepicker-trigger {
