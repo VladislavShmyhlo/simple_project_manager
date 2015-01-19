@@ -1,11 +1,12 @@
-.projects
-  .project-wrapper(ng-class="aniClass" ng-repeat="project in projects" ng-include=" 'project.html' ")
+.projects(ng-show="projects")
+  .project-wrapper(ng-repeat="project in projects" ng-include=" 'project.html' ")
 
   .new-project-button
     %button(ng-click="addNewProject()" ng-disabled="creatingNewProject")
+      .icon
       Add New Project
 
-  .project(ng-if="creatingNewProject")
+  .project(ng-show="creatingNewProject")
     .title
       .calendar
       .form

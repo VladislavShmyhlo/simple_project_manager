@@ -72,6 +72,10 @@ label {
         border-color: $color-border-blue;
       }
     }
+    .icon {
+      @extend .glyphicon, .glyphicon-plus;
+      margin-right: 5px;
+    }
   }
 }
 
@@ -215,6 +219,9 @@ label {
       color: $color-white;
       @include white-text-shadow;
       line-height: 20px;
+      &:hover {
+        border-color: $color-white;
+      }
     }
   }
   .completed,

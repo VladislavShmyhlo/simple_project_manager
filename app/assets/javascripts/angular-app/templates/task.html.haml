@@ -1,4 +1,4 @@
-.single-task
+.single-task(ng-show="task")
   .title
     %input(type="checkbox" ng-model="task.completed" ng-click="updateTask(task)")
     %span.description(ng-class="taskClass(task)")

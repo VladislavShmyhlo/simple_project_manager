@@ -7,7 +7,7 @@
   'ui.sortable'
   'ui.date'
 #  'ngAnimate'
-  'ngFx'
+#  'ngFx'
 
 ])
 .config((RestangularProvider) ->
