@@ -160,6 +160,11 @@ label {
     &.ui-sortable-helper {
       background: $color-yellow;
       @include block-shadow;
+      .description-wrapper {
+        &:before {
+          display: none;
+        }
+      }
     }
     &:hover {
       background: $color-yellow;
@@ -226,6 +231,14 @@ label {
     width: 70%;
     margin-left: 1%;
     box-sizing: border-box;
+    &:before {
+      @include before-after;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 1px;
+      background: $gray-lighter;
+    }
     &:after {
       @include before-after;
       left: 6%;
