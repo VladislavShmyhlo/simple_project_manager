@@ -69,7 +69,7 @@ label {
   overflow: hidden;
   .title {
     @include clearfix;
-    background: url(name_bg.png) repeat-x 50% 50%;
+    background: url(bg_blue.png) repeat-x 50% 50%;
     border: solid 1px $color-border-blue;
     border-radius: 2px 2px 0 0;
     color: $color-white;
@@ -178,13 +178,13 @@ label {
   }
   .new-task-form {
     padding: 10px;
-    background: $gray-lighter;
+    background: url(bg_grey.png) 50% 50% repeat-x;
     input {
       height: 30px;
     }
     .btn {
       padding: 4px 20px;
-      background: url(green_bg.png) repeat-x 50% 50%;
+      background: url(bg_green.png) repeat-x 50% 50%;
       border: solid 1px $color-border-green;
       margin-left: 0;
       color: $color-white;
@@ -201,6 +201,7 @@ label {
     float: left;
     text-align: center;
     width: 5%;
+    vertical-align: middle;
     &:after {
       @include before-after;
       left: 5%;
@@ -213,16 +214,23 @@ label {
       input {
         display: none;
         &:checked + .icon {
-          @extend .glyphicon-check;
+          background-image: url(box_a.png);
+//          @extend .glyphicon-check;
         }
       }
       .icon {
         @include cursor-hover;
         @include glyph-hover;
-        color: $color-border-blue;
-        font-size: 16px;
-        padding: 4px;
-        @extend .glyphicon, .glyphicon-unchecked;
+//        color: $color-border-blue;
+//        font-size: 16px;
+//        padding: 4px;
+        position: relative;
+        top: 4px;
+        display: block;
+        width: 16px;
+        height: 16px;
+        background: url(box.png) 50% 50% no-repeat;
+//        @extend .glyphicon, .glyphicon-unchecked;
       }
     }
   }
