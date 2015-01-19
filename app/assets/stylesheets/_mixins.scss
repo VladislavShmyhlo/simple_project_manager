@@ -1,3 +1,6 @@
+@function per($w, $c) {
+  @return $w / $c * 100%;
+}
 @mixin reset-button {
   border: none;
   background: none;

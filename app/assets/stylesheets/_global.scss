@@ -45,7 +45,7 @@ label {
 }
 #container {
   width: 98%;
-  max-width: 768px;
+  max-width: 700px;
   margin: 0 auto;
 }
 //input.ng-dirty.ng-valid {
@@ -200,11 +200,11 @@ label {
   .completed {
     float: left;
     text-align: center;
-    width: 5%;
+    width: per(50px, 700px);
     vertical-align: middle;
     &:after {
       @include before-after;
-      left: 5%;
+      left: per(50px, 700px);
       top: 0;
       bottom: 0;
       width: 1px;
@@ -236,8 +236,8 @@ label {
   }
   .description-wrapper {
     float: left;
-    width: 70%;
-    margin-left: 1%;
+    width: per(700px - 120px - 50px, 700px);
+//    margin-left: 1%;
     box-sizing: border-box;
     &:before {
       @include before-after;
@@ -249,7 +249,7 @@ label {
     }
     &:after {
       @include before-after;
-      left: 6%;
+      left: per(50px + 10px, 700px);
       top: 0;
       bottom: 0;
       width: 1px;
@@ -281,7 +281,7 @@ label {
   .controls {
     text-align: center;
     float: right;
-    width: 24%;
+    width: per(120px, 700px);
     &:after {
       @include before-after;
       right: 24%;
