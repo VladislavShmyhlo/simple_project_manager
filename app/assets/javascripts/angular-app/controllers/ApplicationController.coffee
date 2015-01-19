@@ -25,7 +25,7 @@
     editedItem: null
   }
 
-  $scope.aniClass = 'fx-fade-up fx-spped-600 fx-easing-quad'
+  $scope.aniClass = ''
 
   $scope.createNewItem = (item, collection) ->
     collection.create(item).then ->
