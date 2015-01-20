@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
+  include VerifyUser
   before_action :set_task, only: [:edit, :update, :destroy]
   before_action :set_project, only: [:create, :update_all]
-
   respond_to :json
 
   def index
@@ -11,6 +11,18 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.includes(comments: :attachments).find(params[:id])
+
+
+    def verify_user(record)
+      association_name = record.class.to_s.downcase.pluralize
+      current_user.send(association_name).include? record
+    end
+
+    if verify_user(@task)
+      puts '!!!!!!!!!!!!!!!!!!!!!!'
+    else
+      puts '----------------------'
+    end
   end
 
   def new
