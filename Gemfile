@@ -4,7 +4,7 @@ ruby '1.9.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # postgres
-gem 'pg'
+gem 'pg', group: :production
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -40,9 +40,6 @@ gem 'angular-rails-templates'
 # Use jquery as the JavaScript library
 # gem 'jquery-rails'
 
-# Use sqlite3 as the database for Active Record
-# gem 'sqlite3'
-
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
   gem "factory_girl_rails", "~> 4.0"
@@ -53,6 +50,8 @@ group :test, :development do
   gem 'pry-rails'
   # livereload
   gem 'guard-livereload'
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
 end
 
 gem 'rails_12factor', group: :production
