@@ -37,6 +37,13 @@ describe Project do
     }.to change(Project, :count).by(1)
   end
 
+  # it "tests" do
+  #
+  #   @project = FactoryGirl.build_stubbed(:project)
+  #   expect(@project).to receive(:tasks).and_return(1)
+  #   # @project.tasks
+  # end
+
   # it  'fails with empty name' do
   #   project.name = ''
   #   pending 'tst' do
