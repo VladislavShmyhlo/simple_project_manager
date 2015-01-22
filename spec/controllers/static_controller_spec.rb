@@ -5,8 +5,7 @@ describe StaticController do
   describe "GET 'index'" do
     it "returns http success" do
       get 'index'
-      response.should be_success
+      expect(response.status).to be 200
     end
   end
-
 end

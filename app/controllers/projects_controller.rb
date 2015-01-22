@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-  # before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :set_project, only: [:show, :update, :destroy]
 
   respond_to :json
@@ -10,54 +9,42 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    respond_with(@project)
+    render 'show.json'
   end
 
-  # def new
-  #   @project = Project.new
-  #   respond_with(@project)
-  # end
-  #
-  # def edit
-  # end
-
   def create
-    @project = Project.new(project_params)
-    respond_to do|format|
-      if @project.save(project_params)
-        format.json { render :show }
-      else
-        format.json { render json: @project.errors, status: :unprocessable_entity}
-      end
+    @project = current_user.projects.new(project_params)
+
+    if @project.save(project_params)
+      render 'show.json'
+    else
+      render json: @project.errors, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do|format|
-      if @project.update(project_params)
-        format.json { render :show }
-      else
-        format.json { render json: @project.errors, status: :unprocessable_entity}
-      end
+    if @project.update(project_params)
+      render 'show.json'
+    else
+      render json: @project.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
-    respond_to do |format|
-      if @project.destroy
-        format.json { head :no_content }
-      else
-        format.json { head :no_content }
-      end
+    if @project.destroy
+      format.json { head :no_content }
+    else
+      # TODO: implement error response
+      format.json { head :no_content }
     end
   end
 
   private
-    def set_project
-      @project = Project.find(params[:id])
-    end
+  def set_project
+    @project = current_user.projects.find(params[:id])
+  end
 
-    def project_params
-      params.require(:project).permit(:name, tasks_attributes: [:id, :position])
-    end
+  def project_params
+    params.require(:project).permit(:name, tasks_attributes: [:id, :description, :completed, :position, :deadline])
+  end
 end
