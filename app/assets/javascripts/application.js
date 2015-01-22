@@ -19,8 +19,8 @@
 //= require jquery.ui/ui/sortable
 //= require jquery.ui/ui/datepicker
 //= require lodash/dist/lodash
-//= require angular/angular.min
-//= require angular-route/angular-route.min
+//= require angular/angular
+//= require angular-route/angular-route
 //= require restangular/dist/restangular
 //= require angular-ui-sortable/sortable
 //= require angular-ui-date/src/date
