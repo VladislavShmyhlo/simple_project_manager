@@ -5,7 +5,7 @@
       {{task.description}}
     %a(href="\#{{ task.getRestangularUrl() }}" ) view
     %button(ng-click="removeTask(task)") remove
-  .dates
+  .dates(ng-class="{'no-deadline': !task.deadline}")
     .deadline
       %span.sm
         deadline:
@@ -42,5 +42,7 @@
                 {{att.file_file_name}} ({{att.file_file_size | bytes}})
               %a.attachment-remove(ng-click="removeItem(att, comment.attachments)")
                 .icon
+              %span.date
+                {{att.created_at | toLocale : true}}
 
 %a(href="#/") back
