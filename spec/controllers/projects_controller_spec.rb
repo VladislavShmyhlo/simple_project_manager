@@ -106,7 +106,7 @@ describe ProjectsController do
     describe "with invalid params" do
       it "fails to create a new Project" do
         expect {
-          post :create, {:project => valid_attributes}, valid_session
+          post :create, {:project => invalid_attributes}, valid_session
         }.to change(user.projects, :count).by(0)
       end
 
