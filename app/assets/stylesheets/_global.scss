@@ -479,16 +479,19 @@ label {
       float: right;
     }
     .body {
-      padding: 15px 70px 15px 15px;
+      padding: 15px 15px 15px 15px;
       line-height: 20px;
     }
-//    .date {
-//      float: right;
-////      text-align: right;
-//    }
     .controls {
-      margin: 5px 5px 0 0;
+      margin: 5px 5px 0 10px;
       float: right;
+      .comment-date {
+        font-size: 14px;
+        color: $color-grey;
+        float: right;
+        line-height: 26px;
+        margin-right: 10px;
+      }
     }
   }
 }

@@ -28,10 +28,10 @@
             %label.file
               .icon
               %input(type='file' name="file" fileread="file" change="createAttachment(file, comment.attachments)")
+          .comment-date
+            {{comment.created_at | toLocale : true}}
         .body
           {{comment.body}}
-        .date
-          {{comment.created_at | toLocale : true}}
         .attachments(ng-show="comment.attachments.length")
           .attachments-list
             .attachment(ng-repeat="att in comment.attachments" )
