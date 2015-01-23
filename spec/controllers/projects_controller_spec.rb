@@ -104,20 +104,22 @@ describe ProjectsController do
     end
 
     describe "with invalid params" do
+      it "fails to create a new Project" do
+        expect {
+          post :create, {:project => valid_attributes}, valid_session
+        }.to change(user.projects, :count).by(0)
+      end
+
       it "assigns a newly created but unsaved project as @project" do
         # Trigger the behavior that occurs when invalid params are submitted
-
         # Project.any_instance.stub(:save).and_return(false)
-
         post :create, {:project => invalid_attributes}, valid_session
         assigns(:project).should be_a_new(Project)
       end
 
       it "renders errors" do
         # Trigger the behavior that occurs when invalid params are submitted
-
         # project = Project.any_instance.stub(:errors).and_return(false)
-
         post :create, {:project => invalid_attributes}, valid_session
         # TODO: find out how to expect render project.errors
         expect(response.body).to have_content 'is too short'
@@ -125,23 +127,26 @@ describe ProjectsController do
 
       it "responds with 422" do
         # project = Project.any_instance.stub(:save).and_return(false)
-
         post :create, {:project => invalid_attributes}, valid_session
         expect(response.status).to eq(422)
       end
     end
   end
 
-  describe "PUT update" do
-    describe "with valid params" do
-      let(:project) { users.projects.create! valid_attributes }
 
+
+
+
+  describe "PUT update" do
+    let(:project) { users.projects.create! valid_attributes }
+
+    describe "with valid params" do
       it "updates the requested project" do
         # Assuming there are no other projects in the database, this
         # specifies that the Project created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Project.any_instance.should_receive(:update).with(valid_attributes)
+        Project.any_instance.should_receive(:update).with(valid_attributes).and_return { true }
         put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
       end
 
@@ -161,25 +166,40 @@ describe ProjectsController do
       end
     end
 
-    # describe "with invalid params" do
-    #   it "assigns the project as @project" do
-    #     project = Project.create! valid_attributes
-    #     # Trigger the behavior that occurs when invalid params are submitted
-    #     Project.any_instance.stub(:save).and_return(false)
-    #     put :update, {:id => project.to_param, :project => { "name" => "invalid value" }}, valid_session
-    #     assigns(:project).should eq(project)
-    #   end
-    #
-    #   it "re-renders the 'edit' template" do
-    #     project = Project.create! valid_attributes
-    #     # Trigger the behavior that occurs when invalid params are submitted
-    #     Project.any_instance.stub(:save).and_return(false)
-    #     put :update, {:id => project.to_param, :project => { "name" => "invalid value" }}, valid_session
-    #     response.should render_template("edit")
-    #   end
-    # end
+    describe "with invalid params" do
+      it "fails to update a project" do
+        Project.any_instance.should_receive(:update).with(valid_attributes).and_return { false }
+        put :update, {:id => project.to_param, :project => invalid_attributes}, valid_session
+      end
+
+      it "assigns the project as @project" do
+        # Trigger the behavior that occurs when invalid params are submitted
+        # Project.any_instance.stub(:save).and_return(false)
+        put :update, {:id => project.to_param, :project => invalid_attributes}, valid_session
+        assigns(:project).should eq(project)
+      end
+
+      it "renders errors" do
+        # Trigger the behavior that occurs when invalid params are submitted
+        # project = Project.any_instance.stub(:errors).and_return(false)
+        put :update, {:id => project.to_param, :project => invalid_attributes}, valid_session
+        # TODO: find out how to expect render project.errors
+        # TODO: maybe 'to have key' or 'errors to_not be empty'
+        expect(response.body).to have_content 'is too short'
+      end
+
+      it "responds with 422" do
+        # project = Project.any_instance.stub(:save).and_return(false)
+        put :update, {:id => project.to_param, :project => invalid_attributes}, valid_session
+        expect(response.status).to eq(422)
+      end
+    end
   end
-  #
+
+
+
+
+
   # describe "DELETE destroy" do
   #   it "destroys the requested project" do
   #     project = Project.create! valid_attributes
