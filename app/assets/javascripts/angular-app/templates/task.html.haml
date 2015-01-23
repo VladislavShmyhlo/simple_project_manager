@@ -5,6 +5,7 @@
       {{task.description}}
     %a(href="\#{{ task.getRestangularUrl() }}" ) view
     %button(ng-click="removeTask(task)") remove
+    %input(type="hidden" ng-model="task.deadline" ui-date="datepickerOptions" ng-change="task.updateAttr('deadline')")
   .dates(ng-class="{'no-deadline': !task.deadline}")
     .deadline
       %span.sm

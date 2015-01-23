@@ -15,11 +15,6 @@
         task.position = item.position
       $scope.project.updateTasks()
   }
-  $scope.datepickerOptions = {
-    dateFormat: 'dd/mm/yy',
-    showOn: 'both'
-    buttonText: ''
-  }
 
   $scope.createNewTask = (item, collection) ->
     pos = (_.min collection, (task) ->

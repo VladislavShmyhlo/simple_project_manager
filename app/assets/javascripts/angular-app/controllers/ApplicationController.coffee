@@ -17,6 +17,12 @@
     console.log 'done.'
     data
 
+  $scope.datepickerOptions = {
+    dateFormat: 'dd/mm/yy',
+    showOn: 'both'
+    buttonText: ''
+  }
+
   $scope.removeItem = (item, collection) ->
     collection.destroy(item)
 
