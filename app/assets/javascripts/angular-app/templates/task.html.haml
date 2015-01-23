@@ -19,10 +19,6 @@
         created:
       {{task.created_at | toLocale}}
   .comments
-    .new-comment-form
-      %form(ng-submit="createNewItem(newComment, task.comments)" novalidate)
-        %input(ng-model="newComment.body")
-        %button(type="submit") add new comment
     .comments-list
       .comment(ng-repeat=" comment in task.comments | orderBy: 'updated_at' ")
         .controls
@@ -34,7 +30,9 @@
               %input(type='file' name="file" fileread="file" change="createAttachment(file, comment.attachments)")
         .body
           {{comment.body}}
-        .attachments
+        .date
+          {{comment.created_at | toLocale : true}}
+        .attachments(ng-show="comment.attachments.length")
           .attachments-list
             .attachment(ng-repeat="att in comment.attachments" )
               %a.name(href="{{att.file}}" target="_blank")
@@ -44,5 +42,9 @@
                 .icon
               %span.date
                 {{att.created_at | toLocale : true}}
-
+    .new-comment-form
+      .annotation Leave comment:
+      %form(ng-submit="createNewItem(newComment, task.comments)" novalidate)
+        %textarea(ng-model="newComment.body")
+        %button(type="submit") add new comment
 %a(href="#/") back

@@ -28,7 +28,10 @@
   display: block;
 }
 @mixin basic-transition {
-  transition: ease all .1s
+  transition: ease all .1s;
+}
+@mixin long-transition {
+  transition: ease all .25s;
 }
 @mixin glyph-hover {
   @include basic-transition;
