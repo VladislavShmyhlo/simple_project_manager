@@ -1,19 +1,17 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  # devise_for :users, controllers: {
-  #     sessions: 'sessions',
-  #     registrations: 'registrations'
-  # }
+
+  # TODO: this should be more DRY
 
   resources :projects, except: [:new, :edit] do
-    resources :tasks
+    resources :tasks, except: [:new, :edit]
   end
-  resources :tasks do
-    resources :comments
+  resources :tasks, except: [:new, :edit] do
+    resources :comments, except: [:new, :edit]
   end
-  resources :comments do
-    resources :attachments
+  resources :comments, except: [:new, :edit] do
+    resources :attachments, except: [:new, :edit]
   end
 
   root 'static#index'
