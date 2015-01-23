@@ -374,6 +374,7 @@ label {
   margin: 40px 0;
   border-radius: 0 0 10px 10px;
   overflow: hidden;
+  @include block-shadow;
   .title {
     padding: 10px;
   }
