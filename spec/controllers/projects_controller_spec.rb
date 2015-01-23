@@ -19,6 +19,7 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe ProjectsController do
+  # TODO: should specs need to be implemented for models not belonging to users?
 
   # This should return the minimal set of attributes required to create a valid
   # Project. As you add validations to Project, be sure to
@@ -133,26 +134,30 @@ describe ProjectsController do
 
   describe "PUT update" do
     describe "with valid params" do
+      let(:project) { users.projects.create! valid_attributes }
+
       it "updates the requested project" do
-        project = Project.create! valid_attributes
         # Assuming there are no other projects in the database, this
         # specifies that the Project created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         Project.any_instance.should_receive(:update).with(valid_attributes)
-        put :update, {:id => project.to_param, :project => { "name" => "MyString" }}, valid_session
+        put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
       end
 
       it "assigns the requested project as @project" do
-        project = Project.create! valid_attributes
         put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
         assigns(:project).should eq(project)
       end
 
-      it "redirects to the project" do
-        project = Project.create! valid_attributes
+      it "renders show.json" do
         put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
-        response.should redirect_to(project)
+        expect(response).to render_template('index.json')
+      end
+
+      it "is successful" do
+        put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
+        expect(response.status).to eq(200)
       end
     end
 
