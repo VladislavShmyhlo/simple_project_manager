@@ -2,9 +2,12 @@
   .project-wrapper(ng-repeat="project in projects" ng-include=" 'project.html' ")
 
   .new-project-button
+    %span.title(ng-hide="projects.length") Click
     %button(ng-click="addNewProject()" ng-disabled="creatingNewProject")
       .icon
       Add New Project
+    %span.title(ng-hide="projects.length") to create a project!
+
 
   .project(ng-show="creatingNewProject")
     .title

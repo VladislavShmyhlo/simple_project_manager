@@ -32,10 +32,10 @@ class ProjectsController < ApplicationController
 
   def destroy
     if @project.destroy
-      format.json { head :no_content }
+      head :no_content
     else
       # TODO: implement error response
-      format.json { head :no_content }
+      head :no_content
     end
   end
 

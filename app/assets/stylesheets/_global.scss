@@ -48,10 +48,16 @@ label {
   max-width: 700px;
   margin: 0 auto;
 }
-
+.title {
+  font-size: 30px;
+  color: lighten($color-border-blue, 5%);
+//  color: $color-border-blue;
+  text-shadow: 0 2px 3px rgba($color-black, .5);
+}
 .new-project-button {
   text-align: center;
-  margin-bottom: 40px;
+  margin: 40px 0;
+//  margin-bottom: 40px;
   button {
     @include reset-button;
     @include white-text-shadow;
@@ -60,6 +66,7 @@ label {
     font-size: 18px;
     line-height: 20px;
     padding: 10px 20px;
+    margin: 0 10px;
     background: url(bg_blue.png) repeat-x 50% 50%;
     border: solid 1px $color-border-blue;
     border-radius: 2px;
