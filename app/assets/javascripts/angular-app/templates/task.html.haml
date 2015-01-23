@@ -5,6 +5,19 @@
       {{task.description}}
     %a(href="\#{{ task.getRestangularUrl() }}" ) view
     %button(ng-click="removeTask(task)") remove
+  .dates
+    .deadline
+      %span.sm
+        deadline:
+      {{task.deadline | toLocale : false}}
+    .updated_at
+      %span.sm
+        last update:
+      {{task.updated_at | toLocale}}
+    .created_at
+      %span.sm
+        created:
+      {{task.created_at | toLocale}}
   .comments
     .new-comment-form
       %form(ng-submit="createNewItem(newComment, task.comments)" novalidate)

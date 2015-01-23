@@ -369,6 +369,40 @@ label {
   .title {
     padding: 10px;
   }
+  .dates {
+    border-top: solid 1px $color-white;
+    border-bottom: solid 1px $color-white;
+    @include clearfix;
+    .updated_at,
+    .created_at,
+    .deadline {
+      width: (100%)/3;
+      float: left;
+      font-size: 12px;
+//      text-transform: uppercase;
+      text-align: center;
+      box-sizing: border-box;
+      border-left: solid 1px $color-white;
+      line-height: 20px;
+//      .sm {
+//        text-transform: none;
+//      }
+    }
+    .deadline {
+      color: $color-white;
+      background: $color-orange;
+      border-left: none;
+    }
+    .updated_at {
+      background: #999;
+      color: #eaeaea;
+    }
+    .created_at {
+      background: #eaeaea;
+      color: #999;
+      float: right;
+    }
+  }
 }
 
 
