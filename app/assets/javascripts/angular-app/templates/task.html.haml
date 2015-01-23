@@ -1,9 +1,13 @@
 .single-task(ng-show="task")
   .title
-    %input(type="checkbox" ng-model="task.completed" ng-click="task.updateAttr('completed')")
+    .completed
+      %label
+        %input(type="checkbox" ng-model="task.completed" ng-click="task.updateAttr('completed')")
+        .text
+          .icon
+          {{ task.completed ? 'Completed!' : 'In progress' }}
     %span.description(ng-class="taskClass(task)")
       {{task.description}}
-    %a(href="\#{{ task.getRestangularUrl() }}" ) view
     %button(ng-click="removeTask(task)") remove
     %input(type="hidden" ng-model="task.deadline" ui-date="datepickerOptions" ng-change="task.updateAttr('deadline')")
   .dates(ng-class="{'no-deadline': !task.deadline}")

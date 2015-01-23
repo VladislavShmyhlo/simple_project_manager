@@ -60,8 +60,7 @@ label {
   .title {
     font-size: 30px;
     color: lighten($color-border-blue, 5%);
-    //  color: $color-border-blue;
-    text-shadow: 0 2px 3px rgba($color-black, .5);
+    @include text-shadow;
   }
   button {
     @include reset-button;
@@ -382,7 +381,30 @@ label {
   overflow: hidden;
   @include block-shadow;
   .title {
+    position: relative;
     padding: 10px;
+    .completed {
+      input {
+        display: none;
+        &:checked + .text {
+          color: $color-border-blue;
+          .icon {
+            @extend.glyphicon-check;
+          }
+        }
+      }
+      .text {
+        font-size: 24px;
+        color: $color-orange;
+        @include cursor-hover;
+        @include glyph-hover;
+        @include text-shadow-s;
+        .icon {
+          @extend .glyphicon, .glyphicon-unchecked;
+          display: inline-block;
+        }
+      }
+    }
   }
   .dates {
     border-top: solid 1px $color-white;
