@@ -1,6 +1,6 @@
 .single-task(ng-show="task")
   .title
-    %input(type="checkbox" ng-model="task.completed" ng-click="updateTask(task)")
+    %input(type="checkbox" ng-model="task.completed" ng-click="task.updateAttr('completed')")
     %span.description(ng-class="taskClass(task)")
       {{task.description}}
     %a(href="\#{{ task.getRestangularUrl() }}" ) view

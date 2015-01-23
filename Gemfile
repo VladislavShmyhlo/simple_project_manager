@@ -21,8 +21,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
-# puma
-gem 'puma'
 
 # paperclip
 gem 'paperclip'
@@ -52,6 +50,8 @@ group :test, :development do
   gem 'guard-livereload'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  # puma
+  gem 'puma'
 end
 
 gem 'rails_12factor', group: :production
