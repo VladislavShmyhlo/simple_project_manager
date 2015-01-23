@@ -372,6 +372,8 @@ label {
 .single-task {
   background: $color-white;
   margin: 40px 0;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
   .title {
     padding: 10px;
   }
@@ -421,11 +423,12 @@ label {
 
 
 .comments {
-  padding: 5px 10px;
+  padding: 10px;
   background: #eaeaea;
   .comment {
     background: $color-white;
-    margin: 10px 0;
+    margin: 10px 0 0;
+    border-radius: 4px;
     .comment-remove {
       @include reset-button;
       @extend .glyphicon, .glyphicon-trash;
@@ -435,7 +438,7 @@ label {
       float: right;
     }
     .body {
-      padding: 10px 70px 10px 10px;
+      padding: 15px 70px 15px 15px;
       line-height: 16px;
     }
     .controls {
@@ -460,8 +463,9 @@ label {
    }
  }
 .attachments {
+//  margin-top: 10px;
   .attachments-list {
-    padding: 5px;
+    padding: 15px 15px 10px;
     .attachment {
       a {
         text-decoration: none;
