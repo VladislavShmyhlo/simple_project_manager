@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :update, :destroy]
 
-  respond_to :json
+  # respond_to :json
 
   def index
     @projects = current_user.projects.includes(:tasks).all
@@ -35,7 +35,8 @@ class ProjectsController < ApplicationController
       head :no_content
     else
       # TODO: implement error response
-      head :no_content
+      # head :no_content
+      head :unprocessable_entity
     end
   end
 
