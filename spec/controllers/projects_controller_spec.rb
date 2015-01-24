@@ -205,9 +205,9 @@ describe ProjectsController do
     # TODO: "with successful destroy" ?
     describe "with successful destroy" do
       # TODO: this doesnt work for some reason
-      pending "destroys the requested project" do
+      it "destroys the requested project" do
         project = user.projects.create! valid_attributes
-        Project.any_instance.should_receive(:destroy).and_return(true)
+        Project.any_instance.should_receive(:destroy).and_call_original
 
         expect {
           delete :destroy, {:id => project.to_param}, valid_session
