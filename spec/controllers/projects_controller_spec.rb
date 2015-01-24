@@ -206,12 +206,12 @@ describe ProjectsController do
     describe "with successful destroy" do
       # TODO: this doesnt work for some reason
       pending "destroys the requested project" do
-        # project = user.projects.create! valid_attributes
-        # Project.any_instance.should_receive(:destroy).and_return(true)
-        #
-        # expect {
-        #   delete :destroy, {:id => project.to_param}, valid_session
-        # }.to change(user.projects, :count).by(-1)
+        project = user.projects.create! valid_attributes
+        Project.any_instance.should_receive(:destroy).and_return(true)
+
+        expect {
+          delete :destroy, {:id => project.to_param}, valid_session
+        }.to change(user.projects, :count).by(-1)
       end
 
       it "assigns destroyed project as @project" do
@@ -231,6 +231,7 @@ describe ProjectsController do
         Project.any_instance.stub(:destroy).and_return(false)
       end
       it "fails to destroy project" do
+        # TODO: return value doesn't work at all
         Project.any_instance.should_receive(:destroy).and_return(false)
         project = user.projects.create! valid_attributes
         expect {
