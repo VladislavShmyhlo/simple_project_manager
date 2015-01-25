@@ -22,7 +22,8 @@
           %button.remove(ng-click="removeItem(task, tasks)")
       %form.task-description-form(name="taskForm" ng-submit="confirmItemEdit(task, 'description')" ng-show="task == editing.editedItem" novalidate)
         .description-wrapper
-          %textarea(name="name" ng-model="editing.itemNewAttr" input-focus="task == editing.editedItem" input-escape="cancelItemEdit()" required)
+          %form-errors(name="taskForm")
+          %textarea(name="description" ng-model="editing.itemNewAttr" input-focus="task == editing.editedItem" input-escape="cancelItemEdit()" required)
         .controls
           %a.cancel(ng-click="cancelItemEdit()")
           %button.save(type="submit" ng-disabled="taskForm.$invalid")

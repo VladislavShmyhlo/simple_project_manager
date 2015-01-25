@@ -44,9 +44,13 @@
 }
 @mixin glyph-hover {
   @include basic-transition;
-  opacity: .75;
   &:hover {
     opacity: 1;
+  }
+  &,
+  &:disabled,
+  &:disabled:hover {
+    opacity: .75;
   }
 }
 @mixin cursor-hover {

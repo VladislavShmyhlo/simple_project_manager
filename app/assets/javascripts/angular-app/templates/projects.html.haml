@@ -14,6 +14,7 @@
       .calendar
       .form
         %form.new-project-form(name="newProjectForm" ng-submit="createNewProject(newProject, projects)" novalidate)
+          %form-errors(name="newProjectForm")
           %input(type="text" name="name" ng-model="newProject.name" input-focus="creatingNewProject"
             input-escape="cancelNewProject()" ng-minlength="3" ng-maxlength="80" required)
           %button.save(type="submit" ng-disabled="newProjectForm.$invalid")

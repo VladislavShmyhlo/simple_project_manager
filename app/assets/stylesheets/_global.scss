@@ -43,11 +43,12 @@ form-errors {
   margin-left: ($size)/-2;
   font-size: 14px;
   z-index: 3;
+  top: 50%;
   .icon {
     @extend .glyphicon, .glyphicon-warning-sign;
     font-size: 15px;
     display: block;
-    color: $color-orange-light;
+    color: $color-orange-light !important;
     line-height: $size;
   }
   &:hover {
@@ -57,20 +58,22 @@ form-errors {
   }
   ul {
     @include block-shadow;
+    list-style: none;
     text-align: center;
     position: absolute;
-    left: 50%;
-    width: 160px;
-    top: ($size + 5px);
+    top: 50%;
+    right: $size + 20px;
+    min-width: 200px;
     border-radius: 4px;
-    line-height: normal;
-    margin: 0 0 0 -80px;
-    padding: 10px;
+    margin: (28px / -2);
+    line-height: 20px;
+    padding: 4px 10px;
     background: $color-black;
     display: none;
     li {
       margin: 0;
       padding: 0;
+      color: $color-white !important;
     }
   }
 }
@@ -173,11 +176,8 @@ label {
   }
 }
 
-
-
-
-
-
+//======================================================================================================================
+// PROJECT
 
 .project {
   margin: 40px 0;
@@ -228,7 +228,6 @@ label {
       text-align: right;
       form-errors {
         right: 90px;
-        top: 50%;
       }
       input {
         @include white-text-shadow;
@@ -357,22 +356,17 @@ label {
         display: none;
         &:checked + .icon {
           background-image: url(box_a.png);
-//          @extend .glyphicon-check;
         }
       }
       .icon {
         @include cursor-hover;
         @include glyph-hover;
-//        color: $color-border-blue;
-//        font-size: 16px;
-//        padding: 4px;
         position: relative;
         top: 4px;
         display: block;
         width: 16px;
         height: 16px;
         background: url(box.png) 50% 50% no-repeat;
-//        @extend .glyphicon, .glyphicon-unchecked;
       }
     }
   }
@@ -380,7 +374,6 @@ label {
     float: left;
     width: per(700px - 120px - 50px - 10px, 700px);
     margin-left: per(10px, 700px);
-//    margin-left: 1%;
     box-sizing: border-box;
     &:before {
       @include before-after;
@@ -400,6 +393,10 @@ label {
     }
   }
   form.task-description-form {
+    form-errors {
+      right: 130px;
+      top: 20px;
+    }
     textarea {
       font-weight: bold;
       background: rgba(#eeeeee,.25);
