@@ -8,6 +8,7 @@
       %button.edit(ng-click="beginItemEdit(project, 'name')")
     .form(ng-show="project == editing.editedItem")
       %form.project-name-form(name="projectNameForm" ng-submit="confirmItemEdit(project, 'name')" novalidate)
+        %form-errors(name="projectNameForm")
         %input(type="text" name="name" ng-model="editing.itemNewAttr" input-focus="project == editing.editedItem"
           input-escape="cancelItemEdit()" ng-minlength="3" ng-maxlength="80" required)
         %button.save(type="submit" ng-disabled="projectNameForm.$invalid")

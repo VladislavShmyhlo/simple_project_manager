@@ -1,11 +1,12 @@
 @app.directive 'messages', ->
   {
-    restrict: 'E',
-    id: 'messages'
+    restrict: 'E'
     template:
-      '<strong class="status">{{error.status}}</strong>
+      '
+        <strong class="status">{{error.status}}</strong>
         <span class="text">{{error.statusText}}</span>
-        <a ng-click="hide()"></a>'
+        <a ng-click="hide()"></a>
+      '
     link: (scope, elem, attrs) ->
       scope.hide = ->
         elem.hide()

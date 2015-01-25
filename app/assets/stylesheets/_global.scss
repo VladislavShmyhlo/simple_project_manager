@@ -34,6 +34,46 @@ input.ng-dirty.ng-invalid {
   }
 }
 
+form-errors {
+  $size: 20px;
+  position: absolute;
+  height: $size;
+  width: $size;
+  margin-top: ($size)/-2;
+  margin-left: ($size)/-2;
+  font-size: 14px;
+  z-index: 3;
+  .icon {
+    @extend .glyphicon, .glyphicon-warning-sign;
+    font-size: 15px;
+    display: block;
+    color: $color-orange-light;
+    line-height: $size;
+  }
+  &:hover {
+    ul {
+      display: block;
+    }
+  }
+  ul {
+    @include block-shadow;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    width: 160px;
+    top: ($size + 5px);
+    border-radius: 4px;
+    line-height: normal;
+    margin: 0 0 0 -80px;
+    padding: 10px;
+    background: $color-black;
+    display: none;
+    li {
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
 messages {
   color: $color-black;
   background: lighten(red, 30%);
@@ -181,10 +221,15 @@ label {
       @include clearfix;
       display: block;
       padding-left: 35px;
+      position: relative;
     }
     form {
       width: 100%;
       text-align: right;
+      form-errors {
+        right: 90px;
+        top: 50%;
+      }
       input {
         @include white-text-shadow;
         @include reset-input;
