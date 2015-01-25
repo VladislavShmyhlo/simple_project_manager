@@ -9,8 +9,7 @@
 [Project, Task, Comment, Attachment, User].each &:delete_all
 
 User.create [
-                {email: 'aion.stu@gmail.com', password: 'password', password_confirmation: 'password'},
-                {email: 'test@gmail.com', password: 'testtest', password_confirmation: 'testtest'},
+                {email: 'root@root.root', password: 'rootroot', password_confirmation: 'rootroot'},
             ]
 
 id = User.last.id
