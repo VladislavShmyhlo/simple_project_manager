@@ -124,6 +124,8 @@ label {
       padding-left: 40px;
       @include clearfix;
       display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
       a {
         color: $color-white;
         @include white-text-shadow;
