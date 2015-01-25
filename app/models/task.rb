@@ -4,5 +4,6 @@ class Task < ActiveRecord::Base
 
   validates :description, presence: true
 
+  # TODO: implement deadline validation
   # TODO: project.update(tasks_attributes: 'invalid attrs')
 end

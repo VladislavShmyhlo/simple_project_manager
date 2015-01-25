@@ -14,12 +14,16 @@ body {
 a {
   @include cursor-hover;
 }
+textarea {
+  resize: none;
+}
 textarea,
 button,
 input,
 a {
   outline: none !important;
 }
+
 messages {
   color: $color-black;
   background: lighten(red, 30%);

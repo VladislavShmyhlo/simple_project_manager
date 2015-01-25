@@ -3,6 +3,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
+require "paperclip/matchers"
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -38,6 +39,7 @@ RSpec.configure do |config|
   end
 
   config.include Devise::TestHelpers, type: :controller
+  config.include Paperclip::Shoulda::Matchers
 
   # ## Mock Framework
   #
