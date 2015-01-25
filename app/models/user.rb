@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
   has_many :comments, through: :tasks
   has_many :attachments, through: :comments
 
+  def email_required?
+    super && provider.blank?
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
