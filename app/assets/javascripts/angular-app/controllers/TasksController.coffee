@@ -21,7 +21,7 @@
       _.parseInt(task.position)).position
     item.position = --pos
     item.completed = false
-    collection.create(item).then ->
+    collection.create(item, false).then ->
       $scope.newTask = {}
 
   $scope.taskClass = (item) ->

@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :comment do
-    body "MyString"
-reference ""
+    body "valid body"
+    # task nil
   end
-
 end

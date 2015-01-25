@@ -3,17 +3,17 @@
     $rootScope.$broadcast 'loading', {active: st}
 
   Restangular.setErrorInterceptor (response) ->
-    loadingStatus(false)
+    loadingStatus false
+    $rootScope.$broadcast 'error', response
     if response.status is 401
       window.location = 'users/sign_in'
-#      $location.path('/login')
-#      return false
+      return false
 
   Restangular.addFullRequestInterceptor ->
-    loadingStatus(true)
+    loadingStatus true
 
   Restangular.addResponseInterceptor (data) ->
-    loadingStatus(false)
+    loadingStatus false
     console.log 'done.'
     data
 

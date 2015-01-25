@@ -20,6 +20,34 @@ input,
 a {
   outline: none !important;
 }
+messages {
+  color: $color-black;
+  background: lighten(red, 30%);
+  position: fixed;
+  width: 250px;
+  margin-left: -125px;
+  left: 50%;
+  top: 20px;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 10px 20px;
+  @include block-shadow;
+  a {
+    @extend .glyphicon, .glyphicon-remove;
+    @include glyph-hover;
+    position: absolute;
+    font-size: 12px;
+    right: 5px;
+    top: 5px;
+    &,
+    &:hover {
+      color: $color-black;
+      text-decoration: none;
+    }
+  }
+}
+
 #throbber {
   right: 20px;
   top: 20px;

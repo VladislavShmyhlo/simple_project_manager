@@ -4,17 +4,17 @@ describe Project do
   subject(:project) { FactoryGirl.build(:project) }
 
   it "passes with valid name" do
-    project.name = 'some name'
+    project.name = 'valid name'
     expect(project.valid?).to be true
   end
 
   it "fails with short name" do
-    project.name = 'do'
+    project.name = 'x'
     expect(project.invalid?).to be true
   end
 
   it "fails with long name" do
-    project.name = 'a'*81
+    project.name = 'x'*81
     expect(project.invalid?).to be true
   end
 
@@ -23,32 +23,26 @@ describe Project do
     expect(project.invalid?).to be true
   end
 
-  it "should be destroyed with it's tasks" do
-    project.tasks.build([{},{},{}])
-    project.save
-    ids = project.tasks.map &:id
-    project.destroy
-    expect(Task.where(id: ids).count).to eq(0)
-  end
-
   it "should be saved" do
     expect {
       project.save
     }.to change(Project, :count).by(1)
   end
 
-  # it "tests" do
-  #
-  #   @project = FactoryGirl.build_stubbed(:project)
-  #   expect(@project).to receive(:tasks).and_return(1)
-  #   # @project.tasks
-  # end
+  it "has many tasks" do
+    expect {
+      3.times { project.tasks << FactoryGirl.build(:task) }
+      project.save
+    }.to change(project.tasks, :count).by(3)
+  end
 
-  # it  'fails with empty name' do
-  #   project.name = ''
-  #   pending 'tst' do
-  #     xau
-  #     expect(project.invalid?).to be true
-  #   end
-  # end
+  it "should be destroyed with it's tasks" do
+    3.times { project.tasks << FactoryGirl.build(:task) }
+    project.save
+    ids = project.tasks.map &:id
+    expect {
+      project.destroy
+    }.to change(Task.where(id: ids), :count).by(-3)
+    expect(Task.where(id: ids).count).to eq(0)
+  end
 end

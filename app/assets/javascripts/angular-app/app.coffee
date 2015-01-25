@@ -65,10 +65,9 @@
   _collectionMethods = (collection) ->
     # post item and push it to collection
     # @param {Object} item
-    collection.create = (item) ->
+    collection.create = (item, last=true) ->
       @post(item).then (item) =>
-#        @unshift(item)
-        @push(item)
+        if last then @push(item) else @unshift(item)
     # destroy item and remove it from collection
     # @params {Object} item
     collection.destroy = (item)->
