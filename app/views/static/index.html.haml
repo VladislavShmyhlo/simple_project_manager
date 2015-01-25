@@ -8,12 +8,15 @@
   %body(ng-controller="ApplicationController")
     #wrapper
       .logout
-        -#%a(ng-click="logout()") logout
-        - if user_signed_in?
-          = form_tag destroy_user_session_path, method: :delete do|f|
-            %label
-              = submit_tag 'logout'
-              .icon
+        = render 'shared/navbar'
+
+        -#= link_to 'log out', destroy_user_session_path
+
+        -#- if user_signed_in?
+        -#  = form_tag destroy_user_session_path, method: :delete do|f|
+        -#    %label
+        -#      = submit_tag 'logout'
+        -#      .icon
       #throbber(throbber)
       %messages
       #container(ng-cloak)
