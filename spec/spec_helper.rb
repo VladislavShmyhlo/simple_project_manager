@@ -20,6 +20,10 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
 
+  # Capybara.register_driver :selenium do |app|
+  #   Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  # end
+
   Capybara.default_driver = :selenium
 
   config.before(:suite) do
