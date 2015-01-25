@@ -121,14 +121,18 @@ label {
       font-size: 20px;
     }
     .name {
-      padding-left: 40px;
+      margin-left: 40px;
       @include clearfix;
       display: block;
-      overflow: hidden;
-      text-overflow: ellipsis;
       a {
-        color: $color-white;
         @include white-text-shadow;
+        color: $color-white;
+        display: block;
+        float: left;
+        max-width: 560px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 35px;
       }
     }
     .form{
