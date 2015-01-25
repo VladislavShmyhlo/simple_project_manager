@@ -16,12 +16,22 @@ a {
 }
 textarea {
   resize: none;
+  position: relative;
 }
 textarea,
 button,
 input,
 a {
   outline: none !important;
+}
+textarea.ng-dirty.ng-invalid,
+input.ng-dirty.ng-invalid {
+  .task-description-form &,
+  .new-project-form &,
+  .project-name-form &,
+  .new-task-form &:focus {
+    border-color: $color-red !important;
+  }
 }
 
 messages {
@@ -178,11 +188,15 @@ label {
       input {
         @include white-text-shadow;
         @include reset-input;
-        box-shadow: inset 2px 3px 6px rgba($color-black, .25);
+        @include input-shadow(L);
+        box-sizing: border-box;
+        border: solid 1px transparent;
         width: 575px;
         float: left;
-        padding-left: 5px;
+        line-height: 33px;
+        padding-left: 4px;
         background: rgba($color-white, .25);
+        border-radius: 2px;
       }
     }
     .save {
@@ -258,8 +272,9 @@ label {
   .new-task-form {
     padding: 10px;
     background: url(bg_grey.png) 50% 50% repeat-x;
-    input {
+    input[type="text"] {
       height: 30px;
+      @include input-shadow(M);
     }
     .btn {
       padding: 4px 24px;
@@ -341,13 +356,15 @@ label {
   }
   form.task-description-form {
     textarea {
+      font-weight: bold;
       background: rgba(#eeeeee,.25);
       display: block;
-      height: 300px;
+      height: 200px;
       width: 100%;
-      padding: 15px 25px 15px 30px;
-      border: none;
+      padding: 15px 25px 14px 29px;
+      border: solid 1px transparent;
       box-shadow: inset 2px 3px 6px rgba($color-black, .25);
+      box-sizing: border-box;
     }
   }
   .description {

@@ -31,9 +31,6 @@
     editedItem: null
   }
 
-#  $scope.aniClass = ''
-#  $scope.anim = 'fx-fade-up fx-spped-600 fx-easing-quad'
-
   $scope.createNewItem = (item, collection) ->
     collection.create(item).then ->
       delete item[k] for k,v of item

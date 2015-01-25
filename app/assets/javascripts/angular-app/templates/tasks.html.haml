@@ -1,10 +1,10 @@
 .tasks(ng-controller="TasksController" )
   .new-task-form
-    %form(ng-submit="createNewTask(newTask, tasks)" novalidate)
+    %form(name='newTaskForm' ng-submit="createNewTask(newTask, tasks)" novalidate)
       .input-group
-        %input.form-control(ng-model="newTask.description" placeholder="Start typing here to create a task...")
+        %input.form-control(type="text" ng-model="newTask.description" placeholder="Start typing here to create a task..." required)
         %span.input-group-btn
-          %button.btn.btn-default(type="submit") Add Task
+          %input.btn.btn-default(type="submit" ng-disabled="newTaskForm.$invalid" value="Add Task")
   .tasks-list(ng-model="tasks" ui-sortable="sortableOptions")
     .task(ng-repeat="task in tasks" data-id="{{task.id}}" ng-class="taskClass(task)")
       .completed
@@ -14,7 +14,7 @@
       .normal(ng-hide="task == editing.editedItem")
         .description-wrapper
           %a.description(href="\#{{ task.getRestangularUrl() }}")<
-            {{task.description}} || {{task.deadline | toLocale}}
+            {{task.description}}
         .controls
           .handle
           %input(type="hidden" ng-model="task.deadline" ui-date="datepickerOptions" ng-change="task.updateAttr('deadline')")
@@ -22,7 +22,7 @@
           %button.remove(ng-click="removeItem(task, tasks)")
       %form.task-description-form(name="taskForm" ng-submit="confirmItemEdit(task, 'description')" ng-show="task == editing.editedItem" novalidate)
         .description-wrapper
-          %textarea(name="name" ng-model="editing.itemNewAttr" input-focus="task == editing.editedItem" input-escape="cancelItemEdit()" )
+          %textarea(name="name" ng-model="editing.itemNewAttr" input-focus="task == editing.editedItem" input-escape="cancelItemEdit()" required)
         .controls
           %a.cancel(ng-click="cancelItemEdit()")
-          %button.save(type="submit")
+          %button.save(type="submit" ng-disabled="taskForm.$invalid")

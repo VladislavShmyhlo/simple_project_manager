@@ -7,6 +7,7 @@
     handle: '.handle'
     stop: (e, d)->
       a = d.item.parent().sortable('toArray', {attribute: 'data-id'})
+      return if a.length <= 1
       res = []
       _.forEach a, (id, i) ->
         res.push({id: _.parseInt(id), position: i})
