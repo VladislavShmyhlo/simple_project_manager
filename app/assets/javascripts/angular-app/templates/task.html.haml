@@ -49,7 +49,7 @@
                 {{att.created_at | toLocale : true}}
     .new-comment-form
       .annotation Leave comment:
-      %form(ng-submit="createNewItem(newComment, task.comments)" novalidate)
-        %textarea(ng-model="newComment.body")
-        %button(type="submit") add new comment
+      %form(name="newCommentForm" ng-submit="createNewItem(newComment, task.comments)" novalidate)
+        %textarea(ng-model="newComment.body" required)
+        %button(type="submit" ng-disabled="newCommentForm.$invalid") add new comment
 %a(href="#/") back
