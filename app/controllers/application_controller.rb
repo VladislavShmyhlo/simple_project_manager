@@ -7,12 +7,12 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   # before_action :redirect_to_home
 
-  def after_sign_in_path_for(resource_or_scope)
-    if request.env['omniauth.origin']
-      request.env['omniauth.origin']
-    end
-  end
-  
+  # def after_sign_in_path_for(resource_or_scope)
+  #   if request.env['omniauth.origin']
+  #     request.env['omniauth.origin']
+  #   end
+  # end
+
   private
 
   def redirect_to_home
