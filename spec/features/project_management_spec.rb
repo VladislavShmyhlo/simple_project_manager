@@ -20,12 +20,20 @@ feature 'user manages projects', js: true do
       find('button.save').click
     end
     expect(find('.project .name')).to have_content 'new project name'
+  end
 
-    contect 'when user has project' do
-      scenario 'user deletes project' do
-        find('.project .remove').click
-        expect(page).to have_no_selector '.project'
+  contect 'when user has project' do
+    background do
+      find('.new-project-button button').click
+      within '.new-project-form' do
+        fill_in 'name', with: 'new project name'
+        find('button.save').click
       end
+    end
+
+    scenario 'user deletes project' do
+      find('.project .remove').click
+      expect(page).to have_no_selector '.project'
     end
   end
 end
