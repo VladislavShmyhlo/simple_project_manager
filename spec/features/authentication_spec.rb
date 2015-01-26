@@ -14,7 +14,7 @@ feature "authentication", js: true do
     fill_in "user_password", with: user.password
     click_on "Log in"
 
-    expect(page).to have_content("create a project")
+    expect(page).to have_content(/create a project/i)
   end
 
   context "when logged in user" do
@@ -28,7 +28,7 @@ feature "authentication", js: true do
     scenario "signs out" do
       click_on "logout"
 
-      expect(page).to have_content("log in")
+      expect(page).to have_content(/signed out seccessfully/i)
     end
   end
 end
