@@ -18,17 +18,17 @@ feature "authentication", js: true do
     expect(current_path).to eq('/')
   end
 
-  skip "user fails to log in due to invalid data" do
+  scenario "user fails to log in due to invalid data" do
     visit '/'
-    fill_in "user_email", with: '123'
-    fill_in "user_password", with: '321'
+    fill_in "user_email", with: 'wrong@example.com'
+    fill_in "user_password", with: '8digits!'
     click_on "Log in"
 
     expect(page).to have_content(/invalid email or password/i)
   end
 
   context "when logged in user" do
-    let(:new_password) { '8digits' }
+    let(:new_password) { '8digits!' }
 
     background do
       visit '/'
