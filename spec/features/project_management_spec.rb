@@ -72,6 +72,16 @@ feature 'project management', js: true do
           end
         }.to_not change{ find('.created-project .name', visible: false).text }.from(project_name).to(new_invalid_name)
       end
+
+      scenario 'user cancels project edition' do
+        expect {
+          find('.created-project .edit').click
+          within '.project-name-form' do
+            fill_in :name, with: new_invalid_name
+            find('.created-project .cancel').click
+          end
+        }.to_not change{ find('.created-project .name', visible: false).text }
+      end
     end
   end
 end
