@@ -14,9 +14,11 @@ feature 'project management', js: true do
   end
 
   scenario 'user creates new project' do
-    click_on '.new-project-button button'
-    fill_in '.new-project-form input', with: 'new project name'
-    click_on '.new-project-form button.save'
+    click_on /add new project/i
+    within '.new-project-form' do
+      fill_in 'name', with: 'new project name'
+      find('button.save').click
+    end
     expect(find('.project .name')).to have_content 'new project name'
   end
 end

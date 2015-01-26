@@ -28,7 +28,7 @@ feature "authentication", js: true do
     scenario "signs out" do
       click_on "logout"
 
-      expect(page).to have_content(/signed out seccessfully/i)
+      expect(page).to have_content(/signed out successfully/i)
     end
   end
 end
