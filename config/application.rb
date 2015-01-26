@@ -20,6 +20,9 @@ module Manager
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    # TODO: don't forget to remove this line
+    config.action_mailer.perform_deliveries = false
+
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.default_options = { from: 'no-reply@spm.com' }
     config.action_mailer.smtp_settings = {
