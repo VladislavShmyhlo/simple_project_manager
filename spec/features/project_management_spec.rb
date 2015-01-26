@@ -37,11 +37,11 @@ feature 'user manages projects', js: true do
     end
 
     scenario 'user changes project name' do
-      find('.project .edit').click
       expect {
+        find('.project .edit').click
         within '.project-name-form' do
-        fill_in :name, with: 'new name'
-        find('button.save').click
+          fill_in :name, with: 'new name'
+          find('button.save').click
         end
       }.to change{ find('.project .name').text }.from('new project name').to('new name')
     end
