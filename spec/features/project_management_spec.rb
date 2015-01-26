@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'project management', js: true do
+feature 'user manages projects', js: true do
   let(:user) { FactoryGirl.create :user }
 
   background do
@@ -21,8 +21,11 @@ feature 'project management', js: true do
     end
     expect(find('.project .name')).to have_content 'new project name'
 
-    scenario 'and deletes it' do
-      expect(1).to eq(1)
+    contect 'when user has project' do
+      scenario 'user deletes project' do
+        find('.project .remove').click
+        expect(page).to have_no_selector '.project'
+      end
     end
   end
 end
