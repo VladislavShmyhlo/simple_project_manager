@@ -2,7 +2,10 @@ require 'spec_helper'
 
 feature "authentication", js: true do
   let(:user) { FactoryGirl.create :user }
-
+  background do
+    user.confirmed_at = Time.now
+    user.save
+  end
   scenario "user logs in" do
     visit '/'
     fill_in "user_email", with: user.email
