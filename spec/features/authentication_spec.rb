@@ -18,7 +18,7 @@ feature "authentication", js: true do
     expect(current_path).to eq('/')
   end
 
-  pending "user fails to log in due to invalid data" do
+  skip "user fails to log in due to invalid data" do
     visit '/'
     fill_in "user_email", with: '123'
     fill_in "user_password", with: '321'
