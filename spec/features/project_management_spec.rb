@@ -20,5 +20,9 @@ feature 'project management', js: true do
       find('button.save').click
     end
     expect(find('.project .name')).to have_content 'new project name'
+
+    scenario 'and deletes it' do
+      expect(1).to eq(1)
+    end
   end
 end
