@@ -9,18 +9,18 @@
 [Project, Task, Comment, Attachment, User].each &:delete_all
 
 # User.create [
-#                 {email: 'root@root.root', password: 'rootroot', password_confirmation: 'rootroot'},
+#                 {email: 'root@root.root', password: 'rootroot', password_confirmation: 'rootroot'}
 #             ]
-#
+
 # id = User.last.id
 
-5.times {
-  p = Project.create(name: (%w{awesome random cool large complex}.shuffle! << 'project').join(' '))
-  5.times {|i|
-    t = p.tasks.build(description: "Task ##{i+1}", position: i, completed: i % 2 == 0 ? true : false)
-      3.times {|k|
-        t.comments.build(body: "comment number #{i+1}")
-      }
-    p.save!
-  }
-}
+# 5.times {
+#   p = Project.create(name: (%w{awesome random cool large complex}.shuffle! << 'project').join(' '))
+#   5.times {|i|
+#     t = p.tasks.build(description: "Task ##{i+1}", position: i, completed: i % 2 == 0 ? true : false)
+#       3.times {|k|
+#         t.comments.build(body: "comment number #{i+1}")
+#       }
+#     p.save!
+#   }
+# }

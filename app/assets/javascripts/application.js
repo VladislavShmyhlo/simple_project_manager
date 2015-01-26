@@ -24,9 +24,9 @@
 //= require restangular/dist/restangular
 //= require angular-ui-sortable/sortable
 //= require angular-ui-date/src/date
-//= require ngFx/dist/ngFx
-//=// require ngAnimate/js/angular-animate.min
 //= require angular-rails-templates
+//=// require ngFx/dist/ngFx
+//=// require ngAnimate/js/angular-animate.min
 
 //= require ./angular-app/app
 //= require_tree ./angular-app/templates

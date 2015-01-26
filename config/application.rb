@@ -20,6 +20,20 @@ module Manager
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default_options = { from: 'no-reply@spm.com' }
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               'example.com',
+      user_name:            'aion.stu@gmail.com',
+      password:             'hbllbr33',
+      authentication:       'plain',
+      enable_starttls_auto: true
+    }
+
+
+
     config.assets.paths << Rails.root.join("vendor","assets","bower_components")
     config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts")
     config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff)$)
