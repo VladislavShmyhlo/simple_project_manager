@@ -28,7 +28,7 @@ feature "authentication", js: true do
   end
 
   context "when logged in user" do
-    let(:new_password) { 'qwerty' }
+    let(:new_password) { '8digits' }
 
     background do
       visit '/'
