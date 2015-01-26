@@ -18,6 +18,15 @@ feature "authentication", js: true do
     expect(current_path).to eq('/')
   end
 
+  scenario "user fails to log in due to invalid data" do
+    visit '/'
+    fill_in "user_email", with: '123'
+    fill_in "user_password", with: '321'
+    click_on "Log in"
+
+    expect(page).to have_content(/invalid email or password/i)
+  end
+
   context "when logged in user" do
     let(:new_password) { 'qwerty' }
 
@@ -38,7 +47,7 @@ feature "authentication", js: true do
       fill_in 'user_password', with: new_password
       fill_in 'user_password_confirmation', with: new_password
       fill_in 'user_current_password', with: user.password
-      click_on /update/i
+      click_on 'Update'
 
       expect(page).to have_button('Add New Project')
       expect(current_path).to eq('/')
