@@ -14,7 +14,7 @@ feature "authentication", js: true do
     fill_in "user_password", with: user.password
     click_on "Log in"
 
-    expect(page).to have_button(/add new project/i)
+    expect(page).to have_button('Add New Project')
   end
 
   context "when logged in user" do
@@ -33,7 +33,7 @@ feature "authentication", js: true do
     end
 
     scenario 'changes password' do
-      visit 'users/edit'
+      visit '/users/edit'
       fill_in 'user_password', with: new_password
       fill_in 'user_password_confirmation', with: new_password
       fill_in 'user_current_password', with: user.password
