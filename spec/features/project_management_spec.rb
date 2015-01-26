@@ -14,7 +14,7 @@ feature 'project management', js: true do
   end
 
   scenario 'user creates new project' do
-    click_on /add new project/i
+    find('.new-project-button button').click
     within '.new-project-form' do
       fill_in 'name', with: 'new project name'
       find('button.save').click
