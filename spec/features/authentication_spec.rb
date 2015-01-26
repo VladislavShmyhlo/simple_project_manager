@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature "authentication", js: true do
-  let(:user) { FactoryGirl.build :user }
+  let(:user) { FactoryGirl.create :user }
 
   scenario "user logs in" do
     visit '/'

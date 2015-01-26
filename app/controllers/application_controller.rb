@@ -8,4 +8,6 @@ class ApplicationController < ActionController::Base
 
   # TODO: configure email sending
   # TODO: style login pages
+
+  # TODO: integration, acceptance, functional testing
 end
