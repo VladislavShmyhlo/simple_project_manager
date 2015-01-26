@@ -10,8 +10,8 @@ feature "authentication", js: true do
     user.save
   end
   scenario "user logs in" do
+    visit '/'
     login_as(user, :scope => :user)
-    # visit '/'
     # fill_in "user_email", with: user.email
     # fill_in "user_password", with: user.password
     # click_on "Log in"
