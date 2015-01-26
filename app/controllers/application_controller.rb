@@ -10,4 +10,6 @@ class ApplicationController < ActionController::Base
   # TODO: style login pages
 
   # TODO: integration, acceptance, functional testing
+
+  # TODO: use shared contexts for acceptance tests
 end
