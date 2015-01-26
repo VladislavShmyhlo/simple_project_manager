@@ -34,6 +34,8 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
 
+  config.session_store :cookie_store, key: '_myapp_session', expire_after: 7.days, domain: { test: config.host_name }
+
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
