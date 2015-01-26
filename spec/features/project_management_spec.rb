@@ -3,6 +3,8 @@ require 'spec_helper'
 feature 'project management', js: true do
   let(:user) { FactoryGirl.create :user }
   let(:project_name) { 'project name' }
+  let(:new_valid_name) { 'new name' }
+  let(:new_invalid_name) { ' ' }
 
   background do
     user.confirmed_at = Time.now
@@ -24,15 +26,15 @@ feature 'project management', js: true do
         fill_in :name, with: project_name
         find('button.save').click
       end
-      expect(find('.project .name')).to have_content project_name
+      expect(find('.created-project .name')).to have_content(project_name)
     end
 
     scenario 'user fails to create new project due to validation' do
       within '.new-project-form' do
-        fill_in :name, with: ' '
+        fill_in :name, with: new_invalid_name
         find('button.save').click
       end
-      expect(page).to have_no_selector '.project'
+      expect(page).to have_no_selector '.created-project'
     end
   end
 
@@ -46,32 +48,29 @@ feature 'project management', js: true do
     end
 
     scenario 'user deletes project' do
-      find('.project .remove').click
-      expect(page).to have_no_selector '.project'
+      find('.created-project .remove').click
+      expect(page).to have_no_content project_name
     end
 
     feature 'project renaming' do
-      let(:new_valid_name) { 'new name' }
-      let(:new_invalid_name) { ' ' }
-      
       scenario 'user changes project name' do
         expect {
-          find('.project .edit').click
+          find('.created-project .edit').click
           within '.project-name-form' do
             fill_in :name, with: new_valid_name
             find('button.save').click
           end
-        }.to change{ find('.project .name').text }.from(project_name).to(new_valid_name)
+        }.to change{ find('.created-project .name').text }.from(project_name).to(new_valid_name)
       end
 
       scenario 'user fails to change project name due to validation' do
         expect {
-          find('.project .edit').click
+          find('.created-project .edit').click
           within '.project-name-form' do
             fill_in :name, with: new_invalid_name
             find('button.save').click
           end
-        }.to_not change{ find('.project .name').text }.from(project_name).to(new_invalid_name)
+        }.to_not change{ find('.created-project .name', visible: false).text }.from(project_name).to(new_invalid_name)
       end
     end
   end

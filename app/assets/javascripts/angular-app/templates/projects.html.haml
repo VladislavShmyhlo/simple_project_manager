@@ -1,5 +1,5 @@
 .projects(ng-show="projects")
-  .project-wrapper(ng-repeat="project in projects" ng-include=" 'project.html' ")
+  .created-project(ng-repeat="project in projects" ng-include=" 'project.html' ")
 
   .new-project-button
     %span.title(ng-hide="projects.length") Click
