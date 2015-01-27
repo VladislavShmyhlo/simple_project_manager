@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def redirect_if_not_json
-    redirect_to root_path unless request.format == 'application/json'
-  end
+  # def redirect_if_not_json
+  #   redirect_to root_path unless request.format == 'application/json'
+  # end
 end
