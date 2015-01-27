@@ -26,7 +26,7 @@ feature 'navigation', js: true do
     scenario 'navigates to single project page' do
       find('.created-project .name a').click
       # expect(page.execute_script("window.location.hash")).to match(/\A\#\/projects\/\d+\z/)
-      expect(window.hash).to match(/\A\#\/projects\/\d+\z/)
+      expect(current_url).to match(/\A127\.0\.0\.1\:\d+\/\#\/projects\/\d+\z/)
     end
   end
 end
