@@ -1,5 +1,4 @@
 class AttachmentsController < ApplicationController
-  before_action :redirect_if_not_json
   before_action :set_attachment, only: [:show, :edit, :update, :destroy]
   before_action :set_comment, only: [:create, :update]
 
