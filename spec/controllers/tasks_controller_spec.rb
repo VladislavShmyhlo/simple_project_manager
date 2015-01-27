@@ -79,11 +79,11 @@ describe TasksController do
     end
 
     describe "with invalid params" do
-      let(:params) { {task: valid_attributes, project_id: project.to_param} }
-
-      background do
+      setup do
         Task.any_instance.stub(:save).and_return(false)
       end
+
+      let(:params) { {task: valid_attributes, project_id: project.to_param} }
 
       it "fails to create new task" do
         expect(project).to receive(:save)
