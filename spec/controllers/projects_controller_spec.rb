@@ -31,6 +31,8 @@ describe ProjectsController do
   let(:valid_session) { {} }
   let(:user) { FactoryGirl.create :user }
   before :each do
+    user.confirmed_at = Time.now
+    user.save
     sign_in user
   end
 
