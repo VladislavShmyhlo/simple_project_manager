@@ -82,7 +82,7 @@
   border: solid 1px $color-border-blue;
   color: $color-white;
   @include white-text-shadow;
-  background: url(bg_blue.png) top repeat-x;
+  background: url(bg_blue.png) repeat-x top center;
   line-height: 28px;
   display: inline-block;
   padding: 0 20px;

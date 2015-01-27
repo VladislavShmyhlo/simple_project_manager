@@ -201,7 +201,7 @@ label {
     line-height: 20px;
     padding: 10px 20px;
     margin: 0 10px;
-    background: url(bg_blue.png) repeat-x 50% 50%;
+    background: url(bg_blue.png) repeat-x top center;
     border: solid 1px $color-border-blue;
     border-radius: 2px;
     &:hover {
@@ -233,7 +233,7 @@ label {
   overflow: hidden;
   .title {
     @include clearfix;
-    background: url(bg_blue.png) repeat-x 50% 50%;
+    background: url(bg_blue.png) repeat-x top center;
     border: solid 1px $color-border-blue;
     border-radius: 2px 2px 0 0;
     color: $color-white;
