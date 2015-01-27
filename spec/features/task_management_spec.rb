@@ -24,7 +24,7 @@ feature 'project management', js: true do
     end
 
     scenario "user creates task" do
-      within 'new-task-form' do
+      within '.new-task-form' do
         3.times do
           fill_in :description, width: task_name
           click_on 'Add Task'
