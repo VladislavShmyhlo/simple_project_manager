@@ -1,44 +1,51 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :set_task, only: [:create, :update]
-
-  respond_to :json
+  before_action :set_comment, only: [:show, :update, :destroy]
+  before_action :set_task, only: [:create]
 
   def index
-    @comments = Comment.all
-    respond_with(@comments)
+    @comments = current_user.comments.where(tasks: {id: params[:task_id]}).all
+    render 'index.json'
   end
 
   def show
-    respond_with(@comment)
+    render 'show.json'
   end
 
   def create
     @comment = @task.comments.new(comment_params)
+
     if @comment.save
       render 'show.json'
     else
-      # render head: :no_content, status: 500
+      render json: @comment.errors, status: :unprocessable_entity
     end
   end
 
   def update
-    @comment.update(comment_params)
-    respond_with(@comment)
+    if @comment.update(comment_params)
+      render 'show.json'
+    else
+      render json: @comment.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    @comment.destroy
-    respond_with(@comment)
+    if @comment.destroy
+      head :no_content
+    else
+      # TODO: implement error response
+      # head :no_content
+      head :unprocessable_entity
+    end
   end
 
   private
     def set_task
-      @task = Task.find(params[:task_id])
+      @task = current_user.tasks.find(params[:task_id])
     end
 
     def set_comment
-      @comment = Comment.find(params[:id])
+      @comment = current_user.comments.find(params[:id])
     end
 
     def comment_params
