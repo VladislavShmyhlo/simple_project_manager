@@ -1,59 +1,55 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:edit, :update, :destroy]
+  before_action :set_task, only: [:update, :destroy]
   before_action :set_project, only: [:create]
-  respond_to :json
 
   def index
-    @tasks = Task.all
-    respond_with(@tasks)
+    @tasks = Task.joins(project: :user).where(users: {id: current_user.to_param})
+    render 'index.json'
   end
 
   def show
-    @task = Task.includes(comments: :attachments).find(params[:id])
-
-    def verify_user_for(record)
-      association_name = record.class.to_s.downcase.pluralize
-      current_user.send(association_name).include? record
-    end
-  end
-
-  def new
-    @task = Task.new
-    respond_with(@task)
-  end
-
-  def edit
+    @task = Task.includes(comments: :attachments).joins(project: :user).find_by(users: {id: current_user.to_param}, tasks: {id: params[:id]})
+    render 'show.json'
   end
 
   def create
-    @task = @project.tasks.build(task_params)
-    respond_to {|format|
-      if @task.save
-        format.json { render :show }
-      end
-    }
+    @task = @project.tasks.new(task_params)
+
+    if @task.save
+      render 'show.json'
+    else
+      render json: @task.errors, status: :unprocessable_entity
+    end
   end
 
   def update
-    @task.update(task_params)
-    respond_with(@task)
+    if @task.update(task_params)
+      render 'show.json'
+    else
+      render json: @task.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    @task.destroy
-    respond_with(@task)
+    if @task.destroy
+      head :no_content
+    else
+      # TODO: implement error response
+      # head :no_content
+      head :unprocessable_entity
+    end
   end
 
   private
     def set_project
-      @project = Project.find(params[:project_id])
+      @project = current_user.projects.find(params[:project_id])
     end
 
     def set_task
-      @task = Task.find(params[:id])
+      @task = Task.joins(project: :user).find_by(users: {id: current_user.to_param}, tasks: {id: params[:id]})
     end
 
     def task_params
-      params.require(:task).permit(:id, :description, :completed, :position, :deadline)
+      params.require(:task).permit(:description, :completed, :position, :deadline)
     end
 end

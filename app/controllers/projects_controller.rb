@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   # respond_to :json
 
   def index
+    # @projects = current_user.projects.eager_load(:tasks).all
     @projects = current_user.projects.includes(:tasks).all
     render 'index.json'
   end
@@ -15,7 +16,7 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.new(project_params)
 
-    if @project.save(project_params)
+    if @project.save
       render 'show.json'
     else
       render json: @project.errors, status: :unprocessable_entity
@@ -41,11 +42,11 @@ class ProjectsController < ApplicationController
   end
 
   private
-  def set_project
-    @project = current_user.projects.find(params[:id])
-  end
+    def set_project
+      @project = current_user.projects.find(params[:id])
+    end
 
-  def project_params
-    params.require(:project).permit(:name, tasks_attributes: [:id, :description, :completed, :position, :deadline])
-  end
+    def project_params
+      params.require(:project).permit(:name, tasks_attributes: [:id, :description, :completed, :position, :deadline])
+    end
 end

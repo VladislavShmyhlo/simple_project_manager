@@ -10,9 +10,10 @@ class ApplicationController < ActionController::Base
   # TODO: style login pages
 
   # TODO: integration, acceptance, functional testing
-
+  # TODO: fix views
   # TODO: use shared contexts for acceptance tests
-
+  # TODO: how application will respond in production to wrong request format?
+  # TODO: move throbber to container
   private
 
   # def redirect_if_not_json
