@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
   # TODO: use shared contexts for acceptance tests
   # TODO: how application will respond in production to wrong request format?
   # TODO: move throbber to container
+  # TODO: implement confirmation skipping for ouath
+  # TODO: check default url options for sending mail
   private
 
   # def redirect_if_not_json
