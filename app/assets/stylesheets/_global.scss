@@ -22,10 +22,11 @@ body {
         border-radius: 4px;
         .actions,
         .field {
-          margin-top: 10px;
-          &:nth-of-type(1) {
-            margin-top: 0;
-          }
+          margin-bottom: 10px;
+        }
+        .actions {
+          margin-bottom: 0;
+          text-align: center;
         }
         label {
           color: $color-white;

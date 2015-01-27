@@ -12,4 +12,10 @@ class ApplicationController < ActionController::Base
   # TODO: integration, acceptance, functional testing
 
   # TODO: use shared contexts for acceptance tests
+
+  private
+
+  def redirect_if_not_json
+    redirect_to root_path unless request.format == 'application/json'
+  end
 end

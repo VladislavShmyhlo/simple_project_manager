@@ -7,12 +7,12 @@ describe StaticController do
       get 'index'
     end
 
-    it "renders the index.json template" do
-      expect(response).to render_template(:index)
+    it 'is successful' do
+      expect(response.status).to eq(200)
     end
 
-    it "is successful" do
-      expect(response.status).to eq(200)
+    it "renders index" do
+      expect(response).to render_template(:index)
     end
   end
 end

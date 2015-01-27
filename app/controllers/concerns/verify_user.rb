@@ -1,3 +1,0 @@
-module VerifyUser
-
-end

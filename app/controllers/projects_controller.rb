@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :redirect_if_not_json
   before_action :set_project, only: [:show, :update, :destroy]
 
   # respond_to :json

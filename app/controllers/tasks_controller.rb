@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  include VerifyUser
+  before_action :redirect_if_not_json
   before_action :set_task, only: [:edit, :update, :destroy]
   before_action :set_project, only: [:create]
   respond_to :json

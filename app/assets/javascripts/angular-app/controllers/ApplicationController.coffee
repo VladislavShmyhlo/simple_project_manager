@@ -4,10 +4,16 @@
 
   Restangular.setErrorInterceptor (response) ->
     loadingStatus false
-    if response.status is 401
-      window.location = 'users/sign_in'
-      return false
-    $rootScope.$broadcast 'error', response
+    switch response.status
+      when 401
+        window.location = 'users/sign_in'
+        return false
+      when 404
+        $location.path '/'
+        $rootScope.$broadcast 'error', response
+        return false
+      else
+        $rootScope.$broadcast 'error', response
 
   Restangular.addFullRequestInterceptor ->
     loadingStatus true
