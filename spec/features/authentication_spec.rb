@@ -28,14 +28,7 @@ feature "authentication", js: true do
   end
 
   context "when logged in user" do
-    let(:new_password) { '8digits!' }
-
-    background do
-      visit '/'
-      fill_in "user_email", with: user.email
-      fill_in "user_password", with: user.password
-      click_on "Log in"
-    end
+    include_context 'user logged in'
 
     scenario "signs out" do
       click_on "logout"
