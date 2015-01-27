@@ -1,18 +1,10 @@
 require 'spec_helper'
 
 feature 'project management', js: true do
-  let(:user) { FactoryGirl.create :user }
+  include_context 'user logged in'
+
   let(:project_name) { 'project name' }
   let(:task_name) { 'task name' }
-  background do
-    user.confirmed_at = Time.now
-    user.save
-
-    visit '/'
-    fill_in 'user_email', with: user.email
-    fill_in 'user_password', with: user.password
-    click_on 'Log in'
-  end
 
   context 'when user has project' do
     background do
