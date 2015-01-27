@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :update, :destroy]
 
-  # respond_to :json
+  # kind of restful way of rendering responses
 
   def index
     # @projects = current_user.projects.eager_load(:tasks).all
