@@ -15,6 +15,9 @@ body {
     color: $color-border-blue;
     #container {
       width: 400px;
+      & > .alert {
+        @include block-shadow;
+      }
       form {
         background: rgba($color-border-blue, .5);
         @include block-shadow;
