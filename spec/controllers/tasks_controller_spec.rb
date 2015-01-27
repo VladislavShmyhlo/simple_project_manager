@@ -35,7 +35,7 @@ describe TasksController do
   # ====================================================================================================================
   describe "GET show" do
     before :each do
-      get :show, {id: project.to_param, project_id: project.to_param}, valid_session
+      get :show, {id: task.to_param, project_id: project.to_param}, valid_session
     end
 
     it "assigns the requested task as @task" do
@@ -79,14 +79,14 @@ describe TasksController do
     end
 
     describe "with invalid params" do
-      setup do
+      before :each do
         Task.any_instance.stub(:save).and_return(false)
       end
 
       let(:params) { {task: valid_attributes, project_id: project.to_param} }
 
       it "fails to create new task" do
-        expect(project).to receive(:save)
+        expect(task).to receive(:save)
         expect {
           post :create, params, valid_session
         }.to change(project.tasks, :count).by(0)
@@ -94,18 +94,17 @@ describe TasksController do
 
       it "assigns a newly created but unsaved task as @task" do
         post :create, params, valid_session
-        assigns(:task).should be_a_new(Task)
+        expect(assigns(:task)).to be_a_new(Task)
       end
 
       it "renders errors" do
-        Task.any_instance.stub(:errors).and_return(false)
+        Task.any_instance.stub(:errors).and_return('errors')
         post :create, params, valid_session
-        # TODO: find out how to expect render project.errors
-        expect(response.body).to be false
+        expect(response.body).to eq('errors')
       end
 
       it "responds with 422" do
-        post :create, {:project => invalid_attributes}, valid_session
+        post :create, params, valid_session
         expect(response.status).to eq(422)
       end
     end
