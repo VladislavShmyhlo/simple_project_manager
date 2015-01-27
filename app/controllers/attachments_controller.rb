@@ -13,14 +13,6 @@ class AttachmentsController < ApplicationController
     respond_with(@attachment)
   end
 
-  def new
-    @attachment = Attachment.new
-    respond_with(@attachment)
-  end
-
-  def edit
-  end
-
   def create
     @attachment = @comment.attachments.new(attachment_params)
     if @attachment.save

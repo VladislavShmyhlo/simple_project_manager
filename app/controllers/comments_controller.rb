@@ -13,14 +13,6 @@ class CommentsController < ApplicationController
     respond_with(@comment)
   end
 
-  def new
-    @comment = Comment.new
-    respond_with(@comment)
-  end
-
-  def edit
-  end
-
   def create
     @comment = @task.comments.new(comment_params)
     if @comment.save
