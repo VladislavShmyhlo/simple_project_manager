@@ -6,9 +6,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   before_action :authenticate_user!
 
-  # TODO: configure email sending
   # TODO: style login pages
-
+  # TODO: add form errors to all forms
   # TODO: integration, acceptance, functional testing
   # TODO: fix views
   # TODO: use shared contexts for acceptance tests

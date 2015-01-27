@@ -3,12 +3,12 @@ class TasksController < ApplicationController
   before_action :set_project, only: [:create]
 
   def index
-    @tasks = Task.joins(project: :user).where(users: {id: current_user.to_param})
+    @tasks = current_user.tasks.where(projects: {id: params[:project_id]}).all
     render 'index.json'
   end
 
   def show
-    @task = Task.includes(comments: :attachments).joins(project: :user).find_by(users: {id: current_user.to_param}, tasks: {id: params[:id]})
+    @task = current_user.tasks.includes(comments: :attachments).find(params[:id])
     render 'show.json'
   end
 
@@ -46,7 +46,7 @@ class TasksController < ApplicationController
     end
 
     def set_task
-      @task = Task.joins(project: :user).find_by(users: {id: current_user.to_param}, tasks: {id: params[:id]})
+      @task = current_user.tasks.find(params[:id])
     end
 
     def task_params
