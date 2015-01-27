@@ -1,8 +1,9 @@
 .tasks(ng-controller="TasksController" )
   .new-task-form
     %form(name='newTaskForm' ng-submit="createNewTask(newTask, tasks)" novalidate)
+      -# TODO: add form errors
       .input-group
-        %input.form-control(type="text" ng-model="newTask.description" placeholder="Start typing here to create a task..." required)
+        %input.form-control(name="description" type="text" ng-model="newTask.description" placeholder="Start typing here to create a task..." required)
         %span.input-group-btn
           %input.btn.btn-default(type="submit" ng-disabled="newTaskForm.$invalid" value="Add Task")
   .tasks-list(ng-model="tasks" ui-sortable="sortableOptions")
