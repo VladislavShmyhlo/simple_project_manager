@@ -177,15 +177,13 @@ describe ProjectsController do
 
       it "renders errors" do
         # Trigger the behavior that occurs when invalid params are submitted
-        project = Project.any_instance.stub(:errors).and_return('errors')
+        Project.any_instance.stub(:errors).and_return('errors')
         put :update, {:id => project.to_param, :project => invalid_attributes}, valid_session
-        # TODO: find out how to expect render project.errors
-        # TODO: maybe 'to have key' or 'errors to_not be empty'
         expect(response.body).to eq('errors')
       end
 
       it "responds with 422" do
-        project = Project.any_instance.stub(:save).and_return(false)
+        Project.any_instance.stub(:save).and_return(false)
         put :update, {:id => project.to_param, :project => invalid_attributes}, valid_session
         expect(response.status).to eq(422)
       end

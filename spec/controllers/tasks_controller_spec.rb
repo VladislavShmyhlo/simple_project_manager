@@ -86,7 +86,7 @@ describe TasksController do
       let(:params) { {task: valid_attributes, project_id: project.to_param} }
 
       it "fails to create new task" do
-        expect(task).to receive(:save)
+        Task.any_instance.should_receive(:save)
         expect {
           post :create, params, valid_session
         }.to change(project.tasks, :count).by(0)
