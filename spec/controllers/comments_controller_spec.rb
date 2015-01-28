@@ -64,7 +64,7 @@ describe CommentsController do
 
       it "assigns a newly created comment as @comment" do
         post :create, params, valid_session
-        expect(assigns(:comment)).to be_a(comment)
+        expect(assigns(:comment)).to be_a(Comment)
         expect(assigns(:comment)).to be_persisted
       end
 
@@ -95,7 +95,7 @@ describe CommentsController do
 
       it "assigns a newly created but unsaved comment as @comment" do
         post :create, params, valid_session
-        expect(assigns(:comment)).to be_a_new(comment)
+        expect(assigns(:comment)).to be_a_new(Comment)
       end
 
       it "renders errors" do
