@@ -169,6 +169,7 @@ describe ProjectsController do
       before :each do
         Project.any_instance.stub(:update).and_return(false)
       end
+
       it "fails to update a project" do
         Project.any_instance.should_receive(:update)
         put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
@@ -183,8 +184,7 @@ describe ProjectsController do
       it "renders errors" do
         # TODO: WTF?
         # Trigger the behavior that occurs when invalid params are submitted
-        Project.any_instance.stub(:errors).and_return('errors')
-        Project.any_instance.should_receive(:errors)
+        Project.any_instance.should_receive(:errors).and_return('errors')
         put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
         expect(response.body).to eq('errors')
       end
