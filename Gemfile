@@ -32,8 +32,8 @@ gem 'omniauth-facebook'
 gem 'haml-rails'
 # bower
 gem 'bower-rails'
-# angular templates
 gem 'angular-rails-templates'
+gem 'font-awesome-sass'
 
 # Use jquery as the JavaScript library
 # gem 'jquery-rails'
