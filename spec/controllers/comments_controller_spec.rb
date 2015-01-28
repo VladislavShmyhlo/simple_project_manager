@@ -81,13 +81,13 @@ describe CommentsController do
 
     describe "with invalid params" do
       before :each do
-        comment.any_instance.stub(:save).and_return(false)
+        Comment.any_instance.stub(:save).and_return(false)
       end
 
       let!(:params) { {comment: valid_attributes, task_id: task.to_param} }
 
       it "fails to create new comment" do
-        comment.any_instance.should_receive(:save)
+        Comment.any_instance.should_receive(:save)
         expect {
           post :create, params, valid_session
         }.to change(task.comments, :count).by(0)
@@ -99,7 +99,7 @@ describe CommentsController do
       end
 
       it "renders errors" do
-        comment.any_instance.should_receive(:errors).and_return('errors')
+        Comment.any_instance.should_receive(:errors).and_return('errors')
         post :create, params, valid_session
         expect(response.body).to eq('errors')
       end
@@ -116,7 +116,7 @@ describe CommentsController do
 
     describe "with valid params" do
       it "updates the requested comment" do
-        comment.any_instance.should_receive(:update).and_return(true)
+        Comment.any_instance.should_receive(:update).and_return(true)
         put :update, params, valid_session
       end
 
@@ -138,11 +138,11 @@ describe CommentsController do
 
     describe "with invalid params" do
       before :each do
-        comment.any_instance.stub(:update).and_return(false)
+        Comment.any_instance.stub(:update).and_return(false)
       end
 
       it "fails to update comment" do
-        comment.any_instance.should_receive(:update)
+        Comment.any_instance.should_receive(:update)
         put :update, params, valid_session
       end
 
@@ -152,7 +152,7 @@ describe CommentsController do
       end
 
       it "renders errors" do
-        comment.any_instance.should_receive(:errors).and_return('errors')
+        Comment.any_instance.should_receive(:errors).and_return('errors')
         put :update, params, valid_session
         expect(response.body).to eq('errors')
       end
@@ -169,7 +169,7 @@ describe CommentsController do
 
     describe "with successful destroy" do
       it "destroys the requested comment" do
-        comment.any_instance.should_receive(:destroy).and_call_original
+        Comment.any_instance.should_receive(:destroy).and_call_original
         expect {
           delete :destroy, params, valid_session
         }.to change(task.comments, :count).by(-1)
@@ -193,11 +193,11 @@ describe CommentsController do
 
     describe "with failed destroy" do
       before :each do
-        comment.any_instance.stub(:destroy).and_return(false)
+        Comment.any_instance.stub(:destroy).and_return(false)
       end
 
       it "fails to destroy comment" do
-        comment.any_instance.should_receive(:destroy)
+        Comment.any_instance.should_receive(:destroy)
         expect {
           delete :destroy, params, valid_session
         }.to change(task.comments, :count).by(0)
