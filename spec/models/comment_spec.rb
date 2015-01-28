@@ -25,21 +25,19 @@ describe Comment do
 
   it "has many attachments" do
     expect {
-      # TODO: attachment implementation should be fixed
-      3.times { comment.attachments << Attachment.new(file: File.open('/home/shmyhlo/Desktop/test.rb')) }
+      3.times { comment.attachments << FactoryGirl.build(:attachment, file: file) }
       comment.save
     }.to change(comment.attachments, :count).by(3)
   end
 
   it "should be destroyed with it's attachments" do
-    # TODO: attachment implementation should be fixed
-    3.times { comment.attachments << Attachment.new(file: File.open('/home/shmyhlo/Desktop/test.rb')) }
+    # TODO: fix this on all specs
+    3.times { comment.attachments << FactoryGirl.build(:attachment, file: file) }
     comment.save
-    ids = comment.attachments.map &:id
     expect {
       comment.destroy
-    }.to change(Attachment.where(id: ids), :count).by(-3)
-    expect(Attachment.where(id: ids).count).to eq(0)
+    }.to change(Attachment.where(comment_id: comment.to_param), :count).by(-3)
+    expect(Attachment.where(comment_id: comment.to_param).count).to eq(0)
   end
 
   it "belongs to task" do
