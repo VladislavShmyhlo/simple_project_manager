@@ -26,7 +26,7 @@ module Manager
     config.action_mailer.smtp_settings = {
       address:              'smtp.gmail.com',
       port:                 587,
-      domain:               'example.com',
+      domain:               'heroku.com',
       user_name:            'aion.stu@gmail.com',
       password:             'hbllbr33',
       authentication:       'plain',
