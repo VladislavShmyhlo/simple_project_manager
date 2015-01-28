@@ -20,3 +20,4 @@
 
 # Paperclip uploaded files
 /public/system
+/spec/test_files

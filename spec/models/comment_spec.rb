@@ -1,7 +1,11 @@
 require 'spec_helper'
 
 describe Comment do
+  include_context 'with file'
+
   subject(:comment) { FactoryGirl.build(:comment) }
+
+  let(:attachment) { FactoryGirl.build :attachment, file: file }
 
   it "passes with valid body" do
     comment.body = 'valid body'
