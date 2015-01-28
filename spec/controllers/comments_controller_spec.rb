@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe commentsController do
+describe CommentsController do
   include_context 'valid session'
 
   let(:valid_attributes) { { "description" => "valid description" } }
