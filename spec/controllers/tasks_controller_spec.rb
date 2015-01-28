@@ -152,7 +152,7 @@ describe TasksController do
 
       it "renders errors" do
         Task.any_instance.should_receive(:errors).and_return('errors')
-        post :update, params, valid_session
+        put :update, params, valid_session
         expect(response.body).to eq('errors')
       end
 
