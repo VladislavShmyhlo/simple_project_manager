@@ -1,14 +1,10 @@
 require 'spec_helper'
-# TODO: configure tmp dir for attached files
+
 describe Attachment do
-  # TODO: this subject should be reimplemented
+  include_context 'with file'
+
   subject(:attachment) do
-    path = "#{Rails.root}/spec/test_files/test.txt"
-    FileUtils.mkdir "#{Rails.root}/spec/test_files"
-    File.open(path, 'a') do |f|
-      f.write Time.now.to_s
-    end
-    FactoryGirl.build :attachment, file: File.read(path)
+    FactoryGirl.build :attachment, file: file
   end
 
   it "should be saved" do
@@ -31,7 +27,7 @@ describe Attachment do
     expect(attachment).to validate_attachment_presence(:file)
   end
 
-  xit "validates attached file content type" do
+  it "validates attached file content type" do
     pending "has no content type validation"
     expect(attachment).to validate_attachment_content_type(:file)
                        # .allowing('image/png', 'image/gif')
