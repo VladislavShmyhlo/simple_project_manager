@@ -18,6 +18,8 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
+# TODO: refactor entire spec
+
 describe ProjectsController do
   include_context 'valid session'
   # This should return the minimal set of attributes required to create a valid
@@ -104,6 +106,10 @@ describe ProjectsController do
     end
 
     describe "with invalid params" do
+      before :each do
+        Project.any_instance.stub(:save).and_return(false)
+      end
+
       it "fails to create a new Project" do
         expect {
           post :create, {:project => invalid_attributes}, valid_session
@@ -112,21 +118,18 @@ describe ProjectsController do
 
       it "assigns a newly created but unsaved project as @project" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Project.any_instance.stub(:save).and_return(false)
         post :create, {:project => invalid_attributes}, valid_session
         assigns(:project).should be_a_new(Project)
       end
 
       it "renders errors" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Project.any_instance.stub(:errors).and_return('errors')
-        post :create, {:project => invalid_attributes}, valid_session
+        post :create, {:project => valid_attributes}, valid_session
         # TODO: find out how to expect render project.errors
         expect(response.body).to eq('errors')
       end
 
       it "responds with 422" do
-        Project.any_instance.stub(:save).and_return(false)
         post :create, {:project => invalid_attributes}, valid_session
         expect(response.status).to eq(422)
       end
@@ -165,26 +168,25 @@ describe ProjectsController do
     describe "with invalid params" do
       it "fails to update a project" do
         Project.any_instance.should_receive(:update).with(invalid_attributes).and_return(false)
-        put :update, {:id => project.to_param, :project => invalid_attributes}, valid_session
+        put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
       end
 
       it "assigns the project as @project" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Project.any_instance.stub(:save).and_return(false)
-        put :update, {:id => project.to_param, :project => invalid_attributes}, valid_session
+        put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
         assigns(:project).should eq(project)
       end
 
       it "renders errors" do
         # Trigger the behavior that occurs when invalid params are submitted
         Project.any_instance.stub(:errors).and_return('errors')
-        put :update, {:id => project.to_param, :project => invalid_attributes}, valid_session
+        put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
         expect(response.body).to eq('errors')
       end
 
       it "responds with 422" do
         Project.any_instance.stub(:save).and_return(false)
-        put :update, {:id => project.to_param, :project => invalid_attributes}, valid_session
+        put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
         expect(response.status).to eq(422)
       end
     end
