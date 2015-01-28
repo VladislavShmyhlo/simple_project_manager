@@ -136,7 +136,7 @@ describe ProjectsController do
   end
   # ====================================================================================================================
   describe "PUT update" do
-    let(:project) { user.projects.create! valid_attributes }
+    let(:project) { user.projects.create valid_attributes }
 
     describe "with valid params" do
       it "updates the requested project" do
@@ -185,7 +185,7 @@ describe ProjectsController do
         # Project.any_instance.stub(:errors).and_return('errors')
         Project.any_instance.should_receive(:errors)
         put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
-        # expect(response.body).to eq('errors')
+        expect(response.body).to eq('errors')
       end
 
       it "responds with 422" do
