@@ -20,7 +20,7 @@ describe TasksController do
       get :index, { project_id: project.to_param }, valid_session
     end
 
-    it "assigns all tasks as @tasks" do
+    it "assigns project's tasks as @tasks" do
       expect(assigns(:tasks)).to eq([task])
     end
 
@@ -53,7 +53,7 @@ describe TasksController do
   # ====================================================================================================================
   describe "POST create" do
     describe "with valid params" do
-      let(:params) { {task: valid_attributes, project_id: project.to_param} }
+      let!(:params) { {task: valid_attributes, project_id: project.to_param} }
 
       it "creates a new task" do
         expect {
@@ -83,7 +83,7 @@ describe TasksController do
         Task.any_instance.stub(:save).and_return(false)
       end
 
-      let(:params) { {task: valid_attributes, project_id: project.to_param} }
+      let!(:params) { {task: valid_attributes, project_id: project.to_param} }
 
       it "fails to create new task" do
         Task.any_instance.should_receive(:save)
@@ -112,7 +112,7 @@ describe TasksController do
   # ====================================================================================================================
   describe "PUT update" do
     # here let MUST be with bang!
-    let!(:params) { {id: task.to_param, task: valid_attributes, project_id: project.to_param } }
+    let!(:params) { {id: task.to_param, task: valid_attributes} }
 
     describe "with valid params" do
       it "updates the requested task" do
@@ -164,58 +164,59 @@ describe TasksController do
     end
   end
   # # ====================================================================================================================
-  # describe "DELETE destroy" do
-  #   it "renders nothing" do
-  #     expect(response.body).to be_empty
-  #   end
-  #
-  #   # TODO: "with successful destroy" ?
-  #   describe "with successful destroy" do
-  #     # TODO: this doesnt work for some reason
-  #     it "destroys the requested project" do
-  #       project = user.projects.create! valid_attributes
-  #       Project.any_instance.should_receive(:destroy).and_call_original
-  #
-  #       expect {
-  #         delete :destroy, {:id => project.to_param}, valid_session
-  #       }.to change(user.projects, :count).by(-1)
-  #     end
-  #
-  #     it "assigns destroyed project as @project" do
-  #       delete :destroy, {:id => project.to_param}, valid_session
-  #       expect(assigns(:project)).to eq(project)
-  #       expect(assigns(:project)).to be_destroyed
-  #     end
-  #
-  #     it "responds with 204" do
-  #       delete :destroy, {:id => project.to_param}, valid_session
-  #       expect(response.status).to eq(204)
-  #     end
-  #   end
-  #   # TODO: "with failed destroy" ?
-  #   describe "with failed destroy" do
-  #     before :each do
-  #       Project.any_instance.stub(:destroy).and_return(false)
-  #     end
-  #     it "fails to destroy project" do
-  #       # TODO: return value doesn't work at all
-  #       Project.any_instance.should_receive(:destroy).and_return(false)
-  #       project = user.projects.create! valid_attributes
-  #       expect {
-  #         delete :destroy, {:id => project.to_param}, valid_session
-  #       }.to change(user.projects, :count).by(0)
-  #     end
-  #
-  #     it "assigns not destroyed project as @project" do
-  #       delete :destroy, {:id => project.to_param}, valid_session
-  #       expect(assigns(:project)).to eq(project)
-  #       expect(assigns(:project)).to_not be_destroyed
-  #     end
-  #
-  #     it "responds with 422" do
-  #       delete :destroy, {:id => project.to_param}, valid_session
-  #       expect(response.status).to eq(422)
-  #     end
-  #   end
-  # end
+  describe "DELETE destroy" do
+    let!(:params) { {id: task.to_param, task: valid_attributes} }
+
+    describe "when succeeds" do
+      it "destroys the requested task" do
+        Task.any_instance.should_receive(:destroy).and_call_original
+        expect {
+          delete :destroy, params, valid_session
+        }.to change(project.tasks, :count).by(-1)
+      end
+
+      it "assigns destroyed task as @task" do
+        delete :destroy, params, valid_session
+        expect(assigns(:task)).to eq(task)
+        expect(assigns(:task)).to be_destroyed
+      end
+
+      it "responds with 204" do
+        delete :destroy, params, valid_session
+        expect(response.status).to eq(204)
+      end
+
+      it "renders nothing" do
+        expect(response.body).to be_empty
+      end
+    end
+
+    describe "when fails" do
+      before :each do
+        Task.any_instance.stub(:destroy).and_return(false)
+      end
+
+      it "fails to destroy task" do
+        Project.any_instance.should_receive(:destroy).and_call_original
+        expect {
+          delete :destroy, params, valid_session
+        }.to change(project.tasks, :count).by(0)
+      end
+
+      it "assigns not destroyed task as @task" do
+        delete :destroy, params, valid_session
+        expect(assigns(:task)).to eq(task)
+        expect(assigns(:task)).to_not be_destroyed
+      end
+
+      it "responds with 422" do
+        delete :destroy, params, valid_session
+        expect(response.status).to eq(422)
+      end
+
+      it "renders nothing" do
+        expect(response.body).to be_empty
+      end
+    end
+  end
 end
