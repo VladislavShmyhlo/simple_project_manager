@@ -121,9 +121,9 @@ describe ProjectsController do
         assigns(:project).should be_a_new(Project)
       end
 
-      xit "renders errors" do
+      it "renders errors" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Project.any_instance.stub(:errors).and_return('errors')
+        Project.any_instance.should_receive(:errors).and_return('errors')
         post :create, {:project => valid_attributes}, valid_session
         expect(response.body).to eq('errors')
       end
@@ -170,27 +170,27 @@ describe ProjectsController do
         Project.any_instance.stub(:update).and_return(false)
       end
 
+      # here let MUST be with bang!
+      let!(:params) { {:id => project.to_param, :project => valid_attributes} }
+
       it "fails to update a project" do
         Project.any_instance.should_receive(:update)
-        put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
+        put :update, params, valid_session
       end
 
       it "assigns the project as @project" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
+        put :update, params, valid_session
         assigns(:project).should eq(project)
       end
 
-      xit "renders errors" do
-        # TODO: WTF?
-        # Trigger the behavior that occurs when invalid params are submitted
-        Project.any_instance.stub(:errors).and_return('errors')
-        put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
+      it "renders errors" do
+        Project.any_instance.should_receive(:errors).and_return('errors')
+        put :update, params, valid_session
         expect(response.body).to eq('errors')
       end
 
       it "responds with 422" do
-        put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
+        put :update, params, valid_session
         expect(response.status).to eq(422)
       end
     end
