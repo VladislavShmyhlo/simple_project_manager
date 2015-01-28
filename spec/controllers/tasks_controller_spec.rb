@@ -111,7 +111,8 @@ describe TasksController do
   end
   # ====================================================================================================================
   describe "PUT update" do
-    let(:params) { {id: task.to_param, task: valid_attributes, project_id: project.to_param } }
+    # here let MUST be with bang!
+    let!(:params) { {id: task.to_param, task: valid_attributes, project_id: project.to_param } }
 
     describe "with valid params" do
       it "updates the requested task" do
