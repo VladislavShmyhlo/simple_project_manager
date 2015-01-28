@@ -17,14 +17,14 @@
           %a.description(href="\#{{ task.getRestangularUrl() }}")<
             {{task.description}}
         .controls
-          .handle
+          %i.handle.fa.fa-sort
           %input(type="hidden" ng-model="task.deadline" ui-date="datepickerOptions" ng-change="task.updateAttr('deadline')")
-          %button.edit(ng-click="beginItemEdit(task, 'description')")
-          %button.remove(ng-click="removeItem(task, tasks)")
+          %button.edit.fa.fa-pencil(ng-click="beginItemEdit(task, 'description')")
+          %button.remove.fa.fa-trash(ng-click="removeItem(task, tasks)")
       %form.task-description-form(name="taskForm" ng-submit="confirmItemEdit(task, 'description')" ng-show="task == editing.editedItem" novalidate)
         .description-wrapper
           %form-errors(name="taskForm")
           %textarea(name="description" ng-model="editing.itemNewAttr" input-focus="task == editing.editedItem" input-escape="cancelItemEdit()" required)
         .controls
-          %a.cancel(ng-click="cancelItemEdit()")
-          %button.save(type="submit" ng-disabled="taskForm.$invalid")
+          %a.cancel.fa.fa-times(ng-click="cancelItemEdit()")
+          %button.save.fa.fa-check(type="submit" ng-disabled="taskForm.$invalid")

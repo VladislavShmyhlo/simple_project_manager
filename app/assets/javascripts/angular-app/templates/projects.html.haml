@@ -4,18 +4,18 @@
   .new-project-button
     %span.title(ng-hide="projects.length") Click
     %button(ng-click="addNewProject()" ng-disabled="creatingNewProject")
-      .icon
+      %i.fa.fa-plus.fa-lg
       Add New Project
     %span.title(ng-hide="projects.length") to create a project!
 
 
   .project(ng-show="creatingNewProject")
     .title
-      .calendar
+      %i.title-icon.fa.fa-tasks
       .form
         %form.new-project-form(name="newProjectForm" ng-submit="createNewProject(newProject, projects)" novalidate)
           %form-errors(name="newProjectForm")
           %input(type="text" name="name" ng-model="newProject.name" input-focus="creatingNewProject"
             input-escape="cancelNewProject()" ng-minlength="3" ng-maxlength="80" required)
-          %button.save(type="submit" ng-disabled="newProjectForm.$invalid")
-        %button.cancel(ng-click="cancelNewProject()")
+          %button.save.fa.fa-check(type="submit" ng-disabled="newProjectForm.$invalid")
+        %button.cancel.fa.fa-times(ng-click="cancelNewProject()")

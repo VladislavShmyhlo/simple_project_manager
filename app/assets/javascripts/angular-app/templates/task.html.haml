@@ -27,11 +27,10 @@
     .comments-list
       .comment(ng-repeat=" comment in task.comments | orderBy: 'updated_at' ")
         .controls
-          %button.comment-remove(ng-click="removeItem(comment, task.comments)")
-            .icon
+          %button.comment-remove.fa.fa-trash(ng-click="removeItem(comment, task.comments)")
           %form.new-attachment-form(ng-submit="createAttachment(file, comment.attachments)" name="attachmentForm" enctype="multipart/form-data" novalidate)
             %label.file
-              .icon
+              %i.fa.fa-upload
               %input(type='file' name="file" fileread="file" change="createAttachment(file, comment.attachments)")
           .comment-date
             {{comment.created_at | toLocale : true}}
@@ -41,10 +40,9 @@
           .attachments-list
             .attachment(ng-repeat="att in comment.attachments" )
               %a.name(href="{{att.file}}" target="_blank")
-                .icon
+                %i.fa.fa-paperclip
                 {{att.file_file_name}} ({{att.file_file_size | bytes}})
-              %a.attachment-remove(ng-click="removeItem(att, comment.attachments)")
-                .icon
+              %a.attachment-remove.fa.fa-trash-o(ng-click="removeItem(att, comment.attachments)")
               %span.date
                 {{att.created_at | toLocale : true}}
     .new-comment-form
