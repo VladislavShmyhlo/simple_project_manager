@@ -144,8 +144,9 @@ describe ProjectsController do
         # specifies that the Project created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Project.any_instance.should_receive(:update).with(valid_attributes).and_return(true)
+        Project.any_instance.should_receive(:update)
         put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
+        expect(assigns(:project)).to be_valid
       end
 
       it "assigns the requested project as @project" do
