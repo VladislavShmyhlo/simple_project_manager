@@ -22,13 +22,13 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
 
-  Capybara.register_driver :selenium do |app|
+  Capybara.register_driver :chrome do |app|
     Capybara::Selenium::Driver.new(app, :browser => :chrome)
   end
 
-  # Capybara.default_driver = :selenium
   Capybara.default_driver = :chrome
   Capybara.javascript_driver = :chrome
+  # Capybara.default_driver = :selenium
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
