@@ -3,10 +3,11 @@ require 'spec_helper'
 describe Attachment do
   # TODO: this subject should be reimplemented
   subject(:attachment) do
-    file = File.open "#{Rails.root}/spec/test_files/test.txt", 'a' do |f|
+    path = "#{Rails.root}/spec/test_files/test.txt"
+    File.open path, 'a' do |f|
       f.write Time.now.to_s
     end
-    FactoryGirl.build :attachment, file: File.open('/home/shmyhlo/Desktop/test.rb')
+    FactoryGirl.build :attachment, file: File.read(path)
   end
 
   it "should be saved" do
