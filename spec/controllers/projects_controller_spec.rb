@@ -117,13 +117,13 @@ describe ProjectsController do
       end
 
       it "assigns a newly created but unsaved project as @project" do
-        # Trigger the behavior that occurs when invalid params are submitted
         post :create, {:project => invalid_attributes}, valid_session
         assigns(:project).should be_a_new(Project)
       end
 
       it "renders errors" do
         # Trigger the behavior that occurs when invalid params are submitted
+        Project.any_instance.stub(:errors).and_return('errors')
         post :create, {:project => valid_attributes}, valid_session
         # TODO: find out how to expect render project.errors
         expect(response.body).to eq('errors')
