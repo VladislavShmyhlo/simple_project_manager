@@ -4,7 +4,8 @@ describe Attachment do
   # TODO: this subject should be reimplemented
   subject(:attachment) do
     path = "#{Rails.root}/spec/test_files/test.txt"
-    File.open path, 'a' do |f|
+    FileUtils.mkdir "#{Rails.root}/spec/test_files"
+    File.open(path, 'a') do |f|
       f.write Time.now.to_s
     end
     FactoryGirl.build :attachment, file: File.read(path)
