@@ -52,6 +52,8 @@ group :test, :development do
   gem 'sqlite3'
   # puma
   gem 'puma'
+  # chrome webdriver
+  gem "chromedriver-helper"
 end
 
 gem 'rails_12factor', group: :production
