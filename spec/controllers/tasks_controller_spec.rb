@@ -35,7 +35,7 @@ describe TasksController do
   # ====================================================================================================================
   describe "GET show" do
     before :each do
-      get :show, {id: task.to_param, project_id: project.to_param}, valid_session
+      get :show, {id: task.to_param}, valid_session
     end
 
     it "assigns the requested task as @task" do
@@ -111,7 +111,6 @@ describe TasksController do
   end
   # ====================================================================================================================
   describe "PUT update" do
-    # here let MUST be with bang!
     let!(:params) { {id: task.to_param, task: valid_attributes} }
 
     describe "with valid params" do
@@ -165,9 +164,9 @@ describe TasksController do
   end
   # # ====================================================================================================================
   describe "DELETE destroy" do
-    let!(:params) { {id: task.to_param, task: valid_attributes} }
+    let!(:params) { {id: task.to_param} }
 
-    describe "when succeeds" do
+    describe "with successful destroy" do
       it "destroys the requested task" do
         Task.any_instance.should_receive(:destroy).and_call_original
         expect {
@@ -191,13 +190,13 @@ describe TasksController do
       end
     end
 
-    describe "when fails" do
+    describe "with failed destroy" do
       before :each do
         Task.any_instance.stub(:destroy).and_return(false)
       end
 
       it "fails to destroy task" do
-        Project.any_instance.should_receive(:destroy).and_call_original
+        Task.any_instance.should_receive(:destroy)
         expect {
           delete :destroy, params, valid_session
         }.to change(project.tasks, :count).by(0)

@@ -231,9 +231,9 @@ describe ProjectsController do
       before :each do
         Project.any_instance.stub(:destroy).and_return(false)
       end
+
       it "fails to destroy project" do
-        # TODO: return value doesn't work at all
-        Project.any_instance.should_receive(:destroy).and_return(false)
+        Project.any_instance.should_receive(:destroy)
         project = user.projects.create! valid_attributes
         expect {
           delete :destroy, {:id => project.to_param}, valid_session
