@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      #
+      user.skip_confirmation!
+      #
       if auth.info.email
         user.email = auth.info.email
       end
