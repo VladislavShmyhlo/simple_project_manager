@@ -3,7 +3,7 @@ require 'spec_helper'
 describe CommentsController do
   include_context 'valid session'
 
-  let(:valid_attributes) { { "description" => "valid description" } }
+  let(:valid_attributes) { { "body" => "valid body" } }
   let(:valid_session) { {} }
   let(:project) { user.projects.create! name: 'name' }
   let(:task) { project.tasks.create! description: 'description' }
