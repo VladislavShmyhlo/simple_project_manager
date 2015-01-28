@@ -166,8 +166,11 @@ describe ProjectsController do
     end
 
     describe "with invalid params" do
+      before :each do
+        Project.any_instance.stub(:update).and_return(false)
+      end
       it "fails to update a project" do
-        Project.any_instance.should_receive(:update).with(invalid_attributes).and_return(false)
+        Project.any_instance.should_receive(:update)
         put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
       end
 
@@ -185,7 +188,6 @@ describe ProjectsController do
       end
 
       it "responds with 422" do
-        Project.any_instance.stub(:save).and_return(false)
         put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
         expect(response.status).to eq(422)
       end
