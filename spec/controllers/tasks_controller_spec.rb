@@ -98,7 +98,7 @@ describe TasksController do
       end
 
       it "renders errors" do
-        Task.any_instance.stub(:errors).and_return('errors')
+        Task.any_instance.should_receive(:errors).and_return('errors')
         post :create, params, valid_session
         expect(response.body).to eq('errors')
       end
@@ -110,62 +110,58 @@ describe TasksController do
     end
   end
   # ====================================================================================================================
-  # describe "PUT update" do
-  #   describe "with valid params" do
-  #     it "updates the requested project" do
-  #       # Assuming there are no other projects in the database, this
-  #       # specifies that the Project created on the previous line
-  #       # receives the :update_attributes message with whatever params are
-  #       # submitted in the request.
-  #       Project.any_instance.should_receive(:update).with(valid_attributes).and_return(true)
-  #       put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
-  #     end
-  #
-  #     it "assigns the requested project as @project" do
-  #       put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
-  #       assigns(:project).should eq(project)
-  #     end
-  #
-  #     it "renders show.json" do
-  #       put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
-  #       expect(response).to render_template('show.json')
-  #     end
-  #
-  #     it "is successful" do
-  #       put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
-  #       expect(response.status).to eq(200)
-  #     end
-  #   end
-  #
-  #   describe "with invalid params" do
-  #     it "fails to update a project" do
-  #       Project.any_instance.should_receive(:update).with(invalid_attributes).and_return(false)
-  #       put :update, {:id => project.to_param, :project => invalid_attributes}, valid_session
-  #     end
-  #
-  #     it "assigns the project as @project" do
-  #       # Trigger the behavior that occurs when invalid params are submitted
-  #       Project.any_instance.stub(:save).and_return(false)
-  #       put :update, {:id => project.to_param, :project => invalid_attributes}, valid_session
-  #       assigns(:project).should eq(project)
-  #     end
-  #
-  #     it "renders errors" do
-  #       # Trigger the behavior that occurs when invalid params are submitted
-  #       project = Project.any_instance.stub(:errors).and_return(false)
-  #       put :update, {:id => project.to_param, :project => invalid_attributes}, valid_session
-  #       # TODO: find out how to expect render project.errors
-  #       # TODO: maybe 'to have key' or 'errors to_not be empty'
-  #       expect(response.body).to have_content 'is too short'
-  #     end
-  #
-  #     it "responds with 422" do
-  #       project = Project.any_instance.stub(:save).and_return(false)
-  #       put :update, {:id => project.to_param, :project => invalid_attributes}, valid_session
-  #       expect(response.status).to eq(422)
-  #     end
-  #   end
-  # end
+  describe "PUT update" do
+    let(:params) { {id: task.to_param, task: valid_attributes, project_id: project.to_param } }
+
+    describe "with valid params" do
+      it "updates the requested task" do
+        Task.any_instance.should_receive(:update).and_return(true)
+        put :update, params, valid_session
+      end
+
+      it "assigns the requested task as @task" do
+        put :update, params, valid_session
+        assigns(:task).should eq(task)
+      end
+
+      it "renders show.json" do
+        put :update, params, valid_session
+        expect(response).to render_template('show.json')
+      end
+
+      it "is successful" do
+        put :update, params, valid_session
+        expect(response.status).to eq(200)
+      end
+    end
+
+    describe "with invalid params" do
+      before :each do
+        Task.any_instance.stub(:update).and_return(false)
+      end
+
+      it "fails to update task" do
+        Task.any_instance.should_receive(:update)
+        put :update, params, valid_session
+      end
+
+      it "assigns the task as @task" do
+        put :update, params, valid_session
+        assigns(:task).should eq(task)
+      end
+
+      it "renders errors" do
+        Task.any_instance.should_receive(:errors).and_return('errors')
+        post :update, params, valid_session
+        expect(response.body).to eq('errors')
+      end
+
+      it "responds with 422" do
+        put :update, params, valid_session
+        expect(response.status).to eq(422)
+      end
+    end
+  end
   # # ====================================================================================================================
   # describe "DELETE destroy" do
   #   it "renders nothing" do
