@@ -184,9 +184,9 @@ describe ProjectsController do
         # TODO: WTF?
         # Trigger the behavior that occurs when invalid params are submitted
         Project.any_instance.stub(:errors).and_return('errors')
-        # Project.any_instance.should_receive(:errors)
+        Project.any_instance.should_receive(:errors)
         put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
-        # expect(response.body).to eq('errors')
+        expect(response.body).to eq('errors')
       end
 
       it "responds with 422" do
