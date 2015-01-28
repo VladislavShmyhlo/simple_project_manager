@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
   # TODO: add form errors to all forms
   # TODO: integration, acceptance, functional testing
   # TODO: fix views
-  # TODO: use shared contexts for acceptance tests
   # TODO: how application will respond in production to wrong request format?
   # TODO: move throbber to container
   # TODO: implement confirmation skipping for ouath
