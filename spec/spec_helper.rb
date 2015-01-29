@@ -49,11 +49,13 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
   config.include Paperclip::Shoulda::Matchers
 
+  config.include ActionDispatch::TestProcess
+
   # paperclip filesystem cleaning:
 
-  # config.after(:suite) do
-  #   FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
-  # end
+  config.after(:suite) do
+    FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
+  end
 
   # ## Mock Framework
   #
