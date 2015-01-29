@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   before_action :authenticate_user!
 
+  # TODO: redirect after signout
   # TODO: style login pages
   # TODO: add form errors to all forms
   # TODO: integration, acceptance, functional testing

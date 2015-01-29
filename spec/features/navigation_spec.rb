@@ -14,10 +14,18 @@ feature 'navigation', js: true do
       end
     end
 
-    scenario 'navigates to single project page' do
+    conext 'when user on single project page' do
       find('.created-project .name a').click
-      # TODO: fix this terrible implementation
-      expect(current_url).to match(/\Ahttp\:\/\/127\.0\.0\.1\:\d+\/\#\/projects\/\d+\z/)
+
+      scenario 'navigates to single project page' do
+        # TODO: fix this terrible implementation
+        expect(current_url).to match(/\Ahttp\:\/\/127\.0\.0\.1\:\d+\/\#\/projects\/\d+\z/)
+      end
+
+      scenario 'navigates to single project page' do
+        find('a.view-all').click
+        expect(current_url).to match(/\Ahttp\:\/\/127\.0\.0\.1\:\d+\/\#\/\z/)
+      end
     end
   end
 end
