@@ -49,9 +49,11 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
   config.include Paperclip::Shoulda::Matchers
 
-  config.after(:suite) do
-    FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
-  end
+  # paperclip filesystem cleaning:
+
+  # config.after(:suite) do
+  #   FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
+  # end
 
   # ## Mock Framework
   #
@@ -68,6 +70,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
+
   # config.use_transactional_fixtures = true
   config.use_transactional_fixtures = false
 
