@@ -4,7 +4,7 @@ describe AttachmentsController do
   include_context 'valid session'
 
   let(:valid_session) { {} }
-  let(:valid_attributes) { {"file" => fixture_file_upload(File.join(Rails.root, 'spec', 'fixtures', 'files'), 'text/plain')} }
+  let(:valid_attributes) { {"file" => fixture_file_upload(File.join(Rails.root, 'spec', 'fixtures', 'files', 'file.txt'), 'text/plain')} }
   let(:project) { FactoryGirl.create(:project, user: user)}
   let(:task) { FactoryGirl.create(:task, project: project) }
   let(:comment) { FactoryGirl.create(:comment, task: task) }
