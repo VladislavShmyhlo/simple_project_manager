@@ -84,7 +84,7 @@ describe AttachmentsController do
         Attachment.any_instance.stub(:save).and_return(false)
       end
 
-      let!(:params) { {attachment: valid_attributes, comment_id: comment.to_param} }
+      let!(:params) { {attachment: 'string', comment_id: comment.to_param} }
 
       it "fails to create new attachment" do
         Attachment.any_instance.should_receive(:save)
