@@ -23,14 +23,14 @@ describe Comment do
 
   it "has many attachments" do
     expect {
-      3.times { comment.attachments << FactoryGirl.build(:attachment, file: file) }
+      3.times { comment.attachments << attachment }
       comment.save
     }.to change(comment.attachments, :count).by(3)
   end
 
   it "should be destroyed with it's attachments" do
     # TODO: fix this on all specs
-    3.times { comment.attachments << FactoryGirl.build(:attachment, file: file) }
+    3.times { comment.attachments << attachment }
     comment.save
     expect {
       comment.destroy

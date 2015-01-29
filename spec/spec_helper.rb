@@ -30,6 +30,8 @@ RSpec.configure do |config|
   Capybara.javascript_driver = :chrome
   # Capybara.default_driver = :selenium
 
+  # TODO: DatabaseCleaner works not properly with integration tests
+
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end
@@ -50,9 +52,11 @@ RSpec.configure do |config|
   config.include Paperclip::Shoulda::Matchers
 
   config.include ActionDispatch::TestProcess
+  FactoryGirl::SyntaxRunner.class_eval do
+    include ActionDispatch::TestProcess
+  end
 
   # paperclip filesystem cleaning:
-
   config.after(:suite) do
     FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
   end
