@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   # TODO: move throbber to container
   # TODO: implement confirmation skipping for ouath
   # TODO: check default url options for sending mail
+  # TODO: change mail sender
   private
 
   # def redirect_if_not_json
