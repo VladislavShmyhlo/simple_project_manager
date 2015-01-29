@@ -77,7 +77,6 @@ input.ng-dirty.ng-invalid {
     border-color: $color-red !important;
   }
 }
-
 form-errors {
   $size: 20px;
   position: absolute;
@@ -216,8 +215,7 @@ label {
     &:active {
       box-shadow: inset 0 5px 10px rgba($color-black, .5);
     }
-    .icon {
-      @extend .glyphicon, .glyphicon-plus;
+    i {
       margin-right: 5px;
     }
   }
@@ -238,19 +236,19 @@ label {
     border-radius: 2px 2px 0 0;
     color: $color-white;
     padding: 7px 5px;
-    .calendar {
-      @extend .glyphicon, .glyphicon-tree-conifer;
+    .title-icon {
+//      @extend .glyphicon, .glyphicon-tree-conifer;
       float: left;
       margin-left: 10px;
     }
     .form,
-    .calendar,
+    .title-icon,
     .name {
       line-height: 35px;
       font-size: 20px;
     }
     .name {
-      margin-left: 40px;
+      margin-left: 45px;
       @include clearfix;
       display: block;
       a {
@@ -267,7 +265,7 @@ label {
     .form{
       @include clearfix;
       display: block;
-      padding-left: 35px;
+      padding-left: 40px;
       position: relative;
     }
     form {
@@ -290,46 +288,30 @@ label {
         border-radius: 2px;
       }
     }
-    .save {
-      @extend .glyphicon-ok;
-    }
-    .cancel {
-      @extend .glyphicon-remove;
-    }
-    .edit {
-      @extend .glyphicon-pencil;
-    }
-    .remove {
-      @extend .glyphicon-trash;
-    }
     .save,
     .cancel,
     .edit,
     .remove {
-      @extend .glyphicon;
       @include reset-button;
+      @include white-text-shadow;
       float: right;
-      font-size: 15px;
-      padding: 10px;
+      font-size: 18px;
+      line-height: 35px;
+      width: 35px;
       margin-left: 0;
       @include glyph-hover;
     }
   }
 }
-//input[type='text']
-//input[type='email']
-//input[type='password'] {
-//
-//}
 
-.task-ph {
-  background: rgba($color-white,.25);
-  box-shadow: inset 0 3px 6px rgba($color-black, .25);
-}
+
 .tasks {
   .tasks-list {
-    //    background-color: #fff;
     line-height: 22px;
+  }
+  .task-ph {
+    background: rgba($color-white,.25);
+    box-shadow: inset 0 3px 6px rgba($color-black, .25);
   }
   .task {
     background: $color-white;
@@ -486,10 +468,9 @@ label {
     .remove {
       text-decoration: none;
       @include reset-button;
-      @extend .glyphicon;
       @include glyph-hover;
-      padding: 3px 5px;
-      font-size: 12px;
+      padding: 2px 6px;
+      font-size: 14px;
       cursor: pointer;
       margin: 0 -1px;
       border: {
@@ -498,23 +479,10 @@ label {
       }
     }
     .ui-datepicker-trigger {
-      @extend .glyphicon-calendar;
+      @extend .fa, .fa-calendar-o;
     }
+    .remove,
     .save {
-      @extend .glyphicon-ok;
-      border-right: none;
-    }
-    .cancel {
-      @extend .glyphicon-remove;
-    }
-    .edit {
-      @extend .glyphicon-pencil;
-    }
-    .handle {
-      @extend .glyphicon-sort;
-    }
-    .remove {
-      @extend .glyphicon-trash;
       border-right: none;
     }
   }
@@ -637,14 +605,6 @@ label {
     margin: 0 0 10px;
     border-radius: 4px;
     @include clearfix;
-    .comment-remove {
-      @include reset-button;
-      @extend .glyphicon, .glyphicon-trash;
-      @include glyph-hover;
-      font-size: 16px;
-      padding: 5px;
-      float: right;
-    }
     .body {
       padding: 15px 15px 15px 15px;
       line-height: 20px;
@@ -652,6 +612,7 @@ label {
     .controls {
       margin: 5px 5px 0 10px;
       float: right;
+      font-size: 16px;
       .comment-date {
         font-size: 14px;
         color: $color-grey;
@@ -662,16 +623,17 @@ label {
     }
   }
 }
+.comment .comment-remove,
+.new-attachment-form .file i {
+  @include reset-button;
+  @include glyph-hover;
+  float: right;
+  padding: 5px;
+}
 .new-attachment-form {
+  display: inline-block;
   float: right;
    label.file {
-     @include glyph-hover;
-     @include cursor-hover;
-     .icon {
-       @extend .glyphicon, .glyphicon-floppy-open;
-       font-size: 16px;
-       padding: 5px;
-     }
      input {
        display: none;
      }
@@ -687,16 +649,8 @@ label {
         display: inline-block;
         line-height: 20px;
       }
-      a.name {
-        .icon {
-          @extend .glyphicon, .glyphicon-paperclip;
-        }
-      }
       a.attachment-remove {
         margin: 0 5px;
-        .icon {
-          @extend .glyphicon, .glyphicon-floppy-remove;
-        }
       }
       .date {
         font-size: 12px;

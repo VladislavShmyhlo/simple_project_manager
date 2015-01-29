@@ -1,16 +1,16 @@
 .project(ng-if="project")
   .title
-    .calendar
+    %i.title-icon.fa.fa-tasks
     .name(ng-hide="project == editing.editedItem")
       %a(href="\#{{ project.getRestangularUrl() }}")
         {{project.name}}
-      %button.remove(ng-click="removeItem(project, projects)")
-      %button.edit(ng-click="beginItemEdit(project, 'name')")
+      %button.remove.fa.fa-trash(ng-click="removeItem(project, projects)")
+      %button.edit.fa.fa-pencil(ng-click="beginItemEdit(project, 'name')")
     .form(ng-show="project == editing.editedItem")
       %form.project-name-form(name="projectNameForm" ng-submit="confirmItemEdit(project, 'name')" novalidate)
         %form-errors(name="projectNameForm")
         %input(type="text" name="name" ng-model="editing.itemNewAttr" input-focus="project == editing.editedItem"
           input-escape="cancelItemEdit()" ng-minlength="3" ng-maxlength="80" required)
-        %button.save(type="submit" ng-disabled="projectNameForm.$invalid")
-      %button.cancel(ng-click="cancelItemEdit()")
+        %button.save.fa.fa-check(type="submit" ng-disabled="projectNameForm.$invalid")
+      %button.cancel.fa.fa-times(ng-click="cancelItemEdit()")
   .tasks-wrapper(ng-include=" 'tasks.html' ")

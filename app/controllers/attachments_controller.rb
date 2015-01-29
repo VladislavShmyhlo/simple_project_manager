@@ -12,7 +12,7 @@ class AttachmentsController < ApplicationController
   end
 
   def create
-    @attachments = @comment.attachments.new(attachment_params)
+    @attachment = @comment.attachments.new(attachment_params)
 
     if @attachment.save
       render 'show.json'
