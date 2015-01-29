@@ -12,12 +12,7 @@ class ApplicationController < ActionController::Base
   # TODO: fix views
   # TODO: how application will respond in production to wrong request format?
   # TODO: move throbber to container
-  # TODO: implement confirmation skipping for ouath
   # TODO: check default url options for sending mail
   # TODO: change mail sender
   private
-
-  # def redirect_if_not_json
-  #   redirect_to root_path unless request.format == 'application/json'
-  # end
 end

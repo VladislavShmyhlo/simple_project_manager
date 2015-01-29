@@ -1,20 +1,20 @@
 .tasks(ng-controller="TasksController" )
   .new-task-form
     %form(name='newTaskForm' ng-submit="createNewTask(newTask, tasks)" novalidate)
-      -# TODO: add form errors
+      %form-errors(name='newTaskForm')
       .input-group
         %input.form-control(name="description" type="text" ng-model="newTask.description" placeholder="Start typing here to create a task..." required)
         %span.input-group-btn
           %input.btn.btn-default(type="submit" ng-disabled="newTaskForm.$invalid" value="Add Task")
   .tasks-list(ng-model="tasks" ui-sortable="sortableOptions")
-    .task(ng-repeat="task in tasks" data-id="{{task.id}}" ng-class="taskClass(task)")
+    .task(ng-repeat="task in tasks" data-id="{{task.id}}" ng-class=" [taskClass(task), task.deadline ? 'w-dl': ''] ")
       .completed
         %label
           %input(type="checkbox" ng-model="task.completed" ng-click="updateTask(task)")
           .icon
       .normal(ng-hide="task == editing.editedItem")
         .description-wrapper
-          %a.description(href="\#{{ task.getRestangularUrl() }}")<
+          %a.description(ng-click=" loc.path(task.getRestangularUrl()) ")<
             {{task.description}}
         .controls
           %i.handle.fa.fa-sort

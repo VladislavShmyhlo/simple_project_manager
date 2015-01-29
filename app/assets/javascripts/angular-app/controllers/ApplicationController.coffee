@@ -37,6 +37,8 @@
     editedItem: null
   }
 
+  $scope.loc = $location;
+
   $scope.createNewItem = (item, collection) ->
     collection.create(item).then ->
       delete item[k] for k,v of item

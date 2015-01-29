@@ -50,4 +50,3 @@
       %form(name="newCommentForm" ng-submit="createNewItem(newComment, task.comments)" novalidate)
         %textarea(ng-model="newComment.body" required)
         %button(type="submit" ng-disabled="newCommentForm.$invalid") add new comment
-%a(href="#/") back
