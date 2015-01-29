@@ -5,7 +5,7 @@ describe TasksController do
 
   let(:valid_attributes) { { "description" => "valid description" } }
   let(:valid_session) { {} }
-  let(:project) { FactoryGirl.create(:project, user: user) }
+  let(:project) { FactoryGirl.create(:project, user: user)}
   let(:task) { FactoryGirl.create(:task, project: project) }
 
   it "raises RecordNotFound" do

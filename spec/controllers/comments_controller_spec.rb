@@ -5,9 +5,9 @@ describe CommentsController do
 
   let(:valid_attributes) { { "body" => "valid body" } }
   let(:valid_session) { {} }
-  let(:project) { user.projects.create! name: 'name' }
-  let(:task) { project.tasks.create! description: 'description' }
-  let(:comment) { task.comments.create! body: 'body' }
+  let(:project) { FactoryGirl.create(:project, user: user)}
+  let(:task) { FactoryGirl.create(:task, project: project) }
+  let(:comment) { FactoryGirl.create(:comment, task: task) }
 
   # TODO: rewrite this
   it "raises RecordNotFound" do
