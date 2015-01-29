@@ -151,8 +151,10 @@ messages {
   }
 }
 #throbber {
-  right: 20px;
-  top: 20px;
+  left: 50%;
+  margin-left: 370px;
+  // right: 20px;
+  top: (40px + 22px + 10px);
   position: fixed;
 }
 label {
