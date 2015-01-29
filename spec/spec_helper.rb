@@ -22,6 +22,14 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
 
+  config.include Devise::TestHelpers, type: :controller
+  config.include Paperclip::Shoulda::Matchers
+
+  config.include ActionDispatch::TestProcess
+  FactoryGirl::SyntaxRunner.class_eval do
+    include ActionDispatch::TestProcess
+  end
+
   Capybara.register_driver :chrome do |app|
     Capybara::Selenium::Driver.new(app, :browser => :chrome)
   end
@@ -37,25 +45,17 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
   config.before(:each) do
-    # I was worced to comment this line due to DatabaseCleaner not working properly with acceptance tests
-    DatabaseCleaner.strategy = :transaction
-  end
-  config.before(:each, js: true) do
-    DatabaseCleaner.strategy = :truncation
-  end
-  config.before(:each) do
     DatabaseCleaner.start
   end
   config.after(:each) do
     DatabaseCleaner.clean
   end
-
-  config.include Devise::TestHelpers, type: :controller
-  config.include Paperclip::Shoulda::Matchers
-
-  config.include ActionDispatch::TestProcess
-  FactoryGirl::SyntaxRunner.class_eval do
-    include ActionDispatch::TestProcess
+  config.before(:each) do
+    # I was worced to comment this line due to DatabaseCleaner not working properly with acceptance tests
+    DatabaseCleaner.strategy = :transaction
+  end
+  config.before(:each, js: true) do
+    DatabaseCleaner.strategy = :truncation
   end
 
   # paperclip filesystem cleaning:
