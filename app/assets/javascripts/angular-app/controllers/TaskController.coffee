@@ -7,7 +7,7 @@
 
   $scope.removeTask = (item) ->
     item.remove().then ->
-      $location.path('/')
+      $location.path($scope.task.project.getRestangularUrl())
 
   $scope.attachment = {}
   $scope.createAttachment = (file, collection)->
