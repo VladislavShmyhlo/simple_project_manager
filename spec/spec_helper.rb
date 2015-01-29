@@ -30,13 +30,14 @@ RSpec.configure do |config|
   Capybara.javascript_driver = :chrome
   # Capybara.default_driver = :selenium
 
-  # TODO: DatabaseCleaner works not properly with acceptance tests
+  # TODO: DatabaseCleaner not working properly with acceptance tests
   DatabaseCleaner.strategy = :truncation
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end
   config.before(:each) do
+    # I was worced to comment this line due to DatabaseCleaner not working properly
     # DatabaseCleaner.strategy = :transaction
   end
   config.before(:each, js: true) do

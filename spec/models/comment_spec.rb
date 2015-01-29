@@ -3,8 +3,6 @@ require 'spec_helper'
 describe Comment do
   subject(:comment) { FactoryGirl.build(:comment) }
 
-  let(:attachment) { FactoryGirl.build :attachment }
-
   it "passes with valid body" do
     comment.body = 'valid body'
     expect(comment.valid?).to be true
@@ -23,14 +21,13 @@ describe Comment do
 
   it "has many attachments" do
     expect {
-      3.times { comment.attachments << attachment }
+      3.times { comment.attachments << FactoryGirl.build(:attachment) }
       comment.save
     }.to change(comment.attachments, :count).by(3)
   end
 
   it "should be destroyed with it's attachments" do
-    # TODO: fix this on all specs
-    3.times { comment.attachments << attachment }
+    3.times { comment.attachments << FactoryGirl.build(:attachment) }
     comment.save
     expect {
       comment.destroy

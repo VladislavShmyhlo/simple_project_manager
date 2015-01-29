@@ -8,7 +8,6 @@ describe TasksController do
   let(:project) { user.projects.create! name: 'name' }
   let(:task) { project.tasks.create! description: 'description' }
 
-  # TODO: rewrite this
   it "raises RecordNotFound" do
     expect {
       get :show, { id: 1 }, valid_session

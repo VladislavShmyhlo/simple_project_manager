@@ -3,7 +3,6 @@ require 'spec_helper'
 describe AttachmentsController do
   include_context 'valid session'
 
-  let(:file) { fixture_file_upload('file.txt', 'text/plain') }
   let(:valid_attributes) { { "file" => file } }
   let(:valid_session) { {} }
   let(:project) { user.projects.create! name: 'name' }
@@ -11,7 +10,6 @@ describe AttachmentsController do
   let(:comment) { task.comments.create! body: 'body' }
   let(:attachment) { comment.attachments.create! file: file }
 
-  # TODO: rewrite this
   it "raises RecordNotFound" do
     expect {
       get :show, { comment_id: comment.to_param, id: 1 }, valid_session

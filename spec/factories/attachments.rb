@@ -1,10 +1,14 @@
 FactoryGirl.define do
   factory :attachment do
-    file { fixture_file_upload('file.txt') }
+    file_file_name { 'file.txt' }
+    file_content_type { 'text/plain' }
+    file_file_size { 1.megabyte }
 
-    # fix to force rspec to close files after reading
-    after_create do |file, proxy|
-      proxy.file.close
-    end
+  	## that is stil does not seem to work properly
+    # file { fixture_file_upload('spec/fixtures/files/file.txt') }
+    ## fix to force rspec to close files after reading
+    # after_create do |file, proxy|
+    #   proxy.file.close
+    # end
   end
 end
