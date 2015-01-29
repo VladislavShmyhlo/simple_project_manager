@@ -15,7 +15,9 @@ feature 'navigation', js: true do
     end
 
     context 'when user on single project page' do
-      find('.created-project .name a').click
+      background do
+        find('.created-project .name a').click
+      end
 
       scenario 'navigates to single project page' do
         # TODO: fix this terrible implementation
