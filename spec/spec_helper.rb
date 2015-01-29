@@ -30,7 +30,7 @@ RSpec.configure do |config|
   Capybara.javascript_driver = :chrome
   # Capybara.default_driver = :selenium
 
-  # TODO: DatabaseCleaner works not properly with integration tests
+  # TODO: DatabaseCleaner works not properly with acceptance tests
   DatabaseCleaner.strategy = :truncation
 
   config.before(:suite) do
@@ -58,9 +58,9 @@ RSpec.configure do |config|
   end
 
   # paperclip filesystem cleaning:
-  config.after(:suite) do
-    FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
-  end
+  # config.after(:suite) do
+  #   FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
+  # end
 
   # ## Mock Framework
   #
