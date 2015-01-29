@@ -3,12 +3,11 @@ require 'spec_helper'
 describe AttachmentsController do
   include_context 'valid session'
 
-  let(:valid_attributes) { { "file" => file } }
   let(:valid_session) { {} }
   let(:project) { user.projects.create! name: 'name' }
   let(:task) { project.tasks.create! description: 'description' }
   let(:comment) { task.comments.create! body: 'body' }
-  let(:attachment) { comment.attachments.create! file: file }
+  let(:attachment) { comment.attachments.create! }
 
   it "raises RecordNotFound" do
     expect {
