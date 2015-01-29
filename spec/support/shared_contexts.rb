@@ -22,17 +22,17 @@ shared_context 'valid session' do
   end
 end
 
-shared_context 'with file' do
-  dir = "#{Rails.root}/spec/test_files"
-  filepath = File.join dir, 'test.txt'
+# shared_context 'with file' do
+#   dir = "#{Rails.root}/spec/test_files"
+#   filepath = File.join dir, 'test.txt'
 
-  before :each do
-    FileUtils.mkdir dir unless Dir.exist? dir
-    File.open(filepath, 'a') do |f|
-      f.puts Time.now.to_s
-    end
-  end
+#   before :each do
+#     FileUtils.mkdir dir unless Dir.exist? dir
+#     File.open(filepath, 'a') do |f|
+#       f.puts Time.now.to_s
+#     end
+#   end
 
-  let(:filepath) { filepath }
-  let(:file) { File.open filepath }
-end
+#   let(:filepath) { filepath }
+#   let(:file) { File.open filepath }
+# end
