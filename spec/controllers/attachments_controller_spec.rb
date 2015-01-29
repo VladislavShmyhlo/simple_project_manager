@@ -4,7 +4,7 @@ describe AttachmentsController do
   include_context 'valid session'
 
   let(:valid_session) { {} }
-  let(:valid_attributes) { {file: fixture_file_upload(File.join('files', 'file.txt'), 'text/plain')} }
+  let(:valid_attributes) { {"file" => fixture_file_upload(File.join('files', 'file.txt'), 'text/plain')} }
   let(:project) { FactoryGirl.create(:project, user: user)}
   let(:task) { FactoryGirl.create(:task, project: project) }
   let(:comment) { FactoryGirl.create(:comment, task: task) }
@@ -83,8 +83,6 @@ describe AttachmentsController do
       before :each do
         Attachment.any_instance.stub(:save).and_return(false)
       end
-
-      let!(:params) { {attachment: valid_attributes, comment_id: comment.to_param} }
 
       it "fails to create new attachment" do
         Attachment.any_instance.should_receive(:save)
