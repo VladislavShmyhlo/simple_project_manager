@@ -1,7 +1,8 @@
 require 'spec_helper'
 
-feature 'project management', js: true do
+feature 'task management', js: true do
   include_context 'user logged in'
+  let(:description) { 'task description' }
 
   context 'when user has project' do
     background do
@@ -14,10 +15,10 @@ feature 'project management', js: true do
 
     scenario "user creates task" do
       within '.new-task-form' do
-        fill_in :description, with: 'task description'
+        fill_in :description, with: description
         click_on 'Add Task'
+        expect(find('.task . description')).to have_content(description)
       end
-      # TODO: expectation
     end
   end
 end
