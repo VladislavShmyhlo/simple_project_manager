@@ -31,6 +31,7 @@ RSpec.configure do |config|
   # Capybara.default_driver = :selenium
 
   # TODO: DatabaseCleaner works not properly with integration tests
+  DatabaseCleaner.strategy = :truncation
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
