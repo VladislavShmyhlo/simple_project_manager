@@ -1,6 +1,6 @@
 # for compatibility with Rails CSRF protection
 
-@app = angular.module('exampleApp', [
+@app = angular.module 'exampleApp', [
   'restangular'
   'templates'
   'ngRoute'
@@ -8,8 +8,7 @@
   'ui.date'
 #  'ngAnimate'
 #  'ngFx'
-
-])
+]
 .config((RestangularProvider) ->
   RestangularProvider.setDefaultHeaders {
     'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')

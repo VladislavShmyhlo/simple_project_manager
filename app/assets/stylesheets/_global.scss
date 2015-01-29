@@ -716,34 +716,6 @@ label {
       }
     }
   }
-  td, th {
-    & > * {
-//      width: 35px;
-//      @extend .btn;
-//      display: block;
-//      padding: 4px 6px;
-    }
-  }
-  th {
-//    & > * {
-//      @extend .btn-default, .disabled;
-//    }
-  }
-  td {
-//    & > * {
-//      @extend .btn-default;
-//    }
-//    &.ui-state-disabled {
-//      & > * {
-//        @extend .disabled;
-//      }
-//    }
-//    &.ui-datepicker-current-day {
-//      & > * {
-//        @extend .btn-info;
-//      }
-//    }
-  }
   .ui-datepicker-title {
     line-height: 35px;
   }
@@ -751,9 +723,7 @@ label {
   .ui-datepicker-prev {
     top: 0;
     font-size: 18px;
-//    padding: 4px 6px;
     width: 35px;
-    @extend .glyphicon;
     line-height: 35px;
     &:hover {
       background: $color-white;
@@ -764,11 +734,9 @@ label {
     }
   }
   .ui-datepicker-prev {
-//    @extend .glyphicon-chevron-left, .pull-left
-    @extend .glyphicon-circle-arrow-left, .pull-left
+    @extend .fa, .fa-chevron-left, .pull-left;
   }
   .ui-datepicker-next {
-//    @extend .glyphicon-chevron-right, .pull-right;
-    @extend .glyphicon-circle-arrow-right, .pull-right;
+    @extend .fa, .fa-chevron-right, .pull-right;
   }
 }
