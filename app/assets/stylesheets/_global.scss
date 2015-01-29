@@ -640,12 +640,11 @@ label {
   overflow: hidden;
   border-radius: 4px 4px 10px 10px;
   background: #eaeaea;
-  // background: rgba($color-black, .5);
+  // background: rgba(#eaeaea, .75);
   @include block-shadow;
   .new-comment-form {
     @include clearfix;
     .annotation {
-//      color: $color-orange;
     }
     textarea {
       display: block;
