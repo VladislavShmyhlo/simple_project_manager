@@ -106,6 +106,7 @@
     # add restangular methods to task, task.comments and comment.attachments
     # after retrieving single task
     if operation is 'get' and what is 'tasks'
+      Restangular.restangularizeElement(null, data.project, 'projects')
       Restangular.restangularizeElement(null, data, 'tasks')
       Restangular.restangularizeCollection(data, data.comments, 'comments')
       _.forEach data.comments, (comment) ->

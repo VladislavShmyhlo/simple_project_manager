@@ -1,3 +1,8 @@
+.nav
+  %a.view-all(ng-click="loc.path('/')" )
+    view all projects
+  %a.view-project(ng-show="task" ng-click="loc.path(task.project.getRestangularUrl())")
+    view "{{task.project.name}}"
 .single-task(ng-show="task")
   .title
     .completed
