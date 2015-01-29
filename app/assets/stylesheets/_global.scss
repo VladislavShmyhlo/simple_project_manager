@@ -522,68 +522,117 @@ label {
 .single-task {
   background: $color-white;
   margin: 40px 0;
-  border-radius: 0 0 10px 10px;
+  border-radius: 2px 2px 10px 10px;
   overflow: hidden;
   @include block-shadow;
-  .title {
-    position: relative;
-    padding: 10px;
-    .completed {
-      input {
-        display: none;
-        &:checked + .text {
-          color: $color-border-blue;
+  &.w-dl {
+    .title {
+      .controls {
+        .ui-datepicker-trigger {
+          @extend .fa-calendar;
         }
-      }
-      .text {
-        font-size: 24px;
-        color: $color-orange;
-        @include cursor-hover;
-        @include glyph-hover;
-        @include text-shadow-s;
       }
     }
   }
-  .dates {
-    border-top: solid 1px $color-white;
-    border-bottom: solid 1px $color-white;
+  .title {
     @include clearfix;
-    .deadline,
-    .updated_at,
-    .created_at, {
-      width: (100%)/3;
-      float: left;
-      font-size: 12px;
-      text-align: center;
-      box-sizing: border-box;
-      border-left: solid 1px $color-white;
-      line-height: 20px;
+    background: $color-yellow;
+    label {
+      cursor: pointer;
     }
-    &.no-deadline {
-      .deadline {
+    .description,
+    .controls {
+      padding: 10px;
+    }
+    .description {
+      float: left;
+      width: (100%*0.6);
+      font-size: 16px;
+      .content {
+        // padding-left: 10px;
+        // background: $color-white;
+      }
+    }
+    .controls {
+      text-align: center;
+      float: right;
+      width: (100%*0.4);
+      input[type='checkbox'] {
         display: none;
       }
+      .ui-datepicker-trigger {
+        @extend .fa, .fa-calendar-o;
+      }
+      label,
+      .ui-datepicker-trigger,
+      button {
+        @include reset-button;
+        @include btn-blue;
+        line-height: normal;
+        font-weight: normal;
+        line-height: 14px;
+        font-size: 14px;
+        padding: 5px 7px;
+        margin-left: 2px;
+        float: right;
+      }
+      label {
+        float: left;
+        margin: 0;
+      }
+    }
+    .buttons {
+      margin-bottom: 2px;
+      @include clearfix;
+    }
+    .completed {
+      line-height: 25px;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+    .dates {
+      border-top: solid 1px $color-white;
+      border-bottom: solid 1px $color-white;
+      @include clearfix;
+      .deadline,
+      .updated_at,
+      .created_at, {
+        // width: (100%)/3;
+        // float: left;
+        font-size: 12px;
+        text-align: center;
+        box-sizing: border-box;
+        // border-left: solid 1px $color-white;
+        line-height: 20px;
+        margin-top: 1px;
+        // border-top: solid 1px $color-white;
+      }
+      &.no-deadline {
+        .deadline {
+          display: none;
+        }
+        .updated_at {
+          // border-left: none;
+          // width: 50%;
+        }
+        .created_at {
+          // width: 50%;
+        }
+      }
+      .deadline {
+        color: $color-white;
+        background: $color-orange;
+        // border-left: none;
+      }
       .updated_at {
-        border-left: none;
-        width: 50%;
+        background: $color-grey;
+        color: $color-grey-light;
       }
       .created_at {
-        width: 50%;
+        background: $color-grey-light;
+        color: $color-grey;
+        // float: right;
       }
-    }
-    .deadline {
-      color: $color-white;
-      background: $color-orange;
-      border-left: none;
-    }
-    .updated_at {
-      background: $color-grey;
-      color: $color-grey-light;
-    }
-    .created_at {
-      background: $color-grey-light;
-      color: $color-grey;
-      float: right;
     }
   }
 }
@@ -593,7 +642,9 @@ label {
 
 .comments {
   padding: 10px;
-  background: url(paper.png) 50% 50%;
+  // background: url(paper.png) 50% 50%;
+  background: #eaeaea;
+  // background: $color-border-blue;
   .new-comment-form {
     @include clearfix;
     .annotation {
@@ -606,6 +657,7 @@ label {
       border-radius: 4px 4px 0 0;
       padding: 15px;
       height: 100px;
+      @include input-shadow(L);
 //      @include long-transition;
 //      &:focus {
 //        height: 200px;
@@ -613,15 +665,18 @@ label {
     }
     button {
       @include reset-button;
-      border: solid 1px #447557;
-      color: $color-white;
-      text-shadow: 0 1px 1px #333333;
-      padding: 4px 0;
-      width: 100%;
-      line-height: 20px;
+      @include btn-blue;
       float: right;
-      border-radius: 0 0 4px 4px;
-      background: url(bg_green.png) 50% 50% repeat-x;
+      margin-top: 4px;
+      // border: solid 1px #447557;
+      // color: $color-white;
+      // text-shadow: 0 1px 1px #333333;
+      // padding: 4px 0;
+      // width: 100%;
+      // line-height: 20px;
+      // float: right;
+      // border-radius: 0 0 4px 4px;
+      // background: url(bg_green.png) 50% 50% repeat-x;
       &:hover {
         border-color: $color-white;
       }
@@ -632,6 +687,7 @@ label {
     margin: 0 0 10px;
     border-radius: 4px;
     @include clearfix;
+    @include block-shadow;
     .body {
       padding: 15px 15px 15px 15px;
       line-height: 20px;
@@ -640,6 +696,7 @@ label {
       margin: 5px 5px 0 10px;
       float: right;
       font-size: 16px;
+      height: 26px;
       .comment-date {
         font-size: 14px;
         color: $color-grey;

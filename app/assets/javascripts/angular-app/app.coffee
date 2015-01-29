@@ -52,7 +52,9 @@
       updatedItem = {}
       updatedItem[attr] = @[attr]
       @patch(updatedItem).then (item) =>
-        _.extend(@, item)
+        # console.log item;
+        @[attr] = item[attr]
+        # _.extend(@, item)
     model
 
   _positionMethods = (item) ->
