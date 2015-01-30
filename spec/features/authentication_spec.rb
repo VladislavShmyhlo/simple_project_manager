@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-  include Warden::Test::Helpers
 feature "authentication", js: true do
   context 'when not logged in user' do
     let(:user) { FactoryGirl.create :user }

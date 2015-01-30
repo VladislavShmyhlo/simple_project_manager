@@ -1,23 +1,14 @@
-include Warden::Test::Helpers
-
 shared_context 'user logged in' do
   let(:user) { FactoryGirl.create :user }
 
-  # background do
-    # user.confirmed_at = Time.now
-    # user.save
-
-    # visit '/'
-    # fill_in 'user_email', with: user.email
-    # fill_in 'user_password', with: user.password
-    # click_on 'Log in'
-  # end
-
   background do
-    user = FactoryGirl.create(:user)
-    user.confirmed_at = Time.new
+    user.confirmed_at = Time.now
     user.save
-    login_as(user, :scope => :user)
+
+    visit '/'
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
+    click_on 'Log in'
   end
 end
 
