@@ -70,7 +70,7 @@ feature 'task management', js: true do
       scenario 'sets deadline' do
         expect {
           within ".tasks-list > .task" do
-            first('.ui-datepicker-trigger').click
+            first('.ui-datepicker-trigger', text: '7').click
           end
           find('.ui-datepicker-week-end').click
         }.to change{ page.has_selector?('.tasks-list.task.w-dl') }.from(false).to(true)
