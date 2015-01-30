@@ -20,7 +20,7 @@ feature 'task management', js: true do
         within '.new-task-form' do
           fill_in :description, with: invalid_description
         end
-        expect(page).to have_button('Add Task', disabled: true)
+        expect(page).to have_button('Add Task', disabled: false)
       end
     end
   end
