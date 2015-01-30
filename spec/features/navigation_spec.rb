@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+  include Warden::Test::Helpers
 feature 'navigation', js: true do
   include_context 'user logged in'
 

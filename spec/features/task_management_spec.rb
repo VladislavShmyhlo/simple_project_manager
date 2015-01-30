@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+  include Warden::Test::Helpers
 feature 'task management', js: true do
   include_context 'user logged in'
   let(:description) { 'task description' }
