@@ -34,7 +34,7 @@ shared_context 'logged in user has task' do
   include_context 'user exists'
   background do
     FactoryGirl.create :task,
-        project: FactoryGirl.create({:project, user: user})
+        project: FactoryGirl.create(:project, user: user)
   include_context 'user logs in'
   end
 end
@@ -43,8 +43,8 @@ shared_context 'logged in user has comment' do
   include_context 'user exists'
   background do
     FactoryGirl.create :comment,
-        task: FactoryGirl.create :task,
-            project: FactoryGirl.create({:project, user: user})
+        task: FactoryGirl.create(:task,
+            project: FactoryGirl.create(:project, user: user))
   include_context 'user logs in'
   end
 end
