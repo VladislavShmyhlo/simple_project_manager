@@ -21,7 +21,7 @@ feature 'task management', js: true do
         within '.new-task-form' do
           fill_in :description, with: invalid_description
         end
-        expect(find('.new-task-form')).to have_button('Add Task', disabled: true)
+        expect(page).to have_no_selector('.tasks-list > .task')
       end
     end
   end
@@ -34,23 +34,25 @@ feature 'task management', js: true do
       expect(page).to have_no_selector('.tasks-list > .task')
     end
 
-    feature 'task renaming' do
-      scenario 'user changes task description' do
+    feature 'renaming' do
+      scenario 'changes task description' do
         expect {
           find('.task .edit').click
           within '.task-description-form' do
             fill_in 'description', with: new_description
             find('button.save').click
           end
-        }.to change{find('.task .description').text}.from(description).to(new_description)
+        }.to change{find('.task .description').text}.from(any).to(new_description)
       end
 
-      scenario 'user fails to change task description due to validation' do
-        find('.task .edit').click
-        within '.task-description-form' do
-          fill_in 'description', with: invalid_description
-        end
-        expect(find('.task-description-form')).to have_button('.save', disabled: true)
+      scenario 'fails to change description due to validation' do
+        expect {
+          find('.task .edit').click
+          within '.task-description-form' do
+            fill_in 'description', with: invalid_description
+            find('button.save').click
+          end
+        }.to_not change{find('.task .description').text}
       end
     end
   end
