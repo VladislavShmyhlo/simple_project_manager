@@ -42,7 +42,7 @@ feature 'task management', js: true do
             fill_in 'description', with: new_description
             find('button.save').click
           end
-        }.to change{find('.task .description').text}.to(new_description)
+        }.to change{find('.task a.description').text}.to(new_description)
       end
 
       scenario 'fails to change description due to validation' do
@@ -52,7 +52,7 @@ feature 'task management', js: true do
             fill_in 'description', with: invalid_description
             find('button.save').click
           end
-        }.to_not change{find('.task .description', visible: false).text}
+        }.to_not change{find('.task a.description', visible: false).text}
       end
     end
   end
