@@ -60,7 +60,7 @@ feature 'task management', js: true do
           find('.task .edit').click
           within '.task-description-form' do
             fill_in :description, with: invalid_description
-            find('button.save').click
+            find('.cancel').click
           end
         }.to_not change{find('.task a.description', visible: false).text}
       end
