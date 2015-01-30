@@ -64,7 +64,7 @@ feature 'project management', js: true do
         }.to_not change{ find('.created-project .name', visible: false).text }
       end
 
-      scenario 'user cancels project edition' do
+      scenario 'user cancels project editing' do
         expect {
           find('.created-project .edit').click
           within '.project-name-form' do
