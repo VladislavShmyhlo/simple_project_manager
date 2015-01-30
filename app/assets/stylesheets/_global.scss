@@ -27,6 +27,11 @@ body {
         @include block-shadow;
         padding: 20px;
         border-radius: 4px;
+        #error_explanation,
+        label {
+          color: $color-white;
+          @include white-text-shadow;
+        }
         .actions,
         .field {
           margin-bottom: 10px;
@@ -34,10 +39,6 @@ body {
         .actions {
           margin-bottom: 0;
           text-align: center;
-        }
-        label {
-          color: $color-white;
-          @include white-text-shadow;
         }
       }
       input[type='text'],
@@ -55,6 +56,11 @@ body {
       .sign-in-facebook,
       input[type='submit'] {
         @include btn-blue;
+      }
+    }
+    #error_explanation {
+      h2 {
+        margin: 0;
       }
     }
   }
@@ -158,7 +164,7 @@ messages {
   left: 50%;
   margin-left: 370px;
   // right: 20px;
-  top: (40px + 22px + 10px);
+  top: (20px + (22px/2))-(30px/2);
   position: fixed;
 }
 label {
