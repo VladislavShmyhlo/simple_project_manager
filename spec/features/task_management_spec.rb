@@ -65,5 +65,16 @@ feature 'task management', js: true do
         }.to_not change{find('.task a.description', visible: false).text}
       end
     end
+
+    feature 'setting deadline' do
+      scenario 'changes deadline' do
+        expect {
+          within('.task-list > .task') do
+            find('.ui-datepicker-trigger').click
+            find('.ui-datepicker-week-end').click
+          end
+        }.to change(page.has_selector?('.tasks-list.task.w-dl')).from(false).to(true)
+      end
+    end
   end
 end
