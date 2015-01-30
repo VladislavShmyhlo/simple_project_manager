@@ -73,7 +73,7 @@ feature 'task management', js: true do
             find('.ui-datepicker-trigger').click
             find('.ui-datepicker-week-end').click
           end
-        }.to change(page.has_selector?('.tasks-list.task.w-dl')).from(false).to(true)
+        }.to change{page.has_selector?('.tasks-list.task.w-dl')}.from(false).to(true)
       end
     end
   end
