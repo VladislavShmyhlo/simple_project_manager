@@ -4,12 +4,12 @@ describe TasksController do
   describe "routing" do
     it "routes to #index" do
       get("/tasks").should route_to("tasks#index")
-      get('/project/1/tasks').should route_to('tasks#index', project_id: '1')
+      get('/projects/1/tasks').should route_to('tasks#index', project_id: '1')
     end
 
     it "fails to route to #new" do
       get("/tasks/new").should_not be_routable
-      get("/project/1/tasks/new").should_not be_routable
+      get("/projects/1/tasks/new").should_not be_routable
     end
 
     it "routes to #show" do

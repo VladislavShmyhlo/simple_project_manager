@@ -5,15 +5,15 @@ Rails.application.routes.draw do
 
   # TODO: this should be more DRY
 
-  constraints id: /\d+/, except: [:new, :edit] do
-    resources :projects do
-      resources :tasks
+  constraints id: /\d+/ do
+    resources :projects, except: [:new, :edit] do
+      resources :tasks, except: [:new, :edit]
     end
-    resources :tasks do
-      resources :comments
+    resources :tasks, except: [:new, :edit] do
+      resources :comments, except: [:new, :edit]
     end
-    resources :comments do
-      resources :attachments
+    resources :comments, except: [:new, :edit] do
+      resources :attachments, except: [:new, :edit]
     end  
   end
 
