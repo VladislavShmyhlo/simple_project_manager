@@ -1,15 +1,26 @@
 shared_context 'user logged in' do
   let(:user) { FactoryGirl.create :user }
 
-  background do
-    user.confirmed_at = Time.now
-    user.save
+  # background do
+    # user.confirmed_at = Time.now
+    # user.save
 
-    visit '/'
-    fill_in 'user_email', with: user.email
-    fill_in 'user_password', with: user.password
-    click_on 'Log in'
+    # visit '/'
+    # fill_in 'user_email', with: user.email
+    # fill_in 'user_password', with: user.password
+    # click_on 'Log in'
+  # end
+
+
+  background do
+    user = FactoryGirl.create(:user)
+    user.confirmed_at = Time.new
+    user.save
+    login_as(user, :scope => :user)
   end
+
+
+
 end
 
 shared_context 'valid session' do
