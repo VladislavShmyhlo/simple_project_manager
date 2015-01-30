@@ -12,5 +12,6 @@ class ApplicationController < ActionController::Base
   # TODO: how application will respond in production to wrong request format?
   # TODO: check default url options for sending mail
   # TODO: change mail sender
+  # TODO: check delivery errors in production
   private
 end

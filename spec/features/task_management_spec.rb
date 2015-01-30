@@ -2,6 +2,7 @@ require 'spec_helper'
 
 feature 'task management', js: true do
   let(:description) { 'my new task' }
+  let(:new_description) { 'my new task description' }
   let(:invalid_description) { ' ' }
 
   context 'when user has project' do
@@ -19,8 +20,8 @@ feature 'task management', js: true do
       scenario 'user fails to create task due to validation' do
         within '.new-task-form' do
           fill_in :description, with: invalid_description
+          expect.to have_button('Add Task', disabled: true)
         end
-        expect(page).to have_button('Add Task', disabled: false)
       end
     end
   end
@@ -31,6 +32,26 @@ feature 'task management', js: true do
     scenario 'user deletes task' do
       find('.task .remove').click
       expect(page).to have_no_selector('.tasks-list > .task')
+    end
+
+    feature 'task renaming' do
+      scenario 'user changes task description' do
+        expect {
+          find('.task .edit').click
+          within '.task-description-form' do
+            fill_in 'textarea', with: new_description
+            find('button.save').click
+          end
+        }.to change{find('.task .description').text}.from(description).to(new_description)
+      end
+
+      scenario 'user fails to change task description due to validation' do
+        find('.task .edit').click
+        within '.task-description-form' do
+          fill_in 'textarea', with: invalid_description
+          expect.to have_nutton('.save', disabled: true)
+        end
+      end
     end
   end
 end
