@@ -11,7 +11,7 @@ describe Devise::SessionsController do
     end
 
     it "routes to devise/sessions#destroy" do
-      get("/users/sign_out").should route_to("devise/sessions#destrou")
+      get("/users/sign_out").should route_to("devise/sessions#destroy")
     end
   end
 end
