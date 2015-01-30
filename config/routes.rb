@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   # TODO: this should be more DRY
+  # TODO: add number constrainst
 
   resources :projects, except: [:new, :edit] do
     resources :tasks, except: [:new, :edit]

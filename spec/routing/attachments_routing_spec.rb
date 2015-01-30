@@ -2,34 +2,32 @@ require "spec_helper"
 
 describe AttachmentsController do
   describe "routing" do
-
     it "routes to #index" do
-      get("/attachments").should route_to("attachments#index")
+      get("comments/1/attachments").should route_to("attachments#index", comment_id: '1')
     end
 
-    it "routes to #new" do
-      get("/attachments/new").should route_to("attachments#new")
+    it "fails to route to #new" do
+      get("/comments/1/attachments/new").should_not be_routable
     end
 
     it "routes to #show" do
-      get("/attachments/1").should route_to("attachments#show", :id => "1")
+      get("/comments/1/attachments/1").should route_to("attachments#show", id: '1', comment_id: '1')
     end
 
-    it "routes to #edit" do
-      get("/attachments/1/edit").should route_to("attachments#edit", :id => "1")
+    it "fails to route to #edit" do
+      get("/comments/1/attachments/1/edit").should_not be_routable
     end
 
     it "routes to #create" do
-      post("/attachments").should route_to("attachments#create")
+      post("/comments/1/attachments").should route_to("attachments#create", comment_id: '1')
     end
 
     it "routes to #update" do
-      put("/attachments/1").should route_to("attachments#update", :id => "1")
+      put("/comments/1/attachments/1").should route_to("attachments#update", id: '1', comment_id: '1')
     end
 
     it "routes to #destroy" do
-      delete("/attachments/1").should route_to("attachments#destroy", :id => "1")
+      delete("/comments/1/attachments/1").should route_to("attachments#destroy", id: '1', comment_id: '1')
     end
-
   end
 end
