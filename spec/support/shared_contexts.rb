@@ -33,8 +33,8 @@ shared_context 'logged in user has task' do
   background do
     FactoryGirl.create :task,
         project: FactoryGirl.create(:project, user: user)
-  include_context 'user logs in'
   end
+  include_context 'user logs in'
 end
 
 shared_context 'logged in user has comment' do
@@ -43,8 +43,8 @@ shared_context 'logged in user has comment' do
     FactoryGirl.create :comment,
         task: FactoryGirl.create(:task,
             project: FactoryGirl.create(:project, user: user))
-  include_context 'user logs in'
   end
+  include_context 'user logs in'
 end
 
 shared_context 'valid session' do
