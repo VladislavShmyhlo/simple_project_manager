@@ -13,7 +13,11 @@ body {
   &.user {
 //    background: none;
     color: $color-border-blue;
+    h2 {
+      text-align: center;
+    }
     #container {
+      margin-top: 10%;
       width: 400px;
       & > .alert {
         @include block-shadow;

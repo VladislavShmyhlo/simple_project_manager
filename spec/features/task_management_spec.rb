@@ -17,7 +17,7 @@ feature 'task management', js: true do
       within '.new-task-form' do
         fill_in :description, with: description
         click_on 'Add Task'
-        expect(find('.task . description')).to have_content(description)
+        expect(find('.task .description')).to have_content(description)
       end
     end
   end
