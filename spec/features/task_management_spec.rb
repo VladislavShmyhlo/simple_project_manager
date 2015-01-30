@@ -72,7 +72,7 @@ feature 'task management', js: true do
           within ".tasks-list > .task" do
             find('.ui-datepicker-trigger').click
           end
-            first('.ui-state-default').click
+            first('#ui-datepicker-div .ui-state-default', text: '7').click
         }.to change{ page.has_selector?('.tasks-list.task.w-dl') }.from(false).to(true)
       end
     end
