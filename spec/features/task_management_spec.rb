@@ -68,12 +68,12 @@ feature 'task management', js: true do
 
     feature 'setting deadline' do
       scenario 'sets deadline' do
-        expect {
-          within ".tasks-list > .task" do
-            find('.ui-datepicker-trigger').click
-          end
-            first('#ui-datepicker-div .ui-state-default', text: '7').click
-        }.to change{ page.has_selector?('.tasks-list.task.w-dl') }.from(false).to(true)
+        within ".tasks-list > .task" do
+          find('.ui-datepicker-trigger').click
+        end
+        first('#ui-datepicker-div .ui-state-default', text: '7').click
+        find('.task .description').click
+        expect('.dates .deadline').to have_content('7')
       end
     end
   end
