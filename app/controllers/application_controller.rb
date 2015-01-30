@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
 
   # TODO: redirect after signout
   # TODO: style login pages
-  # TODO: add form errors to all forms
   # TODO: integration, acceptance, functional testing
   # TODO: how application will respond in production to wrong request format?
   # TODO: check default url options for sending mail

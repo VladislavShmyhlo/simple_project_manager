@@ -1,24 +1,37 @@
 require 'spec_helper'
 
 feature 'task management', js: true do
-  include_context 'user logged in'
-  let(:description) { 'task description' }
+  let(:description) { 'my new task' }
+  let(:invalid_description) { ' ' }
 
   context 'when user has project' do
-    background do
-      find('.new-project-button button').click
-      within '.new-project-form' do
-        fill_in 'name', with: 'project name'
-        find('button.save').click
+    include_context 'logged in user has project'
+
+    feature "task creation" do
+      scenario "user creates task" do
+        within '.new-task-form' do
+          fill_in :description, with: description
+          click_on 'Add Task'
+        end
+        expect(find('.task .description')).to have_content(description)
+      end
+
+      scenario 'user fails to create task due to validation' do
+        within '.new-task-form' do
+          fill_in :description, with: invalid_description
+          click_on 'Add Task'
+        end
+        expect(page).to have_no_selector('.tasks-list > .task')
       end
     end
+  end
 
-    scenario "user creates task" do
-      within '.new-task-form' do
-        fill_in :description, with: description
-        click_on 'Add Task'
-      end
-      expect(find('.task .description')).to have_content(description)
+  context 'when user has task' do
+    include_context 'logged in user has tak'
+
+    scenario 'user deletes task' do
+      find('.task .remove').click
+      expect(page).to have_no_selector('.tasks-list > .task')
     end
   end
 end

@@ -14,7 +14,7 @@ feature 'navigation', js: true do
       end
     end
 
-    context 'when user on single project page' do
+    context 'when user navigated to sinle project page' do
       background do
         find('.created-project .name a').click
       end

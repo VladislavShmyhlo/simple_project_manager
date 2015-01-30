@@ -3,8 +3,8 @@ require 'spec_helper'
 feature 'project management', js: true do
   include_context 'user logged in'
 
-  let(:project_name) { 'project name' }
-  let(:new_valid_name) { 'new name' }
+  let(:project_name) { 'my new project' }
+  let(:new_valid_name) { 'my new project name' }
   let(:new_invalid_name) { ' ' }
 
   feature 'project creation' do
@@ -12,7 +12,7 @@ feature 'project management', js: true do
       find('.new-project-button button').click
     end
 
-    scenario 'user creates new project' do
+    scenario 'user creates project' do
       within '.new-project-form' do
         fill_in :name, with: project_name
         find('button.save').click
@@ -20,7 +20,7 @@ feature 'project management', js: true do
       expect(find('.created-project .name')).to have_content(project_name)
     end
 
-    scenario 'user fails to create new project due to validation' do
+    scenario 'user fails to create project due to validation' do
       within '.new-project-form' do
         fill_in :name, with: new_invalid_name
         find('button.save').click
