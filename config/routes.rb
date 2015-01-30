@@ -4,17 +4,16 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   # TODO: this should be more DRY
-  # TODO: add number constrainst
 
-  constraints id: /\d+/ do
-    resources :projects, except: [:new, :edit] do
-      resources :tasks, except: [:new, :edit]
+  constraints id: /\d+/, except: [:new, :edit] do
+    resources :projects do
+      resources :tasks
     end
-    resources :tasks, except: [:new, :edit] do
-      resources :comments, except: [:new, :edit]
+    resources :tasks do
+      resources :comments
     end
-    resources :comments, except: [:new, :edit] do
-      resources :attachments, except: [:new, :edit]
+    resources :comments do
+      resources :attachments
     end  
   end
 
