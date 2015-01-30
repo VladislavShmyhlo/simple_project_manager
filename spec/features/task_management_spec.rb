@@ -11,7 +11,7 @@ feature 'task management', js: true do
       scenario "user creates task" do
         within '.new-task-form' do
           fill_in :description, with: description
-          click_on 'Add Task'
+          find('.create-task').click
         end
         expect(find('.task .description')).to have_content(description)
       end
@@ -19,7 +19,7 @@ feature 'task management', js: true do
       scenario 'user fails to create task due to validation' do
         within '.new-task-form' do
           fill_in :description, with: invalid_description
-          click_on 'Add Task'
+          find('.create-task').click
         end
         expect(page).to have_no_selector('.tasks-list > .task')
       end
