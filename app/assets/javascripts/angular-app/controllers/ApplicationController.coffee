@@ -29,13 +29,17 @@
     buttonText: ''
   }
 
-  $scope.removeItem = (item, collection) ->
-    collection.destroy(item)
+  $scope.user = false;
+
+  $scope.loc = $location;
 
   $scope.editing = {
     itemNewName: null
     editedItem: null
   }
+
+  $scope.removeItem = (item, collection) ->
+    collection.destroy(item)
 
   $scope.createNewItem = (item, collection) ->
     collection.create(item).then ->

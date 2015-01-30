@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :task do
-    description "valid description"
+    description "description"
     completed false
     deadline DateTime.new
     position 1

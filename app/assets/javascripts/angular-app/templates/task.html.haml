@@ -1,28 +1,36 @@
-.single-task(ng-show="task")
+.nav
+  %a.view-all(ng-click="loc.path('/')" )
+    view all projects
+  %a.view-project(ng-show="task" ng-click="loc.path(task.project.getRestangularUrl())")
+    view "{{task.project.name}}"
+.single-task(ng-show="task" ng-class="task.deadline ? 'w-dl': ''")
   .title
-    .completed
-      %label
-        %input(type="checkbox" ng-model="task.completed" ng-click="task.updateAttr('completed')")
-        .text
-          .icon
-          {{ task.completed ? 'Completed!' : 'In progress' }}
-    %span.description(ng-class="taskClass(task)")
-      {{task.description}}
-    %button(ng-click="removeTask(task)") remove
-    %input(type="hidden" ng-model="task.deadline" ui-date="datepickerOptions" ng-change="task.updateAttr('deadline')")
-  .dates(ng-class="{'no-deadline': !task.deadline}")
-    .deadline
-      %span.sm
-        deadline:
-      {{task.deadline | toLocale : false}}
-    .updated_at
-      %span.sm
-        last update:
-      {{task.updated_at | toLocale}}
-    .created_at
-      %span.sm
-        created:
-      {{task.created_at | toLocale}}
+    .description(ng-class="taskClass(task)")
+      .content
+        %i(ng-show="task.completed")
+          (completed)
+        {{task.description}}
+    .controls  
+      .buttons 
+        %label
+          %input(type="checkbox" ng-model="task.completed" ng-click="task.updateAttr('completed')")
+          {{ task.completed ? 'mark as "in progress"' : 'mark as "completed"' }}
+          %i.fa.fa-check(ng-hide="task.completed")
+        %input(type="hidden" ng-model="task.deadline" ui-date="datepickerOptions" ng-change="task.updateAttr('deadline')")
+        %button.fa.fa-trash(ng-click="removeTask(task)")
+      .dates(ng-class="{'no-deadline': !task.deadline}")
+        .deadline
+          %span.sm
+            deadline:
+          {{task.deadline | toLocale : false}}
+        .updated_at
+          %span.sm
+            last update:
+          {{task.updated_at | toLocale}}
+        .created_at
+          %span.sm
+            created:
+          {{task.created_at | toLocale}}
   .comments
     .comments-list
       .comment(ng-repeat=" comment in task.comments | orderBy: 'updated_at' ")
@@ -50,4 +58,3 @@
       %form(name="newCommentForm" ng-submit="createNewItem(newComment, task.comments)" novalidate)
         %textarea(ng-model="newComment.body" required)
         %button(type="submit" ng-disabled="newCommentForm.$invalid") add new comment
-%a(href="#/") back

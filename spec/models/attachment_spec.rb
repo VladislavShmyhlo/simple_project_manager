@@ -1,10 +1,8 @@
 require 'spec_helper'
 
 describe Attachment do
-  include_context 'with file'
-
   subject(:attachment) do
-    FactoryGirl.build :attachment, file: file
+    FactoryGirl.build :attachment
   end
 
   it "should be saved" do

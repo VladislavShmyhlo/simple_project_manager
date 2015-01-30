@@ -52,7 +52,9 @@
       updatedItem = {}
       updatedItem[attr] = @[attr]
       @patch(updatedItem).then (item) =>
-        _.extend(@, item)
+        # console.log item;
+        @[attr] = item[attr]
+        # _.extend(@, item)
     model
 
   _positionMethods = (item) ->
@@ -106,6 +108,7 @@
     # add restangular methods to task, task.comments and comment.attachments
     # after retrieving single task
     if operation is 'get' and what is 'tasks'
+      Restangular.restangularizeElement(null, data.project, 'projects')
       Restangular.restangularizeElement(null, data, 'tasks')
       Restangular.restangularizeCollection(data, data.comments, 'comments')
       _.forEach data.comments, (comment) ->

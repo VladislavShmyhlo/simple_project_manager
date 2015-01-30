@@ -4,7 +4,7 @@
     transclude: true
     template:
       '
-        <div class="icon"></div>
+        <i class="icon"></i>
         <ul>
           <li ng-repeat="(k, v) in errors">
             {{v[0].$name}} {{getMessage(k)}}

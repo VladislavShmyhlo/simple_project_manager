@@ -5,10 +5,9 @@ describe TasksController do
 
   let(:valid_attributes) { { "description" => "valid description" } }
   let(:valid_session) { {} }
-  let(:project) { user.projects.create! name: 'name' }
-  let(:task) { project.tasks.create! description: 'description' }
+  let(:project) { FactoryGirl.create(:project, user: user)}
+  let(:task) { FactoryGirl.create(:task, project: project) }
 
-  # TODO: rewrite this
   it "raises RecordNotFound" do
     expect {
       get :show, { id: 1 }, valid_session

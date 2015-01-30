@@ -8,7 +8,7 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = current_user.tasks.includes(comments: :attachments).find(params[:id])
+    @task = current_user.tasks.includes(:project, comments: :attachments).find(params[:id])
     render 'show.json'
   end
 

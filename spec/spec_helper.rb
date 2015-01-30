@@ -22,6 +22,14 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
 
+  config.include Devise::TestHelpers, type: :controller
+  config.include Paperclip::Shoulda::Matchers
+
+  config.include ActionDispatch::TestProcess
+  FactoryGirl::SyntaxRunner.class_eval do
+    include ActionDispatch::TestProcess
+  end
+
   Capybara.register_driver :chrome do |app|
     Capybara::Selenium::Driver.new(app, :browser => :chrome)
   end
@@ -30,10 +38,14 @@ RSpec.configure do |config|
   Capybara.javascript_driver = :chrome
   # Capybara.default_driver = :selenium
 
+  # TODO: DatabaseCleaner not working properly with acceptance tests
+  DatabaseCleaner.strategy = :truncation
+
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end
   config.before(:each) do
+    # I was worced to comment this line due to DatabaseCleaner not working properly with acceptance tests
     DatabaseCleaner.strategy = :transaction
   end
   config.before(:each, js: true) do
@@ -46,12 +58,10 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  config.include Devise::TestHelpers, type: :controller
-  config.include Paperclip::Shoulda::Matchers
-
-  config.after(:suite) do
-    FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
-  end
+  # paperclip filesystem cleaning:
+  # config.after(:suite) do
+  #   FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
+  # end
 
   # ## Mock Framework
   #
@@ -68,6 +78,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
+
   # config.use_transactional_fixtures = true
   config.use_transactional_fixtures = false
 

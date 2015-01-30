@@ -1,13 +1,13 @@
 @app.controller 'TaskController', ($location, $scope, $routeParams, Restangular) ->
   task = Restangular.one('projects', $routeParams.project_id).one('tasks', $routeParams.id)
 
-  task.get().then (data) ->
-    console.log data
-    $scope.task = data
+  task.get().then (task) ->
+    console.log task
+    $scope.task = task
 
   $scope.removeTask = (item) ->
     item.remove().then ->
-      $location.path('/')
+      $location.path($scope.task.project.getRestangularUrl())
 
   $scope.attachment = {}
   $scope.createAttachment = (file, collection)->
