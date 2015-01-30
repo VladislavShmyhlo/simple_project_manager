@@ -45,7 +45,7 @@ feature 'task management', js: true do
         }.to change{ find('.task a.description').text}.to(new_description )
       end
 
-      scenario 'fails to change description due to validation' do
+      pending 'fails to change description due to validation' do
         expect {
           find('.task .edit').click
           within '.task-description-form' do
@@ -66,15 +66,21 @@ feature 'task management', js: true do
       end
     end
 
-    feature 'setting deadline' do
-      scenario 'sets deadline' do
-        within ".tasks-list > .task" do
-          find('.ui-datepicker-trigger').click
-        end
-        first('#ui-datepicker-div .ui-state-default', text: '7').click
-        find('.task .description').click
-        expect(find('.dates .deadline')).to have_content('7')
+    scenario 'sets deadline' do
+      within '.task' do
+        find('.ui-datepicker-trigger').click
       end
+      first('#ui-datepicker-div .ui-state-default', text: '7').click
+      find('.task .description').click
+      expect(find('.dates .deadline')).to have_content('7')
+    end
+
+    scenario 'sets completion status' do
+      expect {
+        within '.task' do
+          find('.completed label').click
+        end
+      }.to change { page.has_css?('.task.done') }.from(false).to(true)
     end
   end
 end

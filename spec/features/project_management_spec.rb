@@ -54,7 +54,7 @@ feature 'project management', js: true do
         }.to change{ find('.created-project .name').text }.from(project_name).to(new_valid_name)
       end
 
-      scenario 'user fails to change project name due to validation' do
+      pending 'user fails to change project name due to validation' do
         expect {
           find('.created-project .edit').click
           within '.project-name-form' do
