@@ -1,3 +1,5 @@
+include Warden::Test::Helpers
+
 shared_context 'user logged in' do
   let(:user) { FactoryGirl.create :user }
 
@@ -11,16 +13,12 @@ shared_context 'user logged in' do
     # click_on 'Log in'
   # end
 
-
   background do
     user = FactoryGirl.create(:user)
     user.confirmed_at = Time.new
     user.save
     login_as(user, :scope => :user)
   end
-
-
-
 end
 
 shared_context 'valid session' do
