@@ -43,7 +43,7 @@ feature 'project management', js: true do
       expect(page).to have_no_content project_name
     end
 
-    feature 'project renaming' do
+    feature 'renaming' do
       scenario 'user changes project name' do
         expect {
           find('.created-project .edit').click
@@ -61,7 +61,7 @@ feature 'project management', js: true do
             fill_in :name, with: new_invalid_name
             find('button.save').click
           end
-        }.to_not change{ find('.created-project .name', visible: false).text }.from(project_name).to(new_invalid_name)
+        }.to_not change{ find('.created-project .name', visible: false).text }
       end
 
       scenario 'user cancels project edition' do
