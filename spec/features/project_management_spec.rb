@@ -33,7 +33,7 @@ feature 'project management', js: true do
     background do
       find('.new-project-button button').click
       within '.new-project-form' do
-        fill_in 'name', with: project_name
+        fill_in :name, with: project_name
         find('button.save').click
       end
     end

@@ -39,7 +39,7 @@ feature 'task management', js: true do
         expect {
           find('.task .edit').click
           within '.task-description-form' do
-            fill_in 'description', with: new_description
+            fill_in :description, with: new_description
             find('button.save').click
           end
         }.to change{find('.task a.description').text}.to(new_description)
@@ -49,7 +49,7 @@ feature 'task management', js: true do
         expect {
           find('.task .edit').click
           within '.task-description-form' do
-            fill_in 'description', with: invalid_description
+            fill_in :description, with: invalid_description
             find('button.save').click
           end
         }.to_not change{find('.task a.description', visible: false).text}
@@ -59,7 +59,7 @@ feature 'task management', js: true do
         expect {
           find('.task .edit').click
           within '.task-description-form' do
-            fill_in 'description', with: invalid_description
+            fill_in :description, with: invalid_description
             find('button.save').click
           end
         }.to_not change{find('.task a.description', visible: false).text}
