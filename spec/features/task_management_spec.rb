@@ -49,7 +49,7 @@ feature 'task management', js: true do
         find('.task .edit').click
         within '.task-description-form' do
           fill_in 'textarea', with: invalid_description
-          expect.to have_nutton('.save', disabled: true)
+          expect.to have_button('.save', disabled: true)
         end
       end
     end
