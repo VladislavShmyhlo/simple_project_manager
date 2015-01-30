@@ -73,7 +73,7 @@ feature 'task management', js: true do
         end
         first('#ui-datepicker-div .ui-state-default', text: '7').click
         find('.task .description').click
-        expect('.dates .deadline').to have_content('7')
+        expect(find('.dates .deadline')).to have_content('7')
       end
     end
   end
