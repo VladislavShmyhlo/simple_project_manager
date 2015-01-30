@@ -16,10 +16,8 @@ shared_context 'user logs in' do
 end
 
 shared_context 'user logged in' do
-  background do
-    include_context 'user exists'
-    include_context 'user logs in'
-  end
+  include_context 'user exists'
+  include_context 'user logs in'
 end
 
 shared_context 'logged in user has project' do
