@@ -19,9 +19,8 @@ feature 'task management', js: true do
       scenario 'user fails to create task due to validation' do
         within '.new-task-form' do
           fill_in :description, with: invalid_description
-          click_on 'Add Task'
         end
-        expect(page).to have_no_selector('.tasks-list > .task')
+        expect(page).to have_button('Add Task', disabled: true)
       end
     end
   end

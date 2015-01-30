@@ -5,8 +5,7 @@
       .input-group
         %input.form-control(ng-blur="newTaskForm.$setPristine()" name="description" type="text" ng-model="newTask.description" placeholder="Start typing here to create a task..." required)
         %span.input-group-btn
-          %button.btn.btn-default.create-task(type="submit" ng-disabled="newTaskForm.$invalid" value="")
-            Add Task
+          %input.btn.btn-default.create-task(type="submit" ng-disabled="newTaskForm.$invalid" value="Add Task")
   .tasks-list(ng-model="tasks" ui-sortable="sortableOptions")
     .task(ng-repeat="task in tasks" data-id="{{task.id}}" ng-class=" [taskClass(task), task.deadline ? 'w-dl': ''] ")
       .completed
