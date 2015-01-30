@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Devise::RegistratiosController do
+describe Devise::RegistrationsController do
   describe "routing" do
     it "routes to devise/registrations#create" do
       get("/users/cancel").should route_to("devise/registrations#cancel")
