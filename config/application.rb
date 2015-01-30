@@ -27,8 +27,8 @@ module Manager
       address:              'smtp.gmail.com',
       port:                 587,
       domain:               'heroku.com',
-      user_name:            ENV[:EMAIL],
-      password:             ENV[:PASSWORD],
+      user_name:            ENV['EMAIL'],
+      password:             ENV['PASSWORD'],
       authentication:       'plain',
       enable_starttls_auto: true
     }
