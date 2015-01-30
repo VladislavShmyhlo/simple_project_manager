@@ -42,7 +42,7 @@ feature 'task management', js: true do
             fill_in :description, with: new_description
             find('button.save').click
           end
-        }.to change{find('.task a.description').text}.to(new_description)
+        }.to change{ find('.task a.description').text}.to(new_description )
       end
 
       scenario 'fails to change description due to validation' do
@@ -52,7 +52,7 @@ feature 'task management', js: true do
             fill_in :description, with: invalid_description
             find('button.save').click
           end
-        }.to_not change{find('.task a.description', visible: false).text}
+        }.to_not change{ find('.task a.description', visible: false).text }
       end
 
       scenario 'cancels task editing' do
@@ -62,7 +62,7 @@ feature 'task management', js: true do
             fill_in :description, with: invalid_description
             find('.cancel').click
           end
-        }.to_not change{find('.task a.description', visible: false).text}
+        }.to_not change{ find('.task a.description', visible: false).text }
       end
     end
 
@@ -71,9 +71,9 @@ feature 'task management', js: true do
         expect {
           within ".tasks-list > .task" do
             find('.ui-datepicker-trigger').click
-            find('.ui-datepicker-week-end').click
           end
-        }.to change{page.has_selector?('.tasks-list.task.w-dl')}.from(false).to(true)
+          find('.ui-datepicker-week-end').click
+        }.to change{ page.has_selector?('.tasks-list.task.w-dl') }.from(false).to(true)
       end
     end
   end
