@@ -6,14 +6,16 @@ Rails.application.routes.draw do
   # TODO: this should be more DRY
   # TODO: add number constrainst
 
-  resources :projects, except: [:new, :edit] do
-    resources :tasks, except: [:new, :edit]
-  end
-  resources :tasks, except: [:new, :edit] do
-    resources :comments, except: [:new, :edit]
-  end
-  resources :comments, except: [:new, :edit] do
-    resources :attachments, except: [:new, :edit]
+  constraints id: /\d+/ do
+    resources :projects, except: [:new, :edit] do
+      resources :tasks, except: [:new, :edit]
+    end
+    resources :tasks, except: [:new, :edit] do
+      resources :comments, except: [:new, :edit]
+    end
+    resources :comments, except: [:new, :edit] do
+      resources :attachments, except: [:new, :edit]
+    end  
   end
 
   root 'static#index'
