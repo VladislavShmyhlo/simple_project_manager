@@ -9,8 +9,8 @@ default: &default
   encoding: unicode
   pool: 5
   timeout: 5000
-  username: shmyhlo
-  password: pass
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
 
 development:
   <<: *default
