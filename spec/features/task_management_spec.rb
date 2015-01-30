@@ -27,7 +27,7 @@ feature 'task management', js: true do
   end
 
   context 'when user has task' do
-    include_context 'logged in user has tak'
+    include_context 'logged in user has task'
 
     scenario 'user deletes task' do
       find('.task .remove').click
