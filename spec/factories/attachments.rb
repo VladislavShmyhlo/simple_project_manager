@@ -5,7 +5,7 @@ FactoryGirl.define do
     file_file_size { 1.megabyte }
 
   	## that is stil does not seem to work properly
-    # file { fixture_file_upload('spec/fixtures/files/file.txt') }
+    # file { fixture_file_upload(File.join('files', 'file.txt'), 'text/plain') }
     ## fix to force rspec to close files after reading
     # after_create do |file, proxy|
     #   proxy.file.close
