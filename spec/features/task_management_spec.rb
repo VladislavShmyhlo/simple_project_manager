@@ -69,7 +69,7 @@ feature 'task management', js: true do
     feature 'setting deadline' do
       scenario 'sets deadline' do
         expect {
-          within('.tasks-list > .task') do
+          within ".tasks-list > .task" do
             find('.ui-datepicker-trigger').click
             find('.ui-datepicker-week-end').click
           end
