@@ -85,7 +85,7 @@ describe AttachmentsController do
       end
 
       it "fails to create new attachment" do
-        Attachment.any_instance.should_receive(:save).and_return(false)
+        Attachment.any_instance.should_receive(:save)
         expect {
           post :create, params, valid_session
         }.to change(comment.attachments, :count).by(0)
@@ -97,7 +97,7 @@ describe AttachmentsController do
       end
 
       it "renders errors" do
-        Attachment.any_instance.should_receive(:errors).and_return('errors')
+        Attachment.any_instance.should_receive(:errors)
         post :create, params, valid_session
         expect(response.body).to eq('errors')
       end
