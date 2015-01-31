@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::StatementInvalid, with: :raise_not_found
 
   # TODO: style login pages
-  # TODO: style statuc and errors
+  # TODO: style static and errors
   # TODO: change mail sender
   # TODO: check statement invalid
 
