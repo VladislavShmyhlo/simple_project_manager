@@ -59,8 +59,8 @@ feature 'project management', js: true do
           find('.created-project .edit').click
           within '.project-name-form' do
             fill_in :name, with: new_invalid_name
-            find('button.save').click
             sleep 1
+            find('button.save').click
           end
         }.to_not change(find('.created-project .name a', visible: false), :text)
       end
