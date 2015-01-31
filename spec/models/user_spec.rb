@@ -17,8 +17,9 @@ describe User do
     expect(user).to_not be_valid
   end
 
-  it 'fails with empty' do
-    user.email = " "
+  it 'fails with taken email' do
+    user.save
+    @user = FactoryGirl.build(:user, email: user.email)
     expect(user).to_not be_valid
   end
 end
