@@ -3,12 +3,10 @@
     view all projects
   %a.view-project(ng-show="task" ng-click="loc.path(task.project.getRestangularUrl())")
     view "{{task.project.name}}"
-.single-task(ng-show="task" ng-class="task.deadline ? 'w-dl': ''")
+.single-task(ng-show="task" ng-class="{'w-dl': task.deadline, 'done': task.completed}")
   .title
-    .description(ng-class="taskClass(task)")
-      .content
-        %i(ng-show="task.completed")
-          (completed)
+    .description(ng-class="taskClass(task)")<
+      .content<
         {{task.description}}
     .controls
       .buttons
@@ -42,7 +40,7 @@
               %input(type='file' name="file" fileread="file" change="createAttachment(file, comment.attachments)")
           .comment-date
             {{comment.created_at | toLocale : true}}
-        .body
+        .body<
           {{comment.body}}
         .attachments(ng-show="comment.attachments.length")
           .attachments-list

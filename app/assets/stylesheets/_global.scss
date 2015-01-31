@@ -611,6 +611,11 @@ label {
       }
     }
   }
+  &.done {
+    .title {
+      background: $alert-info-bg;
+    }
+  }
   .title {
     @include clearfix;
     background: $color-yellow;
@@ -631,6 +636,7 @@ label {
       .content {
         // padding-left: 10px;
         // background: $color-white;
+        white-space: pre-wrap;
       }
     }
     .controls {
@@ -670,8 +676,8 @@ label {
       text-transform: uppercase;
     }
     .dates {
-      border-top: solid 1px $color-white;
-      border-bottom: solid 1px $color-white;
+//      border-top: solid 1px $color-white;
+//      border-bottom: solid 1px $color-white;
       @include clearfix;
       .deadline,
       .updated_at,
@@ -766,6 +772,7 @@ label {
     .body {
       padding: 15px 15px 15px 15px;
       line-height: 20px;
+      white-space: pre-wrap;
     }
     .controls {
       margin: 5px 5px 0 10px;

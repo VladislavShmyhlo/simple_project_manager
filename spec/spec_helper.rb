@@ -5,8 +5,6 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require "paperclip/matchers"
 
-# TODO: implement attachment mock
-
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -38,7 +36,6 @@ RSpec.configure do |config|
   Capybara.javascript_driver = :chrome
   # Capybara.default_driver = :selenium
 
-  # TODO: DatabaseCleaner not working properly with acceptance tests
   DatabaseCleaner.strategy = :truncation
 
   config.before(:suite) do

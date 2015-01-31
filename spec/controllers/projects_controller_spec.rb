@@ -18,8 +18,6 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-# TODO: refactor entire spec
-
 describe ProjectsController do
   include_context 'valid session'
   # This should return the minimal set of attributes required to create a valid
@@ -33,7 +31,6 @@ describe ProjectsController do
   # ProjectsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  # TODO: rewrite this
   it "raises RecordNotFound" do
     expect {
       get :show, { id: 1 }, valid_session
@@ -140,10 +137,6 @@ describe ProjectsController do
 
     describe "with valid params" do
       it "updates the requested project" do
-        # Assuming there are no other projects in the database, this
-        # specifies that the Project created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
         Project.any_instance.should_receive(:update)
         put :update, {:id => project.to_param, :project => valid_attributes}, valid_session
         expect(assigns(:project)).to be_valid
@@ -170,7 +163,6 @@ describe ProjectsController do
         Project.any_instance.stub(:update).and_return(false)
       end
 
-      # here let MUST be with bang!
       let!(:params) { {:id => project.to_param, :project => valid_attributes} }
 
       it "fails to update a project" do
@@ -205,7 +197,6 @@ describe ProjectsController do
 
     # TODO: "with successful destroy" ?
     describe "with successful destroy" do
-      # TODO: this doesnt work for some reason
       it "destroys the requested project" do
         project = user.projects.create! valid_attributes
         Project.any_instance.should_receive(:destroy).and_call_original

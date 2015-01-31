@@ -7,9 +7,6 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   rescue_from ActiveRecord::StatementInvalid, with: :raise_not_found
 
-  # TODO: style login pages
-  # TODO: tests
-
   private
 
   # Overwriting the sign_out redirect path method

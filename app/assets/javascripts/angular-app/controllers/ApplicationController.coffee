@@ -2,7 +2,6 @@
   loadingStatus = (st) ->
     $rootScope.$broadcast 'loading', {active: st}
   auth = (st) ->
-    console.log st
     $scope.authenticated = st
 
   Restangular.setErrorInterceptor (response) ->
