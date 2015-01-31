@@ -44,7 +44,7 @@ feature "authentication", js: true do
       fill_in 'user_password', with: new_password
       fill_in 'user_password_confirmation', with: new_password
       fill_in 'user_current_password', with: user.password
-      click_on 'Update'
+      click_on 'Save'
 
       expect(page).to have_button('Add New Project')
       expect(current_path).to eq('/')
