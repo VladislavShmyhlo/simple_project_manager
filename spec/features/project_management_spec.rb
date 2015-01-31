@@ -61,7 +61,7 @@ feature 'project management', js: true do
             fill_in :name, with: new_invalid_name
             find('button.save').click
           end
-        }.to_not change{ find('.created-project .name', visible: false).text }
+        }.to_not change(find('.created-project .name', visible: false), :text)
       end
 
       scenario 'cancels project editing' do
