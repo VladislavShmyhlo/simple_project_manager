@@ -23,5 +23,6 @@ feature 'navigation', js: true do
     scenario 'navigates to single task page' do
       first('.task .description').click
       expect(URI(current_url).fragment).to match /\A\/projects\/\d+\/tasks\/\d+\z/
+    end
   end
 end

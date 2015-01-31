@@ -10,8 +10,8 @@
         %i(ng-show="task.completed")
           (completed)
         {{task.description}}
-    .controls  
-      .buttons 
+    .controls
+      .buttons
         %label
           %input(type="checkbox" ng-model="task.completed" ng-click="task.updateAttr('completed')")
           {{ task.completed ? 'mark as "in progress"' : 'mark as "completed"' }}
@@ -56,5 +56,5 @@
     .new-comment-form
       .annotation Leave comment:
       %form(name="newCommentForm" ng-submit="createNewItem(newComment, task.comments)" novalidate)
-        %textarea(ng-model="newComment.body" required)
+        %textarea(name="body" ng-model="newComment.body" required)
         %button(type="submit" ng-disabled="newCommentForm.$invalid") add new comment

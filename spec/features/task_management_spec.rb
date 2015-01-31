@@ -29,11 +29,6 @@ feature 'task management', js: true do
   context 'when user has task' do
     include_context 'logged in user has task'
 
-    scenario 'user deletes task' do
-      find('.task .remove').click
-      expect(page).to have_no_selector('.tasks-list > .task')
-    end
-
     feature 'renaming' do
       scenario 'changes task description' do
         expect {
@@ -66,6 +61,11 @@ feature 'task management', js: true do
       end
     end
 
+    scenario 'user deletes task' do
+      find('.task .remove').click
+      expect(page).to have_no_selector('.tasks-list > .task')
+    end
+
     scenario 'sets deadline' do
       within '.task' do
         find('.ui-datepicker-trigger').click
@@ -96,6 +96,16 @@ feature 'task management', js: true do
       expect {
         first.drag_to(last)
       }.to change { first('.tasks-list > .task')[:'data-id'] }
+    end
+
+    scenario 'creates comment' do
+      let(:body) { 'my new comment' }
+      find('.task .description').click
+      within '.new-comment-form' do
+        fill_in :body, with: body
+        click_on 'add new comment'
+      end
+      expect(find('.comments-list .comment')).to have_content(body)
     end
   end
 end
