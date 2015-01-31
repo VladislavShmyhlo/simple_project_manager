@@ -81,6 +81,7 @@ describe AttachmentsController do
 
     describe "with invalid params" do
       before :each do
+        Attachment.should_receive(:new).and_return(FactoryGirl.build(:attachment))
         Attachment.any_instance.stub(:save).and_return(false)
       end
 
