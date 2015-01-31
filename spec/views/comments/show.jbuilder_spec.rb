@@ -4,8 +4,7 @@ describe "comments/show" do
   before(:each) do
     assign :comment,
            FactoryGirl.build(:comment,
-                             attachments: [FactoryGirl.build(:attachment)],
-                             project: FactoryGirl.build(:project))
+                             attachments: [FactoryGirl.build(:attachment)])
 
     render
   end
