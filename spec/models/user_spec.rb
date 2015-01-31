@@ -22,4 +22,14 @@ describe User do
     new_user = FactoryGirl.build(:user, email: user.email)
     expect(new_user).to_not be_valid
   end
+
+  it 'fails with short password' do
+    user = User.new(email: 'test@example.com', password: 'pass', password_confirmation: 'pass')
+    expect(user).to_not be_valid
+  end
+
+  it 'fails with unconfirmed password' do
+    user = User.new(email: 'test@example.com', password: 'password')
+    expect(user).to_not be_valid
+  end
 end
