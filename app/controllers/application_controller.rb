@@ -5,10 +5,12 @@ class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
   protect_from_forgery with: :null_session
   before_action :authenticate_user!
+  rescue_from ActiveRecord::StatementInvalid, with: :raise_not_found
 
   # TODO: style login pages
   # TODO: style statuc and errors
   # TODO: change mail sender
+  # TODO: check statement invalid
 
   private
 
@@ -28,4 +30,10 @@ class ApplicationController < ActionController::Base
       super
     end
   end
+
+  # Rescuing from Postgress's out of range error with record not found
+  def raise_not_found
+    raise ActiveRecord::RecordNotFound
+  end
+
 end
