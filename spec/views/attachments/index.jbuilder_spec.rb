@@ -13,7 +13,7 @@ describe "attachments/index" do
   it "renders attachments json" do
     attachments = JSON.parse(rendered)
     attachments.each do |attachment|
-      expect(attachment.keys).to eq(ExpectedKeys::ATTACHMENT)
+      expect(attachment.keys.sort).to eq(ExpectedKeys::ATTACHMENT.sort)
     end
   end
 end

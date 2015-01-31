@@ -9,11 +9,11 @@ describe "comments/show" do
     render
   end
 
-  pending "renders comment json" do
+  it "renders comment json" do
     comment = JSON.parse(rendered)
-    expect(comment.keys).to eq(ExpectedKeys::COMMENT + ['attachments'])
+    expect(comment.keys.sort).to eq((ExpectedKeys::COMMENT + ['attachments']).sort)
     comment['attachments'].each do |attachment|
-      expect(attachment.keys).to eq(ExpectedKeys::ATTACHMENT)
+      expect(attachment.keys.sort).to eq((ExpectedKeys::ATTACHMENT).sort)
     end
   end
 end

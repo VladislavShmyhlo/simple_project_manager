@@ -14,7 +14,7 @@ describe "tasks/index" do
   it "renders tasks json" do
     tasks = JSON.parse(rendered)
     tasks.each do |task|
-      expect(task.keys).to eq(ExpectedKeys::TASK)
+      expect(task.keys.sort).to eq(ExpectedKeys::TASK.sort)
     end
   end
 end

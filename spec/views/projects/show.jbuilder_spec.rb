@@ -10,9 +10,9 @@ describe "projects/show" do
 
   it "renders project json" do
     project = JSON.parse(rendered)
-    expect(project.keys).to eq(ExpectedKeys::PROJECT + ['tasks'])
+    expect(project.keys.sort).to eq((ExpectedKeys::PROJECT + ['tasks']).sort)
     project['tasks'].each do |task|
-      expect(task.keys).to eq(ExpectedKeys::TASK)
+      expect(task.keys.sort).to eq(ExpectedKeys::TASK.sort)
     end
   end
 end

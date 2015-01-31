@@ -13,9 +13,9 @@ describe "comments/index" do
   it "renders comments json" do
     comments = JSON.parse(rendered)
     comments.each do |comment|
-      expect(comment.keys).to eq(ExpectedKeys::COMMENT + ['attachments'])
+      expect(comment.keys.sort).to eq((ExpectedKeys::COMMENT + ['attachments']).sort)
       comment['attachments'].each do |attachment|
-        expect(attachment.keys).to eq(ExpectedKeys::ATTACHMENT)
+        expect(attachment.keys.sort).to eq(ExpectedKeys::ATTACHMENT.sort)
       end
     end
   end

@@ -10,6 +10,6 @@ describe "attachments/show" do
 
   it "renders attachment json" do
     attachment = JSON.parse(rendered)
-    expect(attachment.keys).to eq(ExpectedKeys::ATTACHMENT)
+    expect(attachment.keys.sort).to eq(ExpectedKeys::ATTACHMENT.sort)
   end
 end

@@ -13,9 +13,9 @@ describe "projects/index" do
   it "renders projects json" do
     projects = JSON.parse(rendered)
     projects.each do |project|
-      expect(project.keys).to eq(ExpectedKeys::PROJECT + ['tasks'])
+      expect(project.keys.sort).to eq((ExpectedKeys::PROJECT + ['tasks']).sort)
       project['tasks'].each do |task|
-        expect(task.keys).to eq(ExpectedKeys::TASK)
+        expect(task.keys.sort).to eq(ExpectedKeys::TASK.sort)
       end
     end
   end
