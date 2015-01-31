@@ -44,4 +44,13 @@ feature 'comment management', js: true do
       expect(find('.attachment .name')).to have_content('config.ru')
     end
   end
+
+  context 'when user has attachment' do
+    include_context 'logged in user has attachment'
+
+    scenario 'user deletes attachment' do
+      find('.attachment-remove').click
+      expect('.attachments-list').to have_no_selector('.attachment')
+    end
+  end
 end

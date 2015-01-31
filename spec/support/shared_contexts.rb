@@ -47,6 +47,17 @@ shared_context 'logged in user has comment' do
   include_context 'user logs in'
 end
 
+shared_context 'logged in user has attachment' do
+  include_context 'user exists'
+  background do
+    FactoryGirl.create :attachment,
+        comment: FactoryGirl.create(:comment,
+            task: FactoryGirl.create(:task,
+                project: FactoryGirl.create(:project, user: user)))
+  end
+  include_context 'user logs in'
+end
+
 shared_context 'valid session' do
   let(:user) { FactoryGirl.create :user }
 
