@@ -45,4 +45,14 @@ describe User do
                     password_confirmation: 'pass')
     expect(user).to_not be_valid
   end
+
+  it 'creates user from omniauth data' do
+    auth_data = double({
+      provider: 'facebook',
+      uid: '123456789',
+      info: double(email: 'test@example.com')
+    })
+    user = User.from_omiauth
+    expect(user).to be_persisted
+  end
 end
