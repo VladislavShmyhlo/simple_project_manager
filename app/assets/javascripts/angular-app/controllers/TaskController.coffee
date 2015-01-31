@@ -2,7 +2,6 @@
   task = Restangular.one('projects', $routeParams.project_id).one('tasks', $routeParams.id)
 
   task.get().then (task) ->
-    console.log task
     $scope.task = task
 
   $scope.removeTask = (item) ->

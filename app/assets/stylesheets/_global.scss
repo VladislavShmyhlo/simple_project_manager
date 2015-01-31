@@ -212,7 +212,6 @@ messages {
 #throbber {
   left: 50%;
   margin-left: 370px;
-  // right: 20px;
   top: (20px + (22px/2))-(30px/2);
   position: fixed;
 }
@@ -220,17 +219,16 @@ label {
   margin-bottom: 0;
 }
 #wrapper {
-//  overflow: hidden;
   max-width: 100%;
 }
 #container {
   width: 740px;
-  margin: 20px auto 0;
+  margin: 60px auto 0;
   padding: 0 20px;
   .nav,
   .profile {
-    float: right;
-    margin-bottom: 20px;
+    position: absolute;
+    top: -40px;
     a {
       @include btn-blue;
       float: left;
@@ -241,9 +239,10 @@ label {
       line-height: 20px;
     }
   }
+  .profile {
+    right: 0;
+  }
   .nav {
-    position: absolute;
-    top: -42px;
     left: 0;
     a {
       margin: 0 5px 0 0;

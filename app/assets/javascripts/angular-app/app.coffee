@@ -1,16 +1,13 @@
-# for compatibility with Rails CSRF protection
-
 @app = angular.module 'exampleApp', [
   'restangular'
   'templates'
   'ngRoute'
   'ui.sortable'
   'ui.date'
-#  'ngAnimate'
-#  'ngFx'
 ]
 .config((RestangularProvider) ->
   RestangularProvider.setDefaultHeaders {
+    # for compatibility with Rails CSRF protection
     'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')
     'Accept': 'application/json'
   }
@@ -29,16 +26,10 @@
     controller: 'ProjectController'
 #    resolve: {
 #      project: (Restangular, $routeParams) ->
-#        console.log $routeParams.id
 #        project = Restangular.one('projects', $routeParams.id)
-#        console.log project.get()
 #        project.get()
 #    }
   }
-#  $routeProvider.when '/login', {
-#    templateUrl: 'login.html'
-#    controller: 'LoginController'
-#  }
   $routeProvider.otherwise {
     redirectTo: '/'
   }
@@ -52,7 +43,6 @@
       updatedItem = {}
       updatedItem[attr] = @[attr]
       @patch(updatedItem).then (item) =>
-        # console.log item;
         @[attr] = item[attr]
         # _.extend(@, item)
     model

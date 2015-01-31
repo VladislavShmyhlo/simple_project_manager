@@ -1,26 +1,35 @@
 @app.controller "ApplicationController", ($rootScope, $scope, Restangular, $location) ->
   loadingStatus = (st) ->
     $rootScope.$broadcast 'loading', {active: st}
+  auth = (st) ->
+    console.log st
+    $scope.authenticated = st
 
   Restangular.setErrorInterceptor (response) ->
+    console.log 'error'
     loadingStatus false
     switch response.status
       when 401
+        auth false
         window.location = 'users/sign_in'
         return false
+
       when 404
+        auth true
         $location.path '/'
         $rootScope.$broadcast 'error', response
         return false
       else
+        auth true
         $rootScope.$broadcast 'error', response
 
   Restangular.addFullRequestInterceptor ->
     loadingStatus true
 
   Restangular.addResponseInterceptor (data) ->
-    loadingStatus false
     console.log 'done.'
+    auth true
+    loadingStatus false
     data
 
   $scope.authenticated = false;
@@ -53,11 +62,8 @@
 
   $scope.confirmItemEdit = (item, attr) ->
     item[attr] = $scope.editing.itemNewAttr
-    item.updateAttr(attr).then(->
+    item.updateAttr(attr).then ->
       $scope.cancelItemEdit()
-    ,(data) ->
-      console.log data
-    )
 
   # $scope.logout = ->
   #   Restangular.all('users').customDELETE 'sign_out'

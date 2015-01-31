@@ -10,7 +10,7 @@
       #throbber(throbber)
       %messages
       #container(ng-cloak)
-        .profile
-          = render 'shared/navbar'
         #content
+          .profile.ng-hide(ng-show="authenticated")
+            = render 'shared/navbar'
           %ng-view
