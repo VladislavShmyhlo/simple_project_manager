@@ -90,7 +90,7 @@ feature 'task management', js: true do
           click_on 'Add Task'
         end
       }
-      first('.tasks-list > .task').drag_to find('.tasks-list > .task:last-child')
+      first('.tasks-list > .task .handle').drag_to find('.tasks-list > .task:last-child .handle')
     end
   end
 end
