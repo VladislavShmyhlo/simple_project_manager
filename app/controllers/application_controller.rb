@@ -6,13 +6,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   before_action :authenticate_user!
 
-  # TODO: redirect after signout
   # TODO: style login pages
-  # TODO: integration, acceptance, functional testing
-  # TODO: how application will respond in production to wrong request format?
-  # TODO: check default url options for sending mail
+  # TODO: style statuc and errors
   # TODO: change mail sender
-  # TODO: check delivery errors in production
 
   private
 

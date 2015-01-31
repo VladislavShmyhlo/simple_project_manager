@@ -34,8 +34,6 @@ class CommentsController < ApplicationController
     if @comment.destroy
       head :no_content
     else
-      # TODO: implement error response
-      # head :no_content
       head :unprocessable_entity
     end
   end

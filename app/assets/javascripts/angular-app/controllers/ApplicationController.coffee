@@ -23,15 +23,14 @@
     console.log 'done.'
     data
 
+  $scope.authenticated = false;
+  $scope.loc = $location;
+
   $scope.datepickerOptions = {
     dateFormat: 'dd/mm/yy',
     showOn: 'both'
     buttonText: ''
   }
-
-  $scope.user = false;
-
-  $scope.loc = $location;
 
   $scope.editing = {
     itemNewName: null
@@ -60,6 +59,6 @@
       console.log data
     )
 
-  $scope.logout = ->
-    Restangular.all('users').customDELETE 'sign_out'
-    window.location = 'users/sign_in'
+  # $scope.logout = ->
+  #   Restangular.all('users').customDELETE 'sign_out'
+  #   window.location = 'users/sign_in'
