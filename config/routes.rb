@@ -14,10 +14,12 @@ Rails.application.routes.draw do
     end
     resources :comments, except: [:new, :edit] do
       resources :attachments, except: [:new, :edit]
-    end  
+    end
   end
 
   root 'static#index'
+
+  match "*path", to: redirect("/"), via: :all
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

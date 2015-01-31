@@ -8,9 +8,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::StatementInvalid, with: :raise_not_found
 
   # TODO: style login pages
-  # TODO: style static and errors
-  # TODO: change mail sender
-  # TODO: check statement invalid
+  # TODO: tests
 
   private
 
@@ -35,5 +33,4 @@ class ApplicationController < ActionController::Base
   def raise_not_found
     raise ActiveRecord::RecordNotFound
   end
-
 end
