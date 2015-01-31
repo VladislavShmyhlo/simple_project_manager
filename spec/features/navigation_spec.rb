@@ -21,13 +21,13 @@ feature 'navigation', js: true do
     end
 
     scenario 'navigates to single task page' do
-      first('.task .description').click
+      find('.task .description').click
       expect(URI(current_url).fragment).to match /\A\/projects\/\d+\/tasks\/\d+\z/
     end
 
     context 'when user navigated to sinle task page' do
       background do
-        first('.task .description').click
+        find('.task .description').click
       end
 
       scenario 'navigates back to single project page' do
