@@ -81,12 +81,11 @@ describe AttachmentsController do
 
     describe "with invalid params" do
       before :each do
-        Attachment.should_receive(:new).and_return(FactoryGirl.build(:attachment))
         Attachment.any_instance.stub(:save).and_return(false)
       end
 
       it "fails to create new attachment" do
-        Attachment.any_instance.should_receive(:save)
+        Attachment.any_instance.should_receive(:save).and_return(false)
         expect {
           post :create, params, valid_session
         }.to change(comment.attachments, :count).by(0)
