@@ -97,15 +97,5 @@ feature 'task management', js: true do
         first.drag_to(last)
       }.to change { first('.tasks-list > .task')[:'data-id'] }
     end
-
-    scenario 'creates comment' do
-      let(:body) { 'my new comment' }
-      find('.task .description').click
-      within '.new-comment-form' do
-        fill_in :body, with: body
-        click_on 'add new comment'
-      end
-      expect(find('.comments-list .comment')).to have_content(body)
-    end
   end
 end
