@@ -99,7 +99,6 @@ describe AttachmentsController do
       it "renders errors" do
         Attachment.any_instance.should_receive(:errors).at_least(1).times.and_call_original
         post :create, params, valid_session
-        # expect(response.body).to eq('errors')
       end
 
       it "responds with 422" do
