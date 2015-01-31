@@ -47,7 +47,7 @@ feature 'task management', js: true do
             fill_in :description, with: invalid_description
             find('button.save').click
           end
-        }.to change{ page.has_css?('.task a.description', text: 'name', visible: false) }
+        }.to change{ page.has_css?('.task a.description', text: 'description', visible: false) }
       end
 
       scenario 'cancels task editing' do
