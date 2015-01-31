@@ -6,9 +6,8 @@ feature 'navigation', js: true do
   let(:project_name) { 'project name' }
 
   scenario 'navigates to single project page' do
-    # TODO: fix this terrible implementation
     find('.created-project .name a').click
-    expect(current_url).to match(/\Ahttp\:\/\/127\.0\.0\.1\:\d+\/\#\/projects\/\d+\z/)
+    expect(URI(current_url).fragment).to match /\A\/projects\/\d+\z/
   end
 
   context 'when user navigated to sinle project page' do
@@ -18,7 +17,7 @@ feature 'navigation', js: true do
 
     scenario 'navigates to single project page' do
       find('a.view-all').click
-      expect(current_url).to match(/\Ahttp\:\/\/127\.0\.0\.1\:\d+\/\#\/\z/)
+      expect(current_url).to eq '/'
     end
   end
 end
