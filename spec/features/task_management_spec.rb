@@ -95,7 +95,7 @@ feature 'task management', js: true do
       last = find('.tasks-list > .task:last-child .handle')
       expect {
         first.drag_to(last)
-      }.to change { first('.tasks-list > .task .handle')[:'data-id'] }.from(1).to(3)
+      }.to change { first('.tasks-list > .task')[:'data-id'] }.from(1).to(3)
     end
   end
 end
