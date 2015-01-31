@@ -97,7 +97,7 @@ describe AttachmentsController do
       end
 
       it "renders errors" do
-        Attachment.any_instance.should_receive(:errors).and_call_original
+        Attachment.any_instance.should_receive(:errors).at_least(1).time.and_call_original
         post :create, params, valid_session
         # expect(response.body).to eq('errors')
       end
