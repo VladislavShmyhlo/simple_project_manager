@@ -59,10 +59,9 @@ feature 'project management', js: true do
           find('.created-project .edit').click
           within '.project-name-form' do
             fill_in :name, with: new_invalid_name
-            sleep 1
             find('button.save').click
           end
-        }.to_not change(find('.created-project .name a', visible: false), :text)
+        }.to_not change{ page.has_content?('.created-project .name a', visible: false, text: project_name) }
       end
 
       scenario 'cancels project editing' do
