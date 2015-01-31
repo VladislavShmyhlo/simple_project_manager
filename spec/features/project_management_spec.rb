@@ -60,6 +60,7 @@ feature 'project management', js: true do
           within '.project-name-form' do
             fill_in :name, with: new_invalid_name
             find('button.save').click
+            sleep 1
           end
         }.to_not change(find('.created-project .name a', visible: false), :text)
       end
@@ -71,7 +72,6 @@ feature 'project management', js: true do
             fill_in :name, with: new_invalid_name
           end
           find('.created-project .cancel').click
-          sleep 1
         }.to_not change{ find('.created-project .name a', visible: false).text }
       end
     end
