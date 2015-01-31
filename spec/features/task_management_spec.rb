@@ -83,6 +83,7 @@ feature 'task management', js: true do
       }.to change { page.has_css?('.task.done') }.from(false).to(true)
     end
 
+    # TODO: figure out why this isn't working
     pending "sets priority through drag'n'drop" do
       fn = -> { within '.new-task-form' do
         fill_in :description, with: description
