@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 feature 'comment management', js: true do
+  include_context 'logged in user with comment'
+
   let(:body) { 'my new comment' }
 
   scenario 'creates comment' do
@@ -14,7 +16,5 @@ feature 'comment management', js: true do
 
   scenario 'when user has comment' do
     include_context 'logged in user with comment'
-
-
   end
 end
