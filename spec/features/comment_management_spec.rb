@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'comment management', js: true do
-  include_context 'logged in user has comment'
+  include_context 'logged in user has task'
 
   let(:body) { 'my new comment' }
 
@@ -14,7 +14,7 @@ feature 'comment management', js: true do
     expect(find('.comments-list .comment')).to have_content(body)
   end
 
-  scenario 'when user has comment' do
+  context 'when user has comment' do
     include_context 'logged in user has comment'
   end
 end
