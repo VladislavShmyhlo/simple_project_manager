@@ -52,7 +52,7 @@ describe User do
       uid: '123456789',
       info: double(email: 'test@example.com')
     })
-    user = User.from_omiauth
+    user = User.from_omniauth
     expect(user).to be_persisted
   end
 end
