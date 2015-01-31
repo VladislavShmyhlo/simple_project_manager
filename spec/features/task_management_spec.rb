@@ -84,12 +84,13 @@ feature 'task management', js: true do
     end
 
     scenario "sets priority through drag'n'drop" do
-      2.times {
-        within '.new-task-form' do
-          fill_in :description, with: description
-          click_on 'Add Task'
-        end
-      }
+      fn = -> { within '.new-task-form' do
+        fill_in :description, with: description
+        click_on 'Add Task'
+      end }
+      fn.call
+      expect(page).to have_selector('.tasks-list > .task', count: 2)
+      fn.call
       first('.tasks-list > .task .handle').drag_to find('.tasks-list > .task:last-child .handle')
     end
   end
