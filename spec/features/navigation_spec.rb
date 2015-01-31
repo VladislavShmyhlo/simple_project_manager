@@ -5,29 +5,20 @@ feature 'navigation', js: true do
 
   let(:project_name) { 'project name' }
 
-  context 'when user has project' do
+  scenario 'navigates to single project page' do
+    # TODO: fix this terrible implementation
+    find('.created-project .name a').click
+    expect(current_url).to match(/\Ahttp\:\/\/127\.0\.0\.1\:\d+\/\#\/projects\/\d+\z/)
+  end
+
+  context 'when user navigated to sinle project page' do
     background do
-      find('.new-project-button button').click
-      within '.new-project-form' do
-        fill_in 'name', with: project_name
-        find('button.save').click
-      end
+      find('.created-project .name a').click
     end
 
-    context 'when user navigated to sinle project page' do
-      background do
-        find('.created-project .name a').click
-      end
-
-      scenario 'navigates to single project page' do
-        # TODO: fix this terrible implementation
-        expect(current_url).to match(/\Ahttp\:\/\/127\.0\.0\.1\:\d+\/\#\/projects\/\d+\z/)
-      end
-
-      scenario 'navigates to single project page' do
-        find('a.view-all').click
-        expect(current_url).to match(/\Ahttp\:\/\/127\.0\.0\.1\:\d+\/\#\/\z/)
-      end
+    scenario 'navigates to single project page' do
+      find('a.view-all').click
+      expect(current_url).to match(/\Ahttp\:\/\/127\.0\.0\.1\:\d+\/\#\/\z/)
     end
   end
 end
