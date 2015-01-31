@@ -96,7 +96,7 @@ describe AttachmentsController do
         expect(assigns(:attachment)).to be_a_new(Attachment)
       end
 
-      xit "renders errors" do
+      it "renders errors" do
         Attachment.any_instance.should_receive(:errors).and_return('errors')
         post :create, params, valid_session
         expect(response.body).to eq('errors')

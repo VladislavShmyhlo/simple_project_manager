@@ -44,7 +44,7 @@ feature 'project management', js: true do
     end
 
     feature 'renaming' do
-      scenario 'user changes project name' do
+      scenario 'changes project name' do
         expect {
           find('.created-project .edit').click
           within '.project-name-form' do
@@ -54,7 +54,7 @@ feature 'project management', js: true do
         }.to change{ find('.created-project .name').text }.from(project_name).to(new_valid_name)
       end
 
-      pending 'user fails to change project name due to validation' do
+      scenario 'fails to change project name due to validation' do
         expect {
           find('.created-project .edit').click
           within '.project-name-form' do
@@ -64,7 +64,7 @@ feature 'project management', js: true do
         }.to_not change{ find('.created-project .name', visible: false).text }
       end
 
-      scenario 'user cancels project editing' do
+      scenario 'cancels project editing' do
         expect {
           find('.created-project .edit').click
           within '.project-name-form' do

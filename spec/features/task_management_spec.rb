@@ -40,7 +40,7 @@ feature 'task management', js: true do
         }.to change{ find('.task a.description').text}.to(new_description )
       end
 
-      pending 'fails to change description due to validation' do
+      it 'fails to change description due to validation' do
         expect {
           find('.task .edit').click
           within '.task-description-form' do
