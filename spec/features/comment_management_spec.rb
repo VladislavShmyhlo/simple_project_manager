@@ -15,5 +15,6 @@ feature 'comment management', js: true do
   end
 
   scenario 'when user has comment' do
+    include_context 'logged in user has comment'
   end
 end
