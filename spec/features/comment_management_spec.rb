@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'comment management', js: true do
-  include_context 'logged in user with comment'
+  include_context 'logged in user has comment'
 
   let(:body) { 'my new comment' }
 
