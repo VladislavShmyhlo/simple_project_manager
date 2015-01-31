@@ -53,7 +53,7 @@ describe AttachmentsController do
   end
   # ====================================================================================================================
   describe "POST create" do
-    let!(:params) { {attachment: valid_attributes, comment_id: comment.to_param} }
+    let!(:params) { {'attachment' => valid_attributes, 'comment_id' => comment.to_param} }
     describe "with valid params" do
 
       it "creates a new attachment" do
