@@ -91,7 +91,11 @@ feature 'task management', js: true do
       fn.call
       sleep(1)
       fn.call
-      first('.tasks-list > .task .handle').drag_to find('.tasks-list > .task:last-child .handle')
+      first = first('.tasks-list > .task .handle')
+      last = find('.tasks-list > .task:last-child .handle')
+      expect {
+        first.drag_to(last)
+      }.to change { first('.tasks-list > .task .handle')[:'data-id'] }.from(1).to(3)
     end
   end
 end
