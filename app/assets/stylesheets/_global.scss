@@ -1,3 +1,8 @@
+::-webkit-input-placeholder {color:darken($color-grey-light,10%);text-shadow: none !important;}
+::-moz-placeholder          {color:darken($color-grey-light,10%);text-shadow: none !important;}/* Firefox 19+ */
+:-moz-placeholder           {color:darken($color-grey-light,10%);text-shadow: none !important;}/* Firefox 18- */
+:-ms-input-placeholder      {color:darken($color-grey-light,10%);text-shadow: none !important;}
+
 html,
 body {
   min-height: 100%;
