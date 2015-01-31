@@ -48,6 +48,10 @@ feature 'comment management', js: true do
   context 'when user has attachment' do
     include_context 'logged in user has attachment'
 
+    background do
+      find('.task .description').click
+    end
+
     scenario 'user deletes attachment' do
       find('.attachment-remove').click
       expect('.attachments-list').to have_no_selector('.attachment')
