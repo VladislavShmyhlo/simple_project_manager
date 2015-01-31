@@ -54,7 +54,7 @@ feature 'comment management', js: true do
 
     scenario 'user deletes attachment' do
       find('.attachment-remove').click
-      expect(find('.attachments-list')).to have_no_selector('.attachment')
+      expect(find('.attachments-list', visible: false)).to have_no_selector('.attachment')
     end
   end
 end
