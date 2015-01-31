@@ -82,5 +82,15 @@ feature 'task management', js: true do
         end
       }.to change { page.has_css?('.task.done') }.from(false).to(true)
     end
+
+    scenario "sets priority through drag'n'drop" do
+      2.times {
+        within '.new-task-form' do
+          fill_in :description, with: description
+          click_on 'Add Task'
+        end
+      }
+      first('.tasks-list > .task').drag_to find('.tasks-list > .task:last-child')
+    end
   end
 end

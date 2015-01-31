@@ -17,7 +17,7 @@ feature 'navigation', js: true do
 
     scenario 'navigates to single project page' do
       find('a.view-all').click
-      expect(current_url).to eq '/'
+      expect(URI(current_url).fragment).to eq '/'
     end
   end
 end
