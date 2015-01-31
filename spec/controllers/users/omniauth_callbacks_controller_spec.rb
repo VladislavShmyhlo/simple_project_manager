@@ -1,9 +1,20 @@
 require 'spec_helper'
 
 describe Users::OmniauthCallbacksController do
-    pending 'need to be implemented'
+  subject { get 'facebook', {action: 'facebook'} }
 
-# it "routes to users/omniauth_callbacks#facebook" do
-#       get("/users/auth/facebook/callback").should route_to("users/omniauth_callbacks#facebook", action: 'facebook')
-#     end
+  before :each do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+  end
+
+  it 'signs user in' do
+    User.should_receive(:from_omniauth).and_return(FactoryGirl.create(:user))
+    subject { get 'facebook', {action: 'facebook'} }
+    expect(response.status).to eq(302)
+  end
+
+  it 'redirects unsaved user to registration path' do
+    User.should_receive(:from_omniauth).and_return(FactoryGirl.build(:user))
+    expect(subject).to redirect_to(new_user_registration_url)
+  end
 end

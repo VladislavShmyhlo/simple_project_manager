@@ -13,5 +13,23 @@ class ApplicationController < ActionController::Base
   # TODO: check default url options for sending mail
   # TODO: change mail sender
   # TODO: check delivery errors in production
+
   private
+
+  # Overwriting the sign_out redirect path method
+  def after_sign_in_path_for(resource_or_scope)
+    if resource_or_scope == :user
+      root_path
+    else
+      super
+    end
+  end
+
+  def after_sign_out_path_for(resource_or_scope)
+    if resource_or_scope == :user
+      new_user_session_path
+    else
+      super
+    end
+  end
 end
