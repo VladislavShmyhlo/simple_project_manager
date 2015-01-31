@@ -9,7 +9,6 @@ describe CommentsController do
   let(:task) { FactoryGirl.create(:task, project: project) }
   let(:comment) { FactoryGirl.create(:comment, task: task) }
 
-  # TODO: rewrite this
   it "raises RecordNotFound" do
     expect {
       get :show, { id: 1 }, valid_session
