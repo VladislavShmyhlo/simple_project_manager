@@ -24,13 +24,7 @@ body {
       font-size: 20px;
       // text-transform: uppercase;
     }
-    #container {
-      margin-top: 40px;
-      width: 400px;
-      & > .alert {
-        @include block-shadow;
-      }
-      form {
+    form {
         background: rgba($color-border-blue, .5);
         @include block-shadow;
         padding: 18px;
@@ -105,10 +99,29 @@ body {
           }
         }
       }
+    #container {
+      margin-top: 40px;
+      width: 400px;
+      & > .alert {
+        @include block-shadow;
+      }
     }
     .links {
       text-align: center;
       margin-top: 10px;
+      &.back {
+        text-align: left;
+        form {
+          margin: 0;
+          padding: 0;
+          background: none;
+          box-shadow: none;
+          border: none;
+          border-radius: 0;
+          display: inline-block
+        }
+      }
+      input[type='submit'],
       a {
         @include btn-blue;
         padding: 4px 10px;
