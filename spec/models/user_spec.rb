@@ -17,9 +17,9 @@ describe User do
     expect(user).to_not be_valid
   end
 
-  it 'fails with taken email' do
+  it 'fails with already taken email' do
     user.save
-    @user = FactoryGirl.build(:user, email: user.email)
-    expect(user).to_not be_valid
+    new_user = FactoryGirl.build(:user, email: user.email)
+    expect(new_user).to_not be_valid
   end
 end
