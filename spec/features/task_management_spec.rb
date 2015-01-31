@@ -89,7 +89,7 @@ feature 'task management', js: true do
         click_on 'Add Task'
       end }
       fn.call
-      expect(page).to have_selector('.tasks-list > .task', count: 2)
+      sleep(1)
       fn.call
       first('.tasks-list > .task .handle').drag_to find('.tasks-list > .task:last-child .handle')
     end
