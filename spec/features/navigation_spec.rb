@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'navigation', js: true do
-  include_context 'user logged in'
+  include_context 'logged in user has task'
 
   let(:project_name) { 'project name' }
 
