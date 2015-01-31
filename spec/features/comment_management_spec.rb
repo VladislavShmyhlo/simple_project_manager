@@ -39,7 +39,7 @@ feature 'comment management', js: true do
 
     scenario 'user uploads file' do
       within '.new-attachment-form' do
-        attach_file(:file, File.join(Rails.root, 'config.ru'))
+        attach_file(:file, File.join(Rails.root, 'config.ru'), visible: false)
       end
       expect(find('.attachment .name')).to have_content('config.ru')
     end
