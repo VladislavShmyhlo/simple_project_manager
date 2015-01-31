@@ -15,9 +15,13 @@ feature 'navigation', js: true do
       find('.created-project .name a').click
     end
 
-    scenario 'navigates to single project page' do
+    scenario 'navigates to all projects' do
       find('a.view-all').click
       expect(URI(current_url).fragment).to eq '/'
     end
+
+    scenario 'navigates to single task page' do
+      first('.task .description').click
+      expect(URI(current_url).fragment).to match /\A\/projects\/\d+\/tasks\/\d+\z/
   end
 end
