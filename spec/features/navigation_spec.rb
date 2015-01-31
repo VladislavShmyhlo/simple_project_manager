@@ -34,5 +34,6 @@ feature 'navigation', js: true do
         find('a.view-project').click
         expect(URI(current_url).fragment).to match /\A\/projects\/\d+\z/
       end
+    end
   end
 end

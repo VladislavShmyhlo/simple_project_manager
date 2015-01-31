@@ -97,5 +97,9 @@ feature 'task management', js: true do
         first.drag_to(last)
       }.to change { first('.tasks-list > .task')[:'data-id'] }
     end
+
+    context 'when user navigated to single task page' do
+
+    end
   end
 end
