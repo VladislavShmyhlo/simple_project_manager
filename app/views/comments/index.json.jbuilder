@@ -1,4 +1,6 @@
 json.array!(@comments) do |comment|
   json.extract! comment, :id, :body, :updated_at, :created_at
-  json.url comment_url(comment, format: :json)
+  json.attachments do
+      json.array! comment.attachments, partial: 'attachments/attachment', as: :attachment
+    end
 end

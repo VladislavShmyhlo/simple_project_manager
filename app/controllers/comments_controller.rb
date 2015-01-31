@@ -1,13 +1,14 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :update, :destroy]
+  before_action :set_comment, only: [:update, :destroy]
   before_action :set_task, only: [:create]
 
   def index
-    @comments = current_user.comments.where(tasks: {id: params[:task_id]}).all
+    @comments = current_user.comments.includes(:attachments).where(tasks: {id: params[:task_id]}).all
     render 'index.json'
   end
 
   def show
+    @comment = current_user.comments.includes(:attachments).find(params[:id])
     render 'show.json'
   end
 
